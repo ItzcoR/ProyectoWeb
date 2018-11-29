@@ -8,5 +8,7 @@
     <Alm id="Diego" password="wero" nombre="Diego" />
     <Alum password="kitzo" nombre="Rodrigo" id="Rodrigo" />
   </Alumno>
+  <Maestro>
+  </Maestro>
 </ROOT>
 
