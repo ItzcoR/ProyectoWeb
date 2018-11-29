@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html style="height:100%; width:100%;margin:0px;">
+    <head>
+        <title>Login</title>
+        <script type ="text/javascript">
+            function letraNumVal(e) {
+                tecla = document.all ? e.keyCode : e.which;
+                if (tecla === 8 || tecla === 32)
+                    return true;
+                patron = /[a-z]|[A-Z]|á|é|í|ó|ú|Á|É|Í|Ó|Ú|[0-9]/;
+                te = String.fromCharCode(tecla);
+                return patron.test(te);
+            }
+            function letraVal(e) {
+                tecla = document.all ? e.keyCode : e.which;
+                if (tecla === 8 || tecla === 32)
+                    return true;
+                patron = /[a-z]|[A-Z]|á|é|í|ó|ú|Á|É|Í|Ó|Ú/;
+                te = String.fromCharCode(tecla);
+                return patron.test(te);
+            }
+        </script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="estilos.css" media="screen"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body class="colorful">
+        <form action="Agregar" method="POST">
+            <div class="container">
+                <h2 class="blanco">Nuevo Usuario</h2>           
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <td class="blanco">Nombre Completo:</td><td><input type="text" name="nombre" onkeypress="return letraVal(event)" required></td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="blanco">Tipo de usuario:</td><td><select name="io">
+                                          <option value="Alumno">Alumno</option>
+                                          <option value="Maestro">Maestro</option>
+                                          <option value="Administrador">Administrador</option>
+                                          </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="blanco">USUARIO:</td><td><input type="text" name="id" onkeypress="return letraNumVal(event)" required>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="blanco">Password:</td><td><input type="password" name="password" onkeypress="return letraNumVal(event)" required></td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-4"><input type="submit" class="btn-info" value="Crear"></div>
+                <div class="col-sm-4"><input type="button" class="btn-info" value="Cancelar" onclick="document.location='Administrador'"></div>
+            </div>
+        </form>
+    </body>
+</html>
+

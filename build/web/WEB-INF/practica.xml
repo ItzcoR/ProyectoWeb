@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ROOT>
+  <Administrador>
+    <Adm id="Ruben" password="ruben" nombre="Ruben" />
+    <Adm password="Itz" nombre="Itzco" id="Itzco" />
+  </Administrador>
+  <Alumno>
+    <Alm id="Diego" password="wero" nombre="Diego" />
+    <Alum password="kitzo" nombre="Rodrigo" id="Rodrigo" />
+    <Alum password="a" nombre="a" id="a" />
+  </Alumno>
+</ROOT>
+

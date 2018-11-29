@@ -1,0 +1,28 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 5/06/2018, 12:24:57 PM
+    Author     : kique
+*/
+
+.colorful {
+	background:
+		-webkit-linear-gradient(45deg, hsla(91, 97%, 42%, 1) 0%, hsla(91, 97%, 42%, 0) 70%),
+		-webkit-linear-gradient(315deg, hsla(211, 94%, 44%, 1) 10%, hsla(211, 94%, 44%, 0) 80%),
+		-webkit-linear-gradient(225deg, hsla(127, 96%, 41%, 1) 10%, hsla(127, 96%, 41%, 0) 80%),
+		-webkit-linear-gradient(135deg, hsla(131, 95%, 50%, 1) 100%, hsla(131, 95%, 50%, 0) 70%);
+	background:
+		linear-gradient(45deg, hsla(91, 97%, 42%, 1) 0%, hsla(91, 97%, 42%, 0) 70%),
+		linear-gradient(135deg, hsla(211, 94%, 44%, 1) 10%, hsla(211, 94%, 44%, 0) 80%),
+		linear-gradient(225deg, hsla(127, 96%, 41%, 1) 10%, hsla(127, 96%, 41%, 0) 80%),
+		linear-gradient(315deg, hsla(131, 95%, 50%, 1) 100%, hsla(131, 95%, 50%, 0) 70%);
+	}
+.titulo{
+    font-family: fantasy;
+}
+.blanco{
+    color: white;
+}
