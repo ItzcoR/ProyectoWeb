@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HotSpot>
+  <Pregunta id="phs1" texto="Identifica la best girl" res="op1c2" >
+  	<HS id="op1c1" src="imagenp1o1.jpg" />
+	<HS id="op1c2" src="imagenp1o2.jpg" />
+	<HS id="op1c3" src="imagenp1o3.jpg" />
+	<HS id="op1c4" src="imagenp1o4.jpg" />
+  </Pregunta>
+  <Pregunta id="phs2" texto="Rei best girl" res="op2c6" >
+  	<HS id="op2c1" src="imagenp2o1.jpg" />
+	<HS id="op2c2" src="imagenp2o2.jpg" />
+	<HS id="op2c3" src="imagenp2o3.jpg" />
+	<HS id="op2c4" src="imagenp2o4.jpg" />
+</HotSpot>
