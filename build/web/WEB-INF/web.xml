@@ -13,6 +13,10 @@
         <servlet-class>administrador.Agregar</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>trueFalse</servlet-name>
+        <servlet-class>administrador.trueFalse</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>modificar1</servlet-name>
         <servlet-class>administrador.modificar1</servlet-class>
     </servlet>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>Agregar</servlet-name>
         <url-pattern>/Agregar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>trueFalse</servlet-name>
+        <url-pattern>/trueFalse</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>modificar1</servlet-name>

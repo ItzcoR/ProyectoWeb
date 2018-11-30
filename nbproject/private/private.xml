@@ -3,15 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProjectoV1/web/index.html</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProjectoV1/src/java/administrador/EliminarGrupo.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProjectoV1/src/java/administrador/Existe.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProjectoV1/web/WEB-INF/canvas.xml</file>
+            <file>file:/B:/Tareas/WEB/Proyectos/ProjectoV1/src/java/administrador/CrearDiagrama.java</file>
             <file>file:/B:/Tareas/WEB/Proyectos/ProjectoV1/src/java/administrador/Agregar.java</file>
             <file>file:/B:/Tareas/WEB/Proyectos/ProjectoV1/web/WEB-INF/practica.xml</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProjectoV1/web/nuevoUsuario.html</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProjectoV1/src/java/administrador/Administrador.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProjectoV1/src/java/administrador/Maestro.java</file>
         </group>
     </open-files>
 </project-private>

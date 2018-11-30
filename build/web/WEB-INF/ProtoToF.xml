@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TrueOrFalse>
+  <Pregunta id="ptof1" texto="Grifith no hizo nada malo" res="V" />
+  <Pregunta id="ptof2" texto="Rei best girl" res="F" />
+  <Pregunta id="ptof3" texto="Moth es joto" res="V" />
+  <Pregunta id="lel" texto="powegfg" res="F" />
+</TrueOrFalse>
+

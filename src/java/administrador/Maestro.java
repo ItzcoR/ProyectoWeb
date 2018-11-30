@@ -24,7 +24,7 @@ public class Maestro extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String xml=request.getRealPath("WEB-INF\\canvas.xml");
+        String xml=request.getRealPath("WEB-INF\\ProtoToF.xml");
         int aux=tamano(xml);
         String[] diagramas=new String[aux];
         diagramas=diagrama(xml);
@@ -56,7 +56,10 @@ public class Maestro extends HttpServlet {
             out.println("<table border='1px solid black'>");
             out.println("<tr>");
             out.println("<td>");
-            out.println("<h4>Nombre del diagrama</h4>");
+            out.println("<h4>Id de la pregunta</h4>");
+            out.println("</td>");
+            out.println("<td>");
+            out.println("<h4>Tipo</h4>");
             out.println("</td>");
             out.println("<td>");
             out.println("<h4>Accion</h4>");
@@ -67,6 +70,9 @@ public class Maestro extends HttpServlet {
                 out.println("<tr>");
                 out.println("<td>");
                 out.println("<h1>"+diagramas[i]+"</h1>");
+                out.println("</td>");
+                out.println("<td>");
+                out.println("<h1>True or False</h1>");
                 out.println("</td>");
                 out.println("<td>");
                 out.println("<a href='ver?id="+diagramas[i]+"'>ver</a>|");

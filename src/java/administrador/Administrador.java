@@ -56,13 +56,13 @@ public class Administrador extends HttpServlet {
             "     <tr>\n" +
             "       <td>");
             for(int i=0;i<aux;i++){
-                out.println("<h5>"+usuarios[0][i]+"</h5>");
+                out.println("<h5>"+usuarios[0][i]+"</h5>"); //Nombre
                 out.println("<hr>");
             }
             out.println("</td>\n" +
             "<td>");        
             for(int i=0;i<aux;i++){
-                out.println("<h5>"+usuarios[2][i]+"</h5>");
+                out.println("<h5>"+usuarios[2][i]+"</h5>"); //Tipo
                 out.println("<hr>");
             }
             out.println("</td>\n" +
@@ -96,7 +96,7 @@ public class Administrador extends HttpServlet {
         }
     }
     
-        public int tamano(String direc) //Esta funcion nos regresa el numero de nietos en un tag de administrador
+        public int tamano(String direc) //Esta funcion nos regresa el numero de nietos del tag raiz
         {
         int aux=0;
         try{
@@ -150,8 +150,8 @@ public class Administrador extends HttpServlet {
                 {
                     Element nieto=(Element)nietos.get(j);
                     nombU[0][aux2]=nieto.getAttributeValue("nombre");
-                    nombU[1][aux2]=nieto.getAttributeValue("id");
-                    nombU[2][aux2]=hijo.getName();
+                    nombU[1][aux2]=nieto.getAttributeValue("id");       //En esta posicion del arreglo se agrega el id unico de cada Usuario
+                    nombU[2][aux2]=hijo.getName();  //Esta posicion del arreglo guarda el tipo de usuario el cual eesta definido por el tag hijo
                     aux2++;
                 }
             }
