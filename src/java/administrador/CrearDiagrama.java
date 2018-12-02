@@ -20,9 +20,8 @@ public class CrearDiagrama extends HttpServlet {
             out.println("<title>Crear Pregunta True or False</title>"); 
          
             out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>");
-            out.println("<script src='fabric.js'></script>");
             out.println("</head>");
-            out.println("<body>");  //  out.println("");   out.println('');
+            out.println("<body>");  //  out.println("");   out.println('');  <input type="reset"> 
             out.println("<form action='trueFalse' method='get'>");
             out.println("<div>");
             out.println("<table>");
@@ -41,9 +40,13 @@ public class CrearDiagrama extends HttpServlet {
 "                                          <option value=\"F\">Falso</option>\n" +
 "                                          </select>");
                 out.println("</tr>");
+                out.println("<tr>");
+                    out.println("<td> Agregar archivo </td><td><input type='file' name='archivo' /></td>");
+                out.println("</tr>");
             out.println("</table");
             out.println("</div");
             out.println("<div>");
+            out.println("<input type=\"reset\">");
             out.println("<input type=\"submit\" value=\"Crear\">");
             out.println("<input type=\"button\" value=\"Cancelar\" onclick=\"document.location='Maestro'\">");
             out.println("</div>");

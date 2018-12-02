@@ -22,7 +22,7 @@ import org.jdom.output.XMLOutputter;
 public class eliminard extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)  //Este servlet borra la pregunta con el id psasado y redirecciona a la misma pagina de maestro
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String xml=request.getRealPath("WEB-INF\\ProtoToF.xml");
@@ -33,7 +33,7 @@ public class eliminard extends HttpServlet {
         }
     }
     
-    public void diagrama(String direc,String id)
+    public void diagrama(String direc,String id)    
     {
 
         try{

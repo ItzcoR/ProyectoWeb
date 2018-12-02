@@ -88,6 +88,10 @@
         <servlet-name>EliminarGrupo</servlet-name>
         <servlet-class>administrador.EliminarGrupo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>crearExamen</servlet-name>
+        <servlet-class>administrador.crearExamen</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Existe</servlet-name>
         <url-pattern>/Existe</url-pattern>
@@ -167,6 +171,10 @@
     <servlet-mapping>
         <servlet-name>ModGrupo</servlet-name>
         <url-pattern>/ModGrupo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>crearExamen</servlet-name>
+        <url-pattern>/crearExamen</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ModGrupo2</servlet-name>

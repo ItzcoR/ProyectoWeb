@@ -40,6 +40,7 @@ public class Maestro extends HttpServlet {
             out.println("<html style='height:100%; width:100%; margin:0px;'>");
             out.println("<head>");
             out.println("<title>Servlet Maestro</title>"); 
+            out.println("<script src=\"https://code.jquery.com/jquery-1.10.2.js\"></script>"); 
             out.println("<meta charset=\"utf-8\">\n" +
             "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
             "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
@@ -54,45 +55,67 @@ public class Maestro extends HttpServlet {
             out.println("<div>");
             out.print("<a href='CrearDiagrama'>Crear Pregunta</a>");
             out.println("</div>");
-            out.println("<div>");
-            out.println("<table border='1px solid black'>");
-            out.println("<tr>");
-            out.println("<td>");
-            out.println("<h3>Id de la pregunta"+aux+"</h3>");
-            out.println("</td>");
-            out.println("<td>");
-            out.println("<h3>Pregunta</h3>");
-            out.println("</td>");
-            out.println("<td>");
-            out.println("<h3>Tipo</h3>");
-            out.println("</td>");
-            out.println("<td>");
-            out.println("<h3>Accion</h3>");
-            out.println("</td>");
-            out.println("</tr>");
-            for(int i=0;i<aux;i++)
-            {
+                out.println("<form action='crearExamen' method='get'>");
+                out.println("<div>");
+                out.println("<table border='1px solid black'>");
                 out.println("<tr>");
                 out.println("<td>");
-                out.println("<h4>"+pregs[0][i]+"</h4>");
+                out.println("<h3>Id de la pregunta"+aux+"</h3>");
                 out.println("</td>");
                 out.println("<td>");
-                out.println("<h4>"+pregs[2][i]+"</h4>");
+                out.println("<h3>Pregunta</h3>");
                 out.println("</td>");
                 out.println("<td>");
-                out.println("<h4>True or False</h4>");
+                out.println("<h3>Tipo</h3>");
                 out.println("</td>");
                 out.println("<td>");
-                out.println("<a href='ver?id="+pregs[0][i]+"'>ver</a>|");
-                out.println("<a href='eliminard?idc="+pregs[0][i]+"'>eliminar</a>|");
-                out.println("<a href='modificard?idc="+pregs[0][i]+"'>modificar</a>");
+                out.println("<h3>Accion</h3>");
+                out.println("</td>");
+                out.println("<td>");
+                out.println("<h3>¿Agregar a examen?</h3>");
                 out.println("</td>");
                 out.println("</tr>");
-            }
-            out.println("</table>");
-            out.println("</div>");
-            out.println("</body>");
-            out.println("</html>");
+                for(int i=0;i<aux;i++)
+                {
+                    out.println("<tr>");
+                    out.println("<td>");
+                    out.println("<h4>"+pregs[0][i]+"</h4>");    //out.println("<>");   out.println("");  out.println(''); 
+                    out.println("</td>");
+                    out.println("<td>");
+                    out.println("<h4>"+pregs[2][i]+"</h4>");
+                    out.println("</td>");
+                    out.println("<td>");
+                    out.println("<h4>True or False</h4>");
+                    out.println("</td>");
+                    out.println("<td>");
+                    out.println("<a href='ver?id="+pregs[0][i]+"'>ver</a>|");
+                    out.println("<a href='eliminard?idc="+pregs[0][i]+"'>eliminar</a>|");
+                    out.println("<a href='modificard?idc="+pregs[0][i]+"'>modificar</a>");
+                    out.println("</td>");
+                    out.println("<td>");
+                    out.println("<input type=\"checkbox\" name='agregarExamen' value="+pregs[0][i]+">"); 
+                    out.println("</td>");
+                    out.println("</tr>");
+                }
+                out.println("</table>");
+                out.println("</div>");
+                out.println("<div>");
+                out.println("<p></p>");
+                out.println("<script>\n" +
+                "var countChecked = function() {\n" +
+                "  var n = $( \"input:checked\" ).length;\n" +
+                "  $( \"p\" ).text( n +  \" Preguntas seleccionadas\" );\n" +
+                "};\n" +
+                "countChecked();\n" +
+                " \n" +
+                "$( \"input[type=checkbox]\" ).on( \"click\", countChecked );\n" +
+                "</script>");
+                out.println("<input type=\"reset\">");
+                out.println("<input type=\"submit\" value=\"Agregar a un Examen\">");               
+                out.println("</div>");
+                out.println("</form>");
+                out.println("</body>");
+                out.println("</html>");
             }
         }
     }
