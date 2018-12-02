@@ -18,7 +18,24 @@ public class CrearDiagrama extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Crear Pregunta True or False</title>"); 
-         
+            out.println("<script type =\"text/javascript\">\n" +
+"            function letraNumVal(e) {\n" +
+"                tecla = document.all ? e.keyCode : e.which;\n" +
+"                if (tecla === 8 || tecla === 32)\n" +
+"                    return true;\n" +
+"                patron = /[a-z]|[A-Z]|á|é|í|ó|ú|Á|É|Í|Ó|Ú|[0-9]/;\n" +
+"                te = String.fromCharCode(tecla);\n" +
+"                return patron.test(te);\n" +
+"            }\n" +
+"            function numVal(e) {\n" +
+"                tecla = document.all ? e.keyCode : e.which;\n" +
+"                if (tecla === 8 || tecla === 32)\n" +
+"                    return true;\n" +
+"                patron = /[0-9]/;\n" +
+"                te = String.fromCharCode(tecla);\n" +
+"                return patron.test(te);\n" +
+"            }\n" +
+"        </script>");
             out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>");
             out.println("</head>");
             out.println("<body>");  //  out.println("");   out.println('');  <input type="reset"> 
@@ -26,13 +43,13 @@ public class CrearDiagrama extends HttpServlet {
             out.println("<div>");
             out.println("<table>");
                 out.println("<tr>");
-                    out.println("<td> ID de la pregunta </td><td><input type='text' name='id' required /></td>");
+                    out.println("<td> ID de la pregunta </td><td><input type='text' name='id' onkeypress=\"return letraNumVal(event)\" required /></td>");
                 out.println("</tr>");
                 out.println("<tr>");
-                    out.println("<td> Texto de la pregunta </td><td><input type='text' name='texto' required /></td>");
+                    out.println("<td> Texto de la pregunta </td><td><input type='text' name='texto' onkeypress=\"return letraNumVal(event)\" required /></td>");
                 out.println("</tr>");
                 out.println("<tr>");
-                    out.println("<td> Valor de la pregunta </td><td><input type='text' name='pond' required /></td>");
+                    out.println("<td> Valor de la pregunta </td><td><input type='text' name='pond' onkeypress=\"return numVal(event)\" required /></td>");
                 out.println("</tr>");
                 out.println("<tr>");
                     out.println("<td> Respuesta </td><td><select name=\"res\">\n" +

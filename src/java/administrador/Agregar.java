@@ -38,16 +38,13 @@ public class Agregar extends HttpServlet {
             out.println("<title>Servlet add</title>"); 
             out.println("<meta charset=\"utf-8\">\n" +
             "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
-            "<link rel=\"stylesheet\" type=\"text/css\" href=\"estilos.css\" media=\"screen\"/>\n" +
-            "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\n" +
-            "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
-            "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>");
+            "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>");
             out.println("</head>");
             out.println("<body class='colorful'>");
             out.println("<h1 class='blanco'>"+res+" </h1>");
             out.println("<div class=\"row\">\n" +
             "  <div class=\"col-sm-8\"></div>\n" +
-            "  <div class=\"col-sm-4\"><a class='blanco' href='Administrador'>Regresar</a></div>\n" +
+            "  <div class=\"col-sm-4\"><a href='Administrador'>Regresar</a></div>\n" +
             "</div>");
             out.println("</body>");
             out.println("</html>");

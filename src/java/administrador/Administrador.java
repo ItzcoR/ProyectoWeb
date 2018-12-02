@@ -141,17 +141,17 @@ public class Administrador extends HttpServlet {
             //Elemento raiz
             Element raiz=bd_xml.getRootElement();
             //Se almacenan los hijos en una lista
-            List hijos=raiz.getChildren();
+            List hijos=raiz.getChildren();//Los hijos son los tags que definen el tipo de usuario
             for(int i=0;i<hijos.size();i++)
             {
-                Element hijo=(Element)hijos.get(i);
-                List nietos=hijo.getChildren();
+                Element hijo=(Element)hijos.get(i);//Se ob tiene cada hijo mientras se recorre el for
+                List nietos=hijo.getChildren();//Se obtienen los hijos de cada tag hijo (Nietos del elemento raiz)
                 for(int j=0;j<nietos.size();j++)
                 {
-                    Element nieto=(Element)nietos.get(j);
-                    nombU[0][aux2]=nieto.getAttributeValue("nombre");
+                    Element nieto=(Element)nietos.get(j);//Se obtiene cada nieto de forma individual mientras se recorre el for
+                    nombU[0][aux2]=nieto.getAttributeValue("nombre");   //Obtenemos el nombre del usuario el cual es un atributo
                     nombU[1][aux2]=nieto.getAttributeValue("id");       //En esta posicion del arreglo se agrega el id unico de cada Usuario
-                    nombU[2][aux2]=hijo.getName();  //Esta posicion del arreglo guarda el tipo de usuario el cual eesta definido por el tag hijo
+                    nombU[2][aux2]=hijo.getName();  //Esta posicion del arreglo guarda el tipo de usuario el cual esta definido por el tag hijo
                     aux2++;
                 }
             }
