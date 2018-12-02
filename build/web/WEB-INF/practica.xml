@@ -9,7 +9,7 @@
     <Alum password="kitzo" nombre="Rodrigo" id="Rodrigo" />
   </Alumno>
   <Maestro>
-    <Maes password="itz" nombre="Itz" id="Itz" />
+      <Maes password="itz" nombre="Itz" id="Itz" />
   </Maestro>
 </ROOT>
 

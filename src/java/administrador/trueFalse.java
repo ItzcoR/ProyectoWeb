@@ -30,7 +30,8 @@ public class trueFalse extends HttpServlet{
         String idpreg=request.getParameter("id");
         String texto=request.getParameter("texto");
         String res=request.getParameter("res");
-        String resultado=agregar(xml,idpreg,texto,res);
+        String pond=request.getParameter("pond");
+        String resultado=agregar(xml,idpreg,texto,res,pond);
         try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -48,7 +49,7 @@ public class trueFalse extends HttpServlet{
             out.println("</html>");
         }
     }
-        public String agregar(String ruta,String id,String texto,String res)
+        public String agregar(String ruta,String id,String texto,String res,String pond)
     {
         String respuesta="";
         int aux=0;
@@ -86,8 +87,10 @@ public class trueFalse extends HttpServlet{
             { 
                 Element nuevo=new Element("Pregunta");
                 nuevo.setAttribute("id",id);
-                nuevo.setAttribute("texto",texto);
+                //nuevo.setAttribute("texto",texto);
                 nuevo.setAttribute("res",res);
+                nuevo.setAttribute("pond",pond);
+                nuevo.setText(texto);
                 raiz.addContent(nuevo);
                 respuesta="Pregunta agregada";
             } 

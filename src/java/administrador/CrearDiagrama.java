@@ -33,6 +33,9 @@ public class CrearDiagrama extends HttpServlet {
                     out.println("<td> Texto de la pregunta </td><td><input type='text' name='texto' required /></td>");
                 out.println("</tr>");
                 out.println("<tr>");
+                    out.println("<td> Valor de la pregunta </td><td><input type='text' name='pond' required /></td>");
+                out.println("</tr>");
+                out.println("<tr>");
                     out.println("<td> Respuesta </td><td><select name=\"res\">\n" +
 "                                          <option value=\"V\">Verdadero</option>\n" +
 "                                          <option value=\"F\">Falso</option>\n" +
