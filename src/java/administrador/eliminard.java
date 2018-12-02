@@ -25,7 +25,7 @@ public class eliminard extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String xml=request.getRealPath("WEB-INF\\canvas.xml");
+        String xml=request.getRealPath("WEB-INF\\ProtoToF.xml");
         String ide=request.getParameter("idc");
         diagrama(xml,ide);
         try (PrintWriter out = response.getWriter()) {

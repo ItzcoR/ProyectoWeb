@@ -26,8 +26,8 @@ public class Maestro extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String xml=request.getRealPath("WEB-INF\\ProtoToF.xml");
         int aux=tamano(xml);
-        //String[] diagramas=new String[aux];
-        //diagramas=diagrama(xml);
+        //String[] =new String[aux];
+        //=diagrama(xml);
         String[][] pregs=new String[3][aux];
         pregs=preguntas(xml);
         HttpSession session=request.getSession();
@@ -58,7 +58,7 @@ public class Maestro extends HttpServlet {
             out.println("<table border='1px solid black'>");
             out.println("<tr>");
             out.println("<td>");
-            out.println("<h3>Id de la pregunta</h3>");
+            out.println("<h3>Id de la pregunta"+aux+"</h3>");
             out.println("</td>");
             out.println("<td>");
             out.println("<h3>Pregunta</h3>");
@@ -98,7 +98,7 @@ public class Maestro extends HttpServlet {
     }
     
     
-     public int tamano(String direc)
+     public int tamano(String direc)//Esta funcion regresa el numero de hijos del elemento raiz
         {
         int aux=0;
         try{

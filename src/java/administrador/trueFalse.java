@@ -40,7 +40,7 @@ public class trueFalse extends HttpServlet{
             out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>");
             out.println("</head>");
             out.println("<body>");  //  out.println("");   out.println('');
-//             out.println("<h1 >"+resultado+" </h1>");
+            out.println("<h1 >"+resultado+" </h1>");
             out.println("<div \n" +
             "  <div ></div>\n" +
             "  <div ><a  href='Maestro'>Regresar</a></div>\n" +
@@ -92,7 +92,7 @@ public class trueFalse extends HttpServlet{
                 nuevo.setAttribute("pond",pond);
                 nuevo.setText(texto);
                 raiz.addContent(nuevo);
-                respuesta="Pregunta agregada";
+                respuesta="Pregunta agregada exitosamente";
             } 
       xmlOutput.output(bd_xml,new FileWriter(ruta));
        
