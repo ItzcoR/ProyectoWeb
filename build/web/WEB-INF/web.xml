@@ -41,8 +41,8 @@
         <servlet-class>administrador.cerrar</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CrearDiagrama</servlet-name>
-        <servlet-class>administrador.CrearDiagrama</servlet-class>
+        <servlet-name>CrearPregunta</servlet-name>
+        <servlet-class>administrador.CrearPregunta</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SalvarDiagrama</servlet-name>
@@ -133,8 +133,8 @@
         <url-pattern>/cerrar</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CrearDiagrama</servlet-name>
-        <url-pattern>/CrearDiagrama</url-pattern>
+        <servlet-name>CrearPregunta</servlet-name>
+        <url-pattern>/CrearPregunta</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SalvarDiagrama</servlet-name>

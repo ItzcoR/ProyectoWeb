@@ -28,7 +28,7 @@ public class Maestro extends HttpServlet {
         int aux=tamano(xml);
         //String[] =new String[aux];
         //=diagrama(xml);
-        String[][] pregs=new String[3][aux];
+        String[][] pregs=new String[4][aux];
         pregs=preguntas(xml);
         HttpSession session=request.getSession();
         String id=(String) session.getAttribute("id");
@@ -53,7 +53,7 @@ public class Maestro extends HttpServlet {
             "  <div ><a href='cerrar'>Cerrar Sesion</a></button></div>\n" +
             "</div>");
             out.println("<div>");
-            out.print("<a href='CrearDiagrama'>Crear Pregunta</a>");
+            out.print("<a href='CrearPregunta'>Crear Pregunta</a>");
             out.println("</div>");
                 out.println("<form action='crearExamen' method='get'>");
                 out.println("<div>");
@@ -85,7 +85,7 @@ public class Maestro extends HttpServlet {
                     out.println("<h4>"+pregs[2][i]+"</h4>");
                     out.println("</td>");
                     out.println("<td>");
-                    out.println("<h4>True or False</h4>");
+                    out.println("<h4>"+pregs[3][i]+"</h4>");
                     out.println("</td>");
                     out.println("<td>");
                     out.println("<a href='ver?id="+pregs[0][i]+"'>ver</a>|");
@@ -173,7 +173,7 @@ public class Maestro extends HttpServlet {
      public String[][] preguntas(String direc)
     {
         int aux=tamano(direc);
-        String[][] nombU=new String[3][aux];    //Se crea un arreglo bidimensional que contendra los elementos de cada pregunta
+        String[][] nombU=new String[4][aux];    //Se crea un arreglo bidimensional que contendra los elementos de cada pregunta
         
         try{
             /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
@@ -192,6 +192,7 @@ public class Maestro extends HttpServlet {
                 nombU[0][i]=hijo.getAttributeValue("id");   //En la pos 0 tendremos el id de cada pregunta  
                 nombU[1][i]=hijo.getAttributeValue("res");  //En la Posicion 1 estara si la respuesta es Verdadera o Falsa
                 nombU[2][i]=hijo.getText();//En la ultima posicion estara la pregunta la cual esta como texto entre la pregunta
+                nombU[3][i]=hijo.getName();//En la cuarta posicion se guarda el nombre del tag, el cual nos indica el tipo de pregunta
             }
         } catch (JDOMException | IOException ex) {
             Logger.getLogger(Maestro.class.getName()).log(Level.SEVERE, null, ex);
