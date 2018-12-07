@@ -33,7 +33,7 @@ public class Administrador extends HttpServlet {
             if(id!=null)
             {    
             out.println("<!DOCTYPE html>");
-            out.println("<html style='height:100%; width:100%; margin:0px;'>");
+            out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet Adm</title>"); 
             out.println("<meta charset=\"utf-8\">\n" +

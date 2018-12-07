@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ROOT>
   <Administrador>
-    <Adm id="Ruben" password="ruben" nombre="Ruben" />
-    <Adm password="Itz" nombre="Itzco" id="Itzco" />
+    <Adm password="1234" nombre="Alex" id="admin01" />
+    <Adm password="1234" nombre="Juan" id="admin02" />
+    <Adm password="1234" nombre="Itzco" id="admin03" />
+    <Adm password="1234" nombre="Ruben" id="admin04" />
   </Administrador>
   <Alumno>
-    <Alm id="Diego" password="wero" nombre="Diego" />
-    <Alum password="kitzo" nombre="Rodrigo" id="Rodrigo" />
+    <Alum password="1234" nombre="Rodrigo" id="alumno02" />
+    <Alum password="1234" nombre="Lluvia" id="alumno01" />
   </Alumno>
   <Maestro>
-      <Maes password="itz" nombre="Itz" id="Itz" />
+    <Maes password="1234" nombre="Agustin" id="maestro01" />
+    <Maes password="1234" nombre="Maria" id="maestro02" />
+    <Maes password="1234" nombre="Tellez" id="maestro03" />
   </Maestro>
 </ROOT>
 
