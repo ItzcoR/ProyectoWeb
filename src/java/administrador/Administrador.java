@@ -40,58 +40,58 @@ public class Administrador extends HttpServlet {
             "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
             "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
             "<script src=\"https://cdn.jsdelivr.net/npm/vue/dist/vue.js\"></script>");
+            out.println("<link rel=\"stylesheet\" href=\"css/normalize.css\">");
+            out.println("<link rel=\"stylesheet\" href=\"css/main.css\">");
+            out.println("<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.5.0/css/all.css\" integrity=\"sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU\" crossorigin=\"anonymous\">");
             out.println("</head>");
             out.println("<body >");
-            out.println("<div >\n" +
-            "<h2>Bienvenido "+tipo+": "+id+" "+aux+"  </h2>           \n" +
-            "<table>\n" +
-            "   <thead>\n" +
-            "     <tr>\n" +
-            "       <th>Nombre</th>\n" +
-            "       <th>Tipo</th>\n" +
-            "       <th>Acciones</th>\n" +
-            "     </tr>\n" +
-            "   </thead>\n" +
-            "   <tbody>\n" +
-            "     <tr>\n" +
-            "       <td>");
-            for(int i=0;i<aux;i++){
-                out.println("<h5>"+usuarios[0][i]+"</h5>"); //Nombre
-                out.println("<hr>");
-            }
-            out.println("</td>\n" +
-            "<td>");        
-            for(int i=0;i<aux;i++){
-                out.println("<h5>"+usuarios[2][i]+"</h5>"); //Tipo
-                out.println("<hr>");
-            }
-            out.println("</td>\n" +
-            "<td>");
-            for(int i=0;i<aux;i++){
-                out.println("<button ><a href='modificar1?nombre="+usuarios[1][i]+"&tipo="+usuarios[2][i]+"'>Modificar</a></button>");
-                out.println("<button ><a href='eliminar?nombre="+usuarios[1][i]+"&tipo="+usuarios[2][i]+"'>Eliminar</a></button>");
-                out.println("<hr>");    
-            }
-            
-            out.println("</td>\n" +
-            "      </tr>\n" +
-            "    </tbody>\n" +
-            "  </table>\n" +
-            "</div>");
-            out.println("<div class=\"row\">\n" +
-            "  <div></div>\n" +
-            "  <div></div>\n" +
-            "  <div><button><a href='nuevoUsuario.html'>Nuevo usuario</a></button></div>\n" +
-            "  <div><button><a href='CrearGrupo'>Crear Grupos</a></button></div>\n" +
-            "  <div></div>\n" +
-            "  <div></div>\n" +
-            "</div>");
-            out.println("<div class=\"row\">\n" +
-            "  <div></div>\n" +
-            "  <div><button ><a c href='cerrar'>Cerrar Sesion</a></button></div>\n" +
-            "</div>");
-            out.println("</body>");
-            out.println("</html>");
+
+
+            out.println(
+                "<div class=\"bg_blanco contenedor sombra contactos\">\n"+
+                    "<h2>Bienvenido "+tipo+": "+id+"</h2>           \n" +
+                    "<p  class=\"total_contactos\"><span>"+aux+"</span> Contactos</p>\n"+
+                    "<div class=\"contenedor_contactos\">\n"+
+                        "<div class=\"contenedor_tabla\">\n"+
+                            
+                        "<table class=\"listado_contactos\" id=\"listado_contactos\">\n" +
+                        "   <thead>\n" +
+                        "     <tr>\n" +
+                        "       <th>Nombre</th>\n" +
+                        "       <th>Tipo</th>\n" +
+                        "       <th>Acciones</th>\n" +
+                        "     </tr>\n" +
+                        "   </thead>\n" +
+                        "   <tbody>\n");
+                        for(int i=0;i<aux;i++){
+                            out.println("<tr > <td>" +usuarios[0][i]+"</td>" ); //Nombre
+                            out.println("<td>"+usuarios[2][i]+"</td>");//Tipo
+                            out.println("<td><button ><a class=\"btn_editar btn\" href='modificar1?nombre="+usuarios[1][i]+"&tipo="+usuarios[2][i]+"'><i class=\"fas fa-pen-square\"></i></a></button>");//boton para modificar
+                out.println("<button ><a class=\"btn_borrar btn\" href='eliminar?nombre="+usuarios[1][i]+"&tipo="+usuarios[2][i]+"'><i class=\"fas fa-trash-alt\"></i></a></button></td>");//boton para eliminar
+                 
+                        }
+
+                        
+            out.println("</tr>\n" +
+ 
+                        "</tbody>\n" +
+                        "  </table>\n" +
+
+                        "</div>\n"+
+                    "</div>\n"+
+                    "<div class=\"contenedor_botones\">\n"+
+                    " <a class=\"btn btn_admin\" href='nuevoUsuario.html'>Nuevo usuario</a>\n" +
+                    " <a class=\"btn btn_admin\" href='CrearGrupo'>Crear Grupos</a>\n" +
+                    " <a class=\"btn btn_admin\" href='cerrar'>Cerrar Sesion</a>\n" +
+                    "</div>\n"+
+                    
+
+                "</div>"
+            );
+
+
+
+
             }
         }
     }

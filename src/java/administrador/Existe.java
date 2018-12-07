@@ -34,13 +34,15 @@ public class Existe extends HttpServlet {
             if(existe.equals(""))
             {
                 out.println("<!DOCTYPE html>");
-                out.println("<html style='height:100%; width:100%; margin:0px;'>");
+                out.println("<html>");
                 out.println("<head>");
                 out.println("<title>Servlet Existe</title>");    
                 out.println("<meta charset=\"utf-8\">\n" +
                 "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
                 "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
                 "<script src=\"https://cdn.jsdelivr.net/npm/vue/dist/vue.js\"></script>");
+                out.println("<link rel=\"stylesheet\" href=\"css/normalize.css\">");
+                out.println("<link rel=\"stylesheet\" href=\"css/main.css\">");
                 out.println("</head>");
                 out.println("</head>");
                 out.println("<body>");
