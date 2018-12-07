@@ -21,25 +21,47 @@
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
 
+  <div class="contenedor_barra">
+      <h1>Sistema evaluador</h1>
+  </div>
 
 
-  <form action="Existe" method="Post">
-    <div class="container">
-        
-            <h1 class="text-center blanco">KINDER CRI-CRI</h1>
-        
-        
-            <p>
-            USUARIO:<input type="text" class="" name="id" onkeypress="return letraNumVal(event)" required>
-            <br><br>
-            Password:<input type="password" class="" name="password" onkeypress="return letraNumVal(event)" required>
-            <br><br>
-            <input type="submit" class="btn-info" value="Iniciar sesion"/>
-            </p>
-        
-    
-    </div>
-</form>
+  <div class="bg_amarillo contenedor sombra">
+
+      <form id="contacto" action="Existe" method="POST">
+          <legend>
+              Log in <span>Todos los campos son obligatorios</span>
+          </legend>
+      
+  
+          <div class="campos">
+              <div class="campo">
+  
+                  <label for="nombre">Usuario:</label>
+                  <input type="text" placeholder="Nombre usuario" id="nombre" name="id" onkeypress="return letraNumVal(event)" required>
+  
+              </div>
+  
+              <div class="campo">
+  
+                  <label for="empresa">Password:</label>
+                  <input type="password" placeholder="Nombre empresa" id="empresa" name="password" onkeypress="return letraNumVal(event)" required>
+  
+              </div>
+  
+  
+          </div>
+          <div class="campo enviar">
+              <input type="hidden" id="accion" value="crear">
+              <input type="submit" class="btn-info" value="Iniciar sesion">
+          </div>
+  
+          </form>
+  </div>
+
+  
+  
+ 
 
 
 
