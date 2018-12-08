@@ -35,23 +35,35 @@ public class modificacion2 extends HttpServlet {
         atributo(xml,idviejo,usuario,contra,nom,tipo,a);
         try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
-            out.println("<html style='height:100%; width:100%; margin:0px;'>");
+            out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet modificacion2</title>");        
+            out.println("<title>Servlet Adm</title>"); 
             out.println("<meta charset=\"utf-8\">\n" +
             "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
-            "<link rel=\"stylesheet\" type=\"text/css\" href=\"estilos.css\" media=\"screen\"/>\n" +
-            "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\n" +
             "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
-            "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>");
+            "<script src=\"https://cdn.jsdelivr.net/npm/vue/dist/vue.js\"></script>");
+            out.println("<link rel=\"stylesheet\" href=\"css/normalize.css\">");
+            out.println("<link rel=\"stylesheet\" href=\"css/main.css\">");
+            out.println("<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.5.0/css/all.css\" integrity=\"sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU\" crossorigin=\"anonymous\">");
             out.println("</head>");
-            out.println("<body class='colorful'>");
-            out.println("<h1 class='blanco'>Usuario Modificado</h1>");
-            out.println("El nuevo usuario: "+usuario+"<br> La contraseña: "+contra+"<br> El nombre: "+nom+"<br> El tipo: "+tipo+" <br></h1>");
-            out.println("<div class=\"row\">\n" +
+            out.println("<body >");
+            
+            out.println("<div class=\"contenedor_barra\">\n"+
+            "<h1>Sistema evaluador</h1>\n"+
+            "</div>");
+
+            out.println("<div class=\"bg_amarillo contenedor sombra\">\n"+
+            "<legend>\n"+
+             " Usuario modificado correctacmente\n"+
+            "</legend>\n"+
+            "El nuevo usuario: "+usuario+"<br> La contraseña: "+contra+"<br> El nombre: "+nom+"<br> El tipo: "+tipo+" <br></h1>\n"+
+            
             "  <div class=\"col-sm-8\"></div>\n" +
             "  <div class=\"col-sm-4\"><a class='blanco' href='Administrador'>Regresar</a></div>\n" +
+
             "</div>");
+
+            
             out.println("</body>");
             out.println("</html>");
         }
