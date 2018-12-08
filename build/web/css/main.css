@@ -459,8 +459,15 @@ select{
     margin: 0 20px;
 }
 
+/*----------------------------------------  Modificar 1-------------------------------------*/
 
+form.modificar_1 legend{
+    border: none;
+}
 
+.enviar{
+    margin-top: 3rem;
+}
 
 
 

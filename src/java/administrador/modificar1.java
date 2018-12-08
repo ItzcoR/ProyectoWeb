@@ -33,69 +33,88 @@ public class modificar1 extends HttpServlet {
          session.setAttribute("idv",res[0]);
         try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
-            out.println("<html style='height:100%; width:100%; margin:0px;'>");
+            out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet modificar1</title>");  
-            out.println("<script type =\"text/javascript\">\n" +
-            "function letraNumVal(e) {\n" +
-            "   tecla = document.all ? e.keyCode : e.which;\n" +
-            "   if (tecla === 8 || tecla === 32)\n" +
-            "           return true;\n" +
-            "       patron = /[a-z]|[A-Z]|á|é|í|ó|ú|Á|É|Í|Ó|Ú|[0-9]/;\n" +
-            "       te = String.fromCharCode(tecla);\n" +
-            "           return patron.test(te);\n" +
-            "   }\n" +
-            "function letraVal(e) {\n" +
-            "   tecla = document.all ? e.keyCode : e.which;\n" +
-            "   if (tecla === 8 || tecla === 32)\n" +
-            "           return true;\n" +
-            "       patron = /[a-z]|[A-Z]|á|é|í|ó|ú|Á|É|Í|Ó|Ú/;\n" +
-            "       te = String.fromCharCode(tecla);\n" +
-            "           return patron.test(te);\n" +
-            "   }\n" +
-            "</script>");
+            out.println("<title>Servlet modificar1</title>");   
+//           hay que agregar el script para verificar valores
             out.println("<meta charset=\"utf-8\">\n" +
             "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
-            "<link rel=\"stylesheet\" type=\"text/css\" href=\"estilos.css\" media=\"screen\"/>\n" +
+            "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/main.css\" media=\"screen\"/>\n" +
             "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\n" +
-            "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
-            "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>");
+            "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n");
             out.println("</head>");
-            out.println("<body class='colorful'>");
-            out.println("<form action='modificacion2' method='post'>");
-            out.println("<div class=\"container\">\n" +
-            "  <h2 class='blanco'>Modificar</h2>           \n" +
-            "  <table class=\"table\">\n" +
-            "    <thead>\n" +
-            "      <tr>\n" +
-            "        <td class='blanco'>Nombre:</td><td><input type='text' name='nombre' onkeypress='return letraVal(event)' value="+res[2]+"></td>\n" +
-            "      </tr>\n" +
-            "    </thead>\n" +
-            "    <tbody>\n" +
-            "      <tr>\n" +
-            "        <td><h4 class='blanco'>Tipo: "+res[3]+"</h4></td><td><select name=\"io\">\n" +
-            "                            <option value=\"Alum\">Alumno</option>\n" +
-            "                            <option value=\"Maes\">Maestro</option>\n" +
-            "                            <option value=\"Adm\">Administrador</option>\n" +    
-            "                        </select>\n" +
-            "        </td>\n" +
-            "      </tr>\n" +
-            "      <tr>\n" +
-            "        <td class='blanco'>Usuario: </td><td><input type='text' name='id' onkeypress='return letraNumVal(event)' value="+res[0]+"></td>\n" +
-            "      </tr>\n" +
-            "      <tr>\n" +
-            "        <td class='blanco'>Password: </td><td><input type='text' name='password' onkeypress='return letraNumVal(event)' value="+res[1]+"></td>\n" +
-            "      </tr>\n" +
-            "    </tbody>\n" +
-            "  </table>\n" +
-            "</div>\n" +
-            "");
-            out.println("<div class=\"row\">\n" +
-            "  <div class=\"col-sm-1\"></div>\n" +
-            "  <div class=\"col-sm-4\"><input type=\"submit\" class=\"btn-info\" value=\"Modificar\"></div>\n" +
-            "  <div class=\"col-sm-4\"><input type=\"button\" class=\"btn-info\" value=\"Cancelar\" onclick=\"document.location='Administrador'\"></div>\n" +
-            "</div>");
-            out.println("</form>");
+            out.println("<body>");
+
+
+            out.println("<div class=\"contenedor_barra\">\n"+
+            "<h1>Sistema evaluador</h1>\n"+
+            "</div>\n"+
+        
+        
+          "<div class=\"bg_amarillo contenedor sombra\">\n"+
+        
+            "<form id=\"contacto\" class=\"modificar_1\" action=\"modificacion2\" method=\"POST\">\n"+
+              "<legend>\n"+
+                "Editar usuario <span>Todos los campos son obligatorios</span>\n"+
+              "</legend>\n"+
+
+
+              "<legend>\n"+
+              "Tipo: "+res[3]+" \n"+
+            "</legend>\n"+
+        
+              "<div class=\"campos_usuario\">\n"+
+
+              
+                "<div class=\"campo_usuario\">\n"+
+        
+                  "<label for=\"nombre\">Nombre usuario:</label>\n"+
+                  "<input input type=\"text\" name=\"nombre\" onkeypress=\"return letraVal(event)\" required autocomplete=\"off\" placeholder=\"Nombre completo\">\n"+
+        
+                "</div>\n"+
+        
+                "<div class=\"campo_usuario\">\n"+
+        
+                  "<label for=\"empresa\">Tipo de usuario:</label>\n"+
+                  "<select name=\"io\">\n"+
+                    "<option value=\"Alumno\">Alumno</option>\n"+
+                    "<option value=\"Maestro\">Maestro</option>\n"+
+                    "<option value=\"Administrador\">Administrador</option>\n"+
+                  "</select>\n"+
+        
+                "</div>\n"+
+        
+        
+                "<div class=\"campo_usuario\">\n"+
+        
+                  "<label for=\"empresa\">Usuario:</label>\n"+
+                  "<input input type=\"text\" name=\"id\" onkeypress=\"return letraNumVal(event)\" required autocomplete=\"off\" placeholder=\"Id usuario\">\n"+
+        
+                "</div>\n"+
+        
+        
+        
+                "<div class=\"campo_usuario\">\n"+
+        
+                  "<label for=\"empresa\">Password:</label>\n"+
+                  "<input type=\"password\" name=\"password\" onkeypress=\"return letraNumVal(event)\" required placeholder=\"******\">\n"+
+        
+                "</div>\n"+
+        
+        
+              "</div>\n"+
+              "<div class=\"campo_usuario enviar\">\n"+
+                "<input type=\"hidden\" id=\"accion\" value=\"crear\">\n"+
+                "<input type=\"submit\" class=\"btn-info\" value=\"Crear\">\n"+
+                "<input type=\"submit\" class=\"btn-info\" value=\"Cancelar\" onclick=\"document.location='Administrador'\">\n"+
+              "</div>\n"+
+        
+            "</form>\n"+
+          "</div>");
+
+
+
+
             out.println("</body>");
             out.println("</html>");
         }
