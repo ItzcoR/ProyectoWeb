@@ -25,11 +25,17 @@ public class Administrador extends HttpServlet {
         HttpSession session=request.getSession();
         String id=(String) session.getAttribute("id");
         String tipo=(String) session.getAttribute("tipo");
+        String nombre="";
         String xml=request.getRealPath("WEB-INF\\practica.xml");
-        
         int aux=tamano(xml);
         String[][] usuarios=new String[3][aux];
-        usuarios=nombre(xml);
+        usuarios=ObtenerDatos(xml);
+        for (int k=0;k<aux ;k++ ) {
+            if(usuarios[1][k].equals(id)){
+                nombre=usuarios[0][k];
+            }
+        }
+        
         try (PrintWriter out = response.getWriter()) {
             if(id!=null)
             {    
@@ -50,7 +56,7 @@ public class Administrador extends HttpServlet {
 
             out.println(
                 "<div class=\"bg_blanco contenedor sombra contactos\">\n"+
-                    "<h2>Bienvenido "+tipo+": "+id+"</h2>           \n" +
+                    "<h2>Bienvenido "+tipo+": "+nombre+"</h2>           \n" +
                     "<p  class=\"total_contactos\"><span>"+aux+"</span> Contactos</p>\n"+
                     "<div class=\"contenedor_contactos\">\n"+
                         "<div class=\"contenedor_tabla\">\n"+
@@ -58,6 +64,7 @@ public class Administrador extends HttpServlet {
                         "<table class=\"listado_contactos\" id=\"listado_contactos\">\n" +
                         "   <thead>\n" +
                         "     <tr>\n" +
+                        "       <th>ID</th>\n" +
                         "       <th>Nombre</th>\n" +
                         "       <th>Tipo</th>\n" +
                         "       <th>Acciones</th>\n" +
@@ -65,7 +72,8 @@ public class Administrador extends HttpServlet {
                         "   </thead>\n" +
                         "   <tbody>\n");
                         for(int i=0;i<aux;i++){
-                            out.println("<tr > <td>" +usuarios[0][i]+"</td>" ); //Nombre
+                            out.println("<tr > <td>" +usuarios[1][i]+"</td>" ); //ID
+                            out.println("<td>"+usuarios[0][i]+"</td>");//Nombre
                             out.println("<td>"+usuarios[2][i]+"</td>");//Tipo
                             out.println("<td><button ><a class=\"btn_editar btn\" href='modificar1?nombre="+usuarios[1][i]+"&tipo="+usuarios[2][i]+"'><i class=\"fas fa-pen-square\"></i></a></button>");//boton para modificar
                 out.println("<button ><a class=\"btn_borrar btn\" href='eliminar?nombre="+usuarios[1][i]+"&tipo="+usuarios[2][i]+"'><i class=\"fas fa-trash-alt\"></i></a></button></td>");//boton para eliminar
@@ -127,7 +135,7 @@ public class Administrador extends HttpServlet {
         return aux;
     }
     
-    public String[][] nombre(String direc)
+    public String[][] ObtenerDatos(String direc)
     {
         int aux=tamano(direc);
         int aux2=0;
@@ -145,7 +153,7 @@ public class Administrador extends HttpServlet {
             List hijos=raiz.getChildren();//Los hijos son los tags que definen el tipo de usuario
             for(int i=0;i<hijos.size();i++)
             {
-                Element hijo=(Element)hijos.get(i);//Se ob tiene cada hijo mientras se recorre el for
+                Element hijo=(Element)hijos.get(i);//Se obtiene cada hijo mientras se recorre el for
                 List nietos=hijo.getChildren();//Se obtienen los hijos de cada tag hijo (Nietos del elemento raiz)
                 for(int j=0;j<nietos.size();j++)
                 {

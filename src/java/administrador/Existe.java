@@ -24,11 +24,13 @@ public class Existe extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String usuario=request.getParameter("id");
         String contra=request.getParameter("password");
+        String nomb=request.getParameter("nombre");
         String xml=request.getRealPath("WEB-INF\\practica.xml");
         String existe= verificar(xml,usuario,contra);
         HttpSession session=request.getSession();
         session.setAttribute("id",usuario);
         session.setAttribute("tipo",existe);
+        session.setAttribute("nombre",nomb);
         try (PrintWriter out = response.getWriter()) {
             
             if(existe.equals(""))
