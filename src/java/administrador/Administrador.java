@@ -26,6 +26,7 @@ public class Administrador extends HttpServlet {
         String id=(String) session.getAttribute("id");
         String tipo=(String) session.getAttribute("tipo");
         String xml=request.getRealPath("WEB-INF\\practica.xml");
+        
         int aux=tamano(xml);
         String[][] usuarios=new String[3][aux];
         usuarios=nombre(xml);

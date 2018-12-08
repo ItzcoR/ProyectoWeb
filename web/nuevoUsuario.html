@@ -1,64 +1,118 @@
-<!DOCTYPE html>
-<html style="height:100%; width:100%;margin:0px;">
-    <head>
-        <title>Login</title>
-        <script type ="text/javascript">
-            function letraNumVal(e) {
-                tecla = document.all ? e.keyCode : e.which;
-                if (tecla === 8 || tecla === 32)
-                    return true;
-                patron = /[a-z]|[A-Z]|á|é|í|ó|ú|Á|É|Í|Ó|Ú|[0-9]/;
-                te = String.fromCharCode(tecla);
-                return patron.test(te);
-            }
-            function letraVal(e) {
-                tecla = document.all ? e.keyCode : e.which;
-                if (tecla === 8 || tecla === 32)
-                    return true;
-                patron = /[a-z]|[A-Z]|á|é|í|ó|ú|Á|É|Í|Ó|Ú/;
-                te = String.fromCharCode(tecla);
-                return patron.test(te);
-            }
-        </script>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    </head>
-    <body >
-        <form action="Agregar" method="POST">
-            <div >
-                <h2 >Nuevo Usuario</h2>           
-                <table >
-                  <thead>
-                    <tr>
-                      <td >Nombre Completo:</td><td><input type="text" name="nombre" onkeypress="return letraVal(event)" required></td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td >Tipo de usuario:</td><td><select name="io">
-                                          <option value="Alumno">Alumno</option>
-                                          <option value="Maestro">Maestro</option>
-                                          <option value="Administrador">Administrador</option>
-                                          </select>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td >USUARIO:</td><td><input type="text" name="id" onkeypress="return letraNumVal(event)" required>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td >Password:</td><td><input type="password" name="password" onkeypress="return letraNumVal(event)" required></td>
-                    </tr>
-                  </tbody>
-                </table>
-            </div>
-            <div >
-                <div ></div>
-                <div ><input type="submit" class="btn-info" value="Crear"></div>
-                <div ><input type="button" class="btn-info" value="Cancelar" onclick="document.location='Administrador'"></div>
-            </div>
-        </form>
-    </body>
-</html>
+<!doctype html>
+<html class="no-js" lang="">
 
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <!--[if lte IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+  <div class="contenedor_barra">
+    <h1>Sistema evaluador</h1>
+  </div>
+
+
+  <div class="bg_amarillo contenedor sombra">
+
+    <form id="contacto" action="Agregar" method="POST">
+      <legend>
+        Nuevo usuario <span>Todos los campos son obligatorios</span>
+      </legend>
+
+
+      <div class="campos">
+        <div class="campo">
+
+          <label for="nombre">Nombre completo:</label>
+          <input type="text" autocomplete="off" placeholder="Nombre usuario" id="nombre" name="nombre" onkeypress="return letraNumVal(event)"
+            required>
+
+        </div>
+
+        <div class="campo">
+
+          <label for="empresa">Tipo de usuario:</label>
+          <select name="io">
+            <option value="Alumno">Alumno</option>
+            <option value="Maestro">Maestro</option>
+            <option value="Administrador">Administrador</option>
+          </select>
+
+        </div>
+
+
+        <div class="campo">
+
+          <label for="empresa">Password:</label>
+          <input type="password" placeholder="*******" id="empresa" name="password" onkeypress="return letraNumVal(event)"
+            required>
+
+        </div>
+
+
+
+        <div class="campo">
+
+          <label for="empresa">Password:</label>
+          <input type="password" placeholder="*******" id="empresa" name="password" onkeypress="return letraNumVal(event)"
+            required>
+
+        </div>
+
+
+      </div>
+      <div class="campo enviar">
+        <input type="hidden" id="accion" value="crear">
+        <input type="submit" class="btn-info" value="Iniciar sesion">
+      </div>
+
+    </form>
+  </div>
+
+
+
+
+
+
+
+
+  <!-- Add your site or application content here -->
+  <script src="js/vendor/modernizr-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script>
+    window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')
+
+  </script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+    window.ga = function () {
+      ga.q.push(arguments)
+    };
+    ga.q = [];
+    ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto');
+    ga('send', 'pageview')
+
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+</body>
+
+</html>
