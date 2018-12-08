@@ -122,6 +122,8 @@ public class Maestro extends HttpServlet {
                         "<div class=\"contenedor_botones\">\n"+
                         "<input type=\"submit\" value=\"Agregar a un Examen\">\n" +
                         "<input type=\"reset\">\n" +
+                        "<a href='cerrar'>Cerrar Sesion</a>\n" +
+                        "<a href='CrearPregunta'>Crear Pregunta</a>\n" +
                         "</div>\n"+
                 "</div>"
                
