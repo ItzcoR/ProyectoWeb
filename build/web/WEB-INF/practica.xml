@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ROOT>
   <Administrador>
+    <Adm password="1234" nombre="Alex" id="admin01" />
     <Adm password="1234" nombre="Juan" id="admin02" />
     <Adm password="1234" nombre="Itzco" id="admin03" />
     <Adm password="1234" nombre="Ruben" id="admin04" />
@@ -8,13 +9,11 @@
   <Alumno>
     <Alum password="1234" nombre="Rodrigo" id="alumno02" />
     <Alum password="1234" nombre="Lluvia" id="alumno01" />
-    <Alum password="1234" nombre="Fernanda" id="alumno04" />
   </Alumno>
   <Maestro>
     <Maes password="1234" nombre="Agustin" id="maestro01" />
     <Maes password="1234" nombre="Maria" id="maestro02" />
     <Maes password="1234" nombre="Tellez" id="maestro03" />
-    <Alumno id="alumno05" nombre="Alex" password="123422" />
   </Maestro>
 </ROOT>
 
