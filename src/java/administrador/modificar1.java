@@ -97,7 +97,7 @@ public class modificar1 extends HttpServlet {
                 "<div class=\"campo_usuario\">\n"+
         
                   "<label for=\"empresa\">Password:</label>\n"+
-                  "<input type=\"password\" name=\"password\" onkeypress=\"return letraNumVal(event)\" required placeholder=\"******\">\n"+
+                  "<input type=\"text\" name=\"password\" onkeypress=\"return letraNumVal(event)\" required value=\""+res[1]+"\">\n"+
         
                 "</div>\n"+
         
@@ -105,7 +105,7 @@ public class modificar1 extends HttpServlet {
               "</div>\n"+
               "<div class=\"campo_usuario enviar\">\n"+
                 "<input type=\"hidden\" id=\"accion\" value=\"crear\">\n"+
-                "<input type=\"submit\" class=\"btn-info\" value=\"Crear\">\n"+
+                "<input type=\"submit\" class=\"btn-info\" value=\"Modificar\">\n"+
                 "<input type=\"submit\" class=\"btn-info\" value=\"Cancelar\" onclick=\"document.location='Administrador'\">\n"+
               "</div>\n"+
         

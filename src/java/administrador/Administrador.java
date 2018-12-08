@@ -90,7 +90,6 @@ public class Administrador extends HttpServlet {
                     "</div>\n"+
                     "<div class=\"contenedor_botones\">\n"+
                     " <a class=\"btn btn_admin\" href='nuevoUsuario.html'>Nuevo usuario</a>\n" +
-                    " <a class=\"btn btn_admin\" href='CrearGrupo'>Crear Grupos</a>\n" +
                     " <a class=\"btn btn_admin\" href='cerrar'>Cerrar Sesion</a>\n" +
                     "</div>\n"+
                     
