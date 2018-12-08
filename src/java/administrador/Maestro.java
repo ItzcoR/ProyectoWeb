@@ -25,6 +25,8 @@ public class Maestro extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String xml=request.getRealPath("WEB-INF\\ProtoToF.xml");
+       
+        
         int aux=tamano(xml);
         //String[] =new String[aux];
         //=diagrama(xml);
@@ -36,71 +38,99 @@ public class Maestro extends HttpServlet {
         if(id!=null)
         {
         try (PrintWriter out = response.getWriter()) {
+
+
+            
             out.println("<!DOCTYPE html>");
-            out.println("<html style='height:100%; width:100%; margin:0px;'>");
+            out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Maestro</title>"); 
-            out.println("<script src=\"https://code.jquery.com/jquery-1.10.2.js\"></script>"); 
+            out.println("<title>Servlet Adm</title>"); 
             out.println("<meta charset=\"utf-8\">\n" +
             "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
             "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
             "<script src=\"https://cdn.jsdelivr.net/npm/vue/dist/vue.js\"></script>");
+            out.println("<link rel=\"stylesheet\" href=\"css/normalize.css\">");
+            out.println("<link rel=\"stylesheet\" href=\"css/main.css\">");
+            out.println("<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.5.0/css/all.css\" integrity=\"sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU\" crossorigin=\"anonymous\">");
             out.println("</head>");
-            out.println("<body ");
-            out.println("<h1 >Bienvenido "+tipo+": "+id+" GETREALPATH "+xml+"</h1>");
-            out.println("<div \n" +
-            "  <div ></div>\n" +
-            "  <div ><a href='cerrar'>Cerrar Sesion</a></button></div>\n" +
+            out.println("<body >");
+            
+            out.println("<div class=\"contenedor_barra\">\n"+
+            "<h1>Sistema evaluador</h1>\n"+
             "</div>");
-            out.println("<div>");
-            out.print("<a href='CrearPregunta'>Crear Pregunta</a>");
-            out.println("</div>");
-                out.println("<form action='crearExamen' method='get'>");
-                out.println("<div>");
-                out.println("<table border='1px solid black'>");
-                out.println("<tr>");
-                out.println("<td>");
-                out.println("<h3>Id de la pregunta"+aux+"</h3>");
-                out.println("</td>");
-                out.println("<td>");
-                out.println("<h3>Pregunta</h3>");
-                out.println("</td>");
-                out.println("<td>");
-                out.println("<h3>Tipo</h3>");
-                out.println("</td>");
-                out.println("<td>");
-                out.println("<h3>Accion</h3>");
-                out.println("</td>");
-                out.println("<td>");
-                out.println("<h3>¿Agregar a examen?</h3>");
-                out.println("</td>");
-                out.println("</tr>");
-                for(int i=0;i<aux;i++)
-                {
-                    out.println("<tr>");
-                    out.println("<td>");
-                    out.println("<h4>"+pregs[0][i]+"</h4>");    //out.println("<>");   out.println("");  out.println(''); 
-                    out.println("</td>");
-                    out.println("<td>");
-                    out.println("<h4>"+pregs[2][i]+"</h4>");
-                    out.println("</td>");
-                    out.println("<td>");
-                    out.println("<h4>"+pregs[3][i]+"</h4>");
-                    out.println("</td>");
-                    out.println("<td>");
-                    out.println("<a href='ver?id="+pregs[0][i]+"'>ver</a>|");
-                    out.println("<a href='eliminard?idc="+pregs[0][i]+"'>eliminar</a>|");
-                    out.println("<a href='modificard?idc="+pregs[0][i]+"'>modificar</a>");
-                    out.println("</td>");
-                    out.println("<td>");
-                    out.println("<input type=\"checkbox\" name='agregarExamen' value="+pregs[0][i]+">"); 
-                    out.println("</td>");
-                    out.println("</tr>");
-                }
-                out.println("</table>");
-                out.println("</div>");
-                out.println("<div>");
-                out.println("<p></p>");
+            
+            out.println("<form action='crearExamen' method='get'>");
+            
+            out.println(
+                "<div class=\"bg_blanco contenedor sombra contactos\">\n"+
+                "<h2>Bienvenido profesor: "+id+"</h2>\n" +
+                    "<p  class=\"total_contactos\"><span></span> Contactos</p>\n"+
+                   
+                    "<div class=\"contenedor_contactos\">\n"+
+                    
+                        "<div class=\"contenedor_tabla\">\n"+
+                            
+                        "<table class=\"listado_contactos maestro\" id=\"listado_contactos\">\n" +
+                        
+                        "   <thead>\n" +
+                        "     <tr>\n" +
+                        "       <th>ID Pregunta</th>\n" +
+                        "       <th>Pregunta</th>\n" +
+                        "       <th>Tipo</th>\n" +
+                        "       <th>Acciones</th>\n" +
+                        "       <th>¿Agregar al examen?</th>\n" +
+                        "     </tr>\n" +
+                        "     </thead>\n" +
+                        "     <tbody>");
+
+                        for(int i=0;i<aux;i++)
+                        {   
+                            out.println("<tr>");
+                            out.println("<td>");
+                            out.println(pregs[0][i]);    //out.println("<>");   out.println("");  out.println(''); 
+                            out.println("</td>");
+                            out.println("<td>");
+                            out.println(pregs[2][i]);
+                            out.println("</td>");
+                            out.println("<td>");
+                            out.println(pregs[3][i]);
+                            out.println("</td>");
+                            out.println("<td>");
+                            out.println("<a class=\"btn_ver btn\" href='ver?id="+pregs[0][i]+"'><i class=\"far fa-eye\"></i></a>");
+                            out.println("<a class=\"btn_borrar btn\" href='eliminard?idc="+pregs[0][i]+"'><i class=\"fas fa-trash-alt\"></i></a>");
+                            out.println("<a class=\"btn_editar btn\" href='modificard?idc="+pregs[0][i]+"'><i class=\"fas fa-pen-square\"></i></i></a>");
+                            out.println("</td>");
+                            out.println("<td class=\"checkbox\">");
+                            out.println(
+                            "<label class=\"switch\">\n" +
+                            "<input type=\"checkbox\"name='agregarExamen' value="+pregs[0][i]+">\n" +
+                            "<span class=\"slider round\"></span>\n" +
+                            "</label>");
+
+                            out.println("</td>");
+                            out.println("</tr>");
+                        }
+
+
+                       out.println( "</tbody>\n" +
+                       "</table>\n" +
+
+                        
+
+                        "</div>\n" +
+                        "</div>\n" +
+                        "<div class=\"contenedor_botones\">\n"+
+                        "<input type=\"submit\" value=\"Agregar a un Examen\">\n" +
+                        "<input type=\"reset\">\n" +
+                        "</div>\n"+
+                "</div>"
+               
+            );
+
+            out.println("</form>");
+
+
+                
                 out.println("<script>\n" +
                 "var countChecked = function() {\n" +
                 "  var n = $( \"input:checked\" ).length;\n" +
@@ -110,10 +140,7 @@ public class Maestro extends HttpServlet {
                 " \n" +
                 "$( \"input[type=checkbox]\" ).on( \"click\", countChecked );\n" +
                 "</script>");
-                out.println("<input type=\"reset\">");
-                out.println("<input type=\"submit\" value=\"Agregar a un Examen\">");               
-                out.println("</div>");
-                out.println("</form>");
+               
                 out.println("</body>");
                 out.println("</html>");
             }
