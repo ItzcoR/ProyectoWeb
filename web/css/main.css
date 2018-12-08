@@ -455,6 +455,11 @@ select{
     font-size: 1.2rem
 }
 
+.campo_usuario input[type="submit"]{
+    margin: 0 20px;
+}
+
+
 
 
 
