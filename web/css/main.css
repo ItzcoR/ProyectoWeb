@@ -263,7 +263,8 @@ legend span{
 }
 
 
-.enviar input[type="submit"]{
+.enviar input[type="submit"],
+.enviar input[type="button"]{
     background-color: var(--principal);
     border: none;
     color: white;
@@ -275,7 +276,8 @@ legend span{
     flex: 1;
 }
 
-.enviar input[type="submit"]:hover{
+.enviar input[type="submit"]:hover,
+.enviar input[type="button"]:hover{
     cursor: pointer;
     background-color: var(--primarioOscuro);
 }
@@ -283,7 +285,9 @@ legend span{
 
 
 @media (min-width:798px){
-    .enviar input[type="submit"]{
+    .enviar input[type="submit"],
+    .enviar input[type="button"]
+    {
         
         flex: 0 0 auto;
     }
