@@ -69,7 +69,7 @@ public class modificar1 extends HttpServlet {
                 "<div class=\"campo_usuario\">\n"+
         
                   "<label for=\"nombre\">Nombre usuario:</label>\n"+
-                  "<input input type=\"text\" name=\"nombre\" onkeypress=\"return letraVal(event)\" required autocomplete=\"off\" placeholder=\"Nombre completo\">\n"+
+                  "<input input type=\"text\" name=\"nombre\" onkeypress=\"return letraVal(event)\" required autocomplete=\"off\" value=\""+res[2]+"\">\n"+
         
                 "</div>\n"+
         
@@ -88,7 +88,7 @@ public class modificar1 extends HttpServlet {
                 "<div class=\"campo_usuario\">\n"+
         
                   "<label for=\"empresa\">Usuario:</label>\n"+
-                  "<input input type=\"text\" name=\"id\" onkeypress=\"return letraNumVal(event)\" required autocomplete=\"off\" placeholder=\"Id usuario\">\n"+
+                  "<input input type=\"text\" value=\""+res[0]+"\" name=\"id\" onkeypress=\"return letraNumVal(event)\" required autocomplete=\"off\" placeholder=\"Id usuario\">\n"+
         
                 "</div>\n"+
         
