@@ -114,7 +114,6 @@ public class modificar1 extends HttpServlet {
 
           out.println("<script src=\"js/vendor/modernizr-3.6.0.min.js\"></script>\n"+
           "<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\" integrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"></script>\n"+
-          "<script>window.jQuery || document.write('<script src=\"js/vendor/jquery-3.3.1.min.js\"><\/script>')</script>\n"+
           "<script src=\"js/plugins.js\"></script>\n"+
           "<script src=\"js/main.js\"></script>");
 
