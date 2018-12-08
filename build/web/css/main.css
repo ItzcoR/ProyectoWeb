@@ -418,8 +418,42 @@ legend span{
 
 
 
+/*------------------------------------------------- Nuevo usuario --------------------------------------*/
 
 
+
+
+@media (min-width:798px){
+    .campos_usuario{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .campos_usuario > div{
+        width: 40%;
+        margin: 0 20px;
+    }
+
+}
+
+.campo_usuario{
+    padding: .5rem 0;
+}
+
+.campo_usuario label{
+    font-size: 1.2rem;
+}
+
+.campo_usuario input[type="password"],
+.campo_usuario input[type="text"],
+select{
+    width: 100%;
+    border: none;
+    padding: .5rem;
+    height: 3rem;
+    margin-top: .5rem;
+    font-size: 1.2rem
+}
 
 
 

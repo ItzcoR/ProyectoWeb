@@ -34,16 +34,15 @@
       </legend>
 
 
-      <div class="campos">
-        <div class="campo">
+      <div class="campos_usuario">
+        <div class="campo_usuario">
 
-          <label for="nombre">Nombre completo:</label>
-          <input type="text" autocomplete="off" placeholder="Nombre usuario" id="nombre" name="nombre" onkeypress="return letraNumVal(event)"
-            required>
+          <label for="nombre">Nombre usuario:</label>
+          <input input type="text" name="nombre" onkeypress="return letraVal(event)" required autocomplete="off" placeholder="Nombre completo">
 
         </div>
 
-        <div class="campo">
+        <div class="campo_usuario">
 
           <label for="empresa">Tipo de usuario:</label>
           <select name="io">
@@ -55,29 +54,28 @@
         </div>
 
 
-        <div class="campo">
+        <div class="campo_usuario">
 
-          <label for="empresa">Password:</label>
-          <input type="password" placeholder="*******" id="empresa" name="password" onkeypress="return letraNumVal(event)"
-            required>
+          <label for="empresa">Usuario:</label>
+          <input input type="text" name="id" onkeypress="return letraNumVal(event)" required autocomplete="off" placeholder="Id usuario">
 
         </div>
 
 
 
-        <div class="campo">
+        <div class="campo_usuario">
 
           <label for="empresa">Password:</label>
-          <input type="password" placeholder="*******" id="empresa" name="password" onkeypress="return letraNumVal(event)"
-            required>
+          <input type="password" name="password" onkeypress="return letraNumVal(event)" required placeholder="******">
 
         </div>
 
 
       </div>
-      <div class="campo enviar">
+      <div class="campo_usuario enviar">
         <input type="hidden" id="accion" value="crear">
-        <input type="submit" class="btn-info" value="Iniciar sesion">
+        <input type="submit" class="btn-info" value="Crear">
+        <input type="submit" class="btn-info" value="Cancelar" onclick="document.location='Administrador'">
       </div>
 
     </form>
