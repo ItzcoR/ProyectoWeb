@@ -69,17 +69,18 @@ public class Maestro extends HttpServlet {
             " Seleccione si desea ver preguntas o Examenes<span>La creación de examenes es en la tabla de pregunatas</span>\n"+
             "</legend>";
             
-                  
-                out.println("<select name=\"tipoTabla\" v-model=\"selected\" required>\n" +
+                out.println("<div class=\"rounded\">");
+                out.println("<select name=\"tipoTabla\" v-model=\"selected\"  class=\"selector rounded\">\n" +
                 "<option value=\"Pregs\">Ver Preguntas</option>\n" +
                 "<option value=\"Examen\">Ver Examenes</option>\n" +
                 "</select>");
+                out.println("</div>");
                 
                 out.println("<template v-if=\"selected == 'Pregs' \">");
             out.println("<form action='crearExamen' method='get'>");
             
             out.println(
-                "<h2>Bienvenido profesor: "+id+"</h2>\n" +
+                "<h2 class=\"espacio\">Bienvenido profesor: "+id+"</h2>\n" +
                    
                     "<div class=\"contenedor_contactos\">\n"+
                     
@@ -145,7 +146,7 @@ public class Maestro extends HttpServlet {
             out.println("</template>"); //out.println("<>");   out.println("");  out.println(''); 
 
             out.println("<template v-if=\"selected == 'Examen'\">");
-            out.println("<h2>Bienvenido profesor: "+id+"</h2>\n"+
+            out.println("<h2  class=\"espacio\">Bienvenido profesor: "+id+"</h2>\n"+
             "<div class=\"contenedor_contactos\">\n"+
                     
                         "<div class=\"contenedor_tabla\">");

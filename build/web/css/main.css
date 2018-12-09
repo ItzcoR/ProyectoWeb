@@ -570,6 +570,36 @@ form.modificar_1 legend{
 
 
 
+ .listado_contactos.maestro td:nth-child(3){
+    text-align: center;
+ }
+
+@media only screen and (min-width:798px){
+    .selector{
+        width: 30%;
+    }
+   
+}
+
+.selector{
+    text-decoration: none;
+    background-color: var(--secundario);
+}
+
+/* -------------------- Rounded Corners */
+.rounded {
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+ }
+ 
+.espacio{
+    margin-top: 20px;
+}
+ 
+
+
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
