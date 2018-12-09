@@ -195,8 +195,8 @@ public class modificarExamen extends HttpServlet{
     }
     public String[][] getValuesDePreguntas(String direc,String[] idpregs)
     {
-        int aux=tamano(direc);
-        
+        int aux=idpregs.length;
+        int n=0;
         String[][] nombU=new String[3][aux];    //Se crea un arreglo bidimensional que contendra los elementos de cada pregunta
         
         try{
@@ -215,9 +215,10 @@ public class modificarExamen extends HttpServlet{
                 Element hijo=(Element)hijos.get(i);
                 String idbuscada=hijo.getAttributeValue("id"); //Checamos si las ids 
                 if (Arrays.asList(idpregs).contains(idbuscada)) {
-                	nombU[0][i]=hijo.getAttributeValue("res");  //En la Posicion 1 estara si la respuesta es Verdadera o Falsa
-                	nombU[1][i]=hijo.getText();//En la ultima posicion estara la pregunta la cual esta como texto entre la pregunta
-                	nombU[2][i]=hijo.getName();//En la cuarta posicion se guarda el nombre del tag, el cual nos indica el tipo de pregunta
+                    nombU[0][n]=hijo.getAttributeValue("res");  //En la Posicion 1 estara si la respuesta es Verdadera o Falsa
+                    nombU[1][n]=hijo.getText();//En la ultima posicion estara la pregunta la cual esta como texto entre la pregunta
+                    nombU[2][n]=hijo.getName();//En la cuarta posicion se guarda el nombre del tag, el cual nos indica el tipo de pregunta
+                    n++;
                 }
                 
                 	
