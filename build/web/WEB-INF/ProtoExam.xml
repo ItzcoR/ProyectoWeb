@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Examenes>
+  <Exa id="ex1" nombre="2CM7 WEB 2018B">
+    <Preg id="ptof1" />
+  </Exa>
+  <Exa id="ex2" nombre="Prueba2">
+    <Preg id="ptof2" />
+  </Exa>
   <Exa id="pruebaMod" nombre="Pikame">
     <Preg id="ptof1" />
     <Preg id="ptof2" />
@@ -49,4 +55,3 @@
     <Preg id="323" />
   </Exa>
 </Examenes>
-

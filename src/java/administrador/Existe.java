@@ -51,11 +51,15 @@ public class Existe extends HttpServlet {
                 out.println("<div class=\"contenedor_barra\">\n"+
                 "<h1>Sistema evaluador</h1>\n"+
                 "</div>");
-                out.println("<div class=\"bg_amarillo contenedor sombra\">\n"+
+                out.println("<div class=\"bg_blanco contenedor sombra\">\n"+
                 "<form id=\"contacto\" action=\"Existe\" method=\"POST\">\n"+
           "<legend>\n"+
-           "Log in <span>Todos los campos son obligatorios</span>\n"+
+           "Usuario o contraseña invalidos <span>Intente de nuevo o contacte al administrador para registrarse o arreglar cualquier asunto reacionado a su cuenta</span>\n"+
           "</legend>\n"+
+          "<div class=\"campo enviar\">\n"+
+          "<input type=\"hidden\" id=\"accion\" value=\"crear\">\n"+
+          "<a class=\"btn btn_admin btn_existe\" href='index.html'>Regresar</a>\n"+
+          "</div>\n"+
 
                 "</div>");
                 

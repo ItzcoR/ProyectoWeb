@@ -35,7 +35,7 @@ public class modificar1 extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet modificar1</title>");   
+            out.println("<title>Modificar usuario</title>");   
 //           hay que agregar el script para verificar valores
             out.println("<meta charset=\"utf-8\">\n" +
             "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
