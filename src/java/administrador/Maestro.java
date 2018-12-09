@@ -57,24 +57,29 @@ public class Maestro extends HttpServlet {
             out.println("<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.5.0/css/all.css\" integrity=\"sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU\" crossorigin=\"anonymous\">");
             out.println("</head>");
             out.println("<body >");
-            out.println("<h1> Seleccione si desea ver preguntas o Examenes,la Creación de Examnes es en la tabla de Pregunatas </h1>");
-            out.println("<div id='appselect'>");
-            out.println("<div class=\"contenedor_barra\">\n"+
+                 out.println("<div class=\"contenedor_barra\">\n"+
             "<h1>Sistema evaluador</h1>\n"+
             "</div>");
+
+
+            out.println("<div id='appselect'>\n"+
+            
+            "<div class=\"bg_blanco contenedor sombra contactos\">\n"+
+            "<legend>\n"+
+            " Seleccione si desea ver preguntas o Examenes<span>La creación de examenes es en la tabla de pregunatas</span>\n"+
+            "</legend>";
+            
                   
                 out.println("<select name=\"tipoTabla\" v-model=\"selected\" required>\n" +
                 "<option value=\"Pregs\">Ver Preguntas</option>\n" +
                 "<option value=\"Examen\">Ver Examenes</option>\n" +
                 "</select>");
                 
-                out.println("<template v-if=\"selected == 'Pregs'\">");
+                out.println("<template v-if=\"selected == 'Pregs' \">");
             out.println("<form action='crearExamen' method='get'>");
             
             out.println(
-                "<div class=\"bg_blanco contenedor sombra contactos\">\n"+
                 "<h2>Bienvenido profesor: "+id+"</h2>\n" +
-                    "<p  class=\"total_contactos\"><span></span> Contactos</p>\n"+
                    
                     "<div class=\"contenedor_contactos\">\n"+
                     
@@ -140,7 +145,11 @@ public class Maestro extends HttpServlet {
             out.println("</template>"); //out.println("<>");   out.println("");  out.println(''); 
 
             out.println("<template v-if=\"selected == 'Examen'\">");
-            out.println("<table id='listaExamnes'>");
+            out.println("<h2>Bienvenido profesor: "+id+"</h2>\n"+
+            "<div class=\"contenedor_contactos\">\n"+
+                    
+                        "<div class=\"contenedor_tabla\">");
+            out.println("<table id='listaExamnes' class=\"listado_contactos maestro\">");
                 out.println("<thead>\n" +
                         "     <tr>\n" +
                         "       <th>ID</th>\n" +
@@ -158,6 +167,8 @@ public class Maestro extends HttpServlet {
                     out.println("<a class=\"btn_editar btn\" href='modificarExamen?idExamen="+examenes[0][i]+"&nombreExamen="+examenes[1][i]+"'><i class=\"fas fa-pen-square\"></i></i></a>");
                     }
             out.println("</table>");
+            out.println("</div>");
+            out.println("</div>");
             out.println("</template>");
             out.println("</div>");
             out.println("<script>\n" +
@@ -173,7 +184,7 @@ public class Maestro extends HttpServlet {
             out.println("var app2=new Vue({\n" +
             "      el: '#appselect',\n" +
             "      data: {\n" +
-            "               selected: ''\n" +
+            "               selected: 'Pregs'\n" +
                             //"opciones= [\n"+
                                 //"{text: 'Verdadero o Falso', value: 'ToF'},\n"+
                                 //"{text: 'HotSpot', value: 'HotS'},\n"+

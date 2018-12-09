@@ -549,9 +549,24 @@ form.modificar_1 legend{
     text-align: center;
 }
 
-/* --------------------------------------------------Existe -----------------------------------------------------------*/
+/* --------------------------------------------------Maestro -----------------------------------------------------------*/
 
+.bg_blanco legend{
+    font-size: 1.4rem;
+    text-align: center;
+    font-weight: bold;
+}
 
+.bg_blanco legend span{
+    font-size: 1.1rem;
+    font-weight: lighter;
+    text-transform: none;
+}
+
+.bg_blanco form{
+    padding: 0;
+    margin: 0;
+}
 
 
 
