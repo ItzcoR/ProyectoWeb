@@ -218,8 +218,6 @@ public class modificarExamen extends HttpServlet{
                 	nombU[0][i]=hijo.getAttributeValue("res");  //En la Posicion 1 estara si la respuesta es Verdadera o Falsa
                 	nombU[1][i]=hijo.getText();//En la ultima posicion estara la pregunta la cual esta como texto entre la pregunta
                 	nombU[2][i]=hijo.getName();//En la cuarta posicion se guarda el nombre del tag, el cual nos indica el tipo de pregunta
-                        //total=Integer.parseInt(nombU[0][i]);
-                        //nombU[3][i]=String.valueOf(total);
                 }
                 
                 	

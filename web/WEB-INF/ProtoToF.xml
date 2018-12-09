@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Preguntas>
-  <ToF id="ptof1"  res="V" pond="1">Grifith no hizo nada malo</ToF>
-  <ToF id="ptof2" res="F" pond="1"> Rei best girl </ToF>
+  <ToF id="ptof1" res="V" pond="1">Grifith no hizo nada malo</ToF>
+  <ToF id="ptof2" res="F" pond="1">Rei best girl</ToF>
+  <ToF id="ptof3" res="V" pond="3">Moth es goi</ToF>
+  <ToF id="ptof4" res="F" pond="4">BB es joto</ToF>
+  <ToF id="ptof5" res="V" pond="2">Misato besto wifi</ToF>
+  <ToF id="ptof6" res="F" pond="3">Rei best girl</ToF>
   <HotSpot id="phs1" res="op1c2" pond="1">Identifica la best girl
   	<HS id="op1c1" src="imagenp1o1.jpg"></HS>
 	<HS id="op1c2" src="imagenp1o2.jpg"></HS> 
