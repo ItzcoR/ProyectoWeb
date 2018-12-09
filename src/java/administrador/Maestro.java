@@ -133,10 +133,10 @@ public class Maestro extends HttpServlet {
                         "</div>\n" +
                         "</div>\n" +
                         "<div class=\"contenedor_botones\">\n"+
-                        "<input type=\"submit\" value=\"Agregar a un Examen\">\n" +
-                        "<input type=\"reset\">\n" +
-                        "<a href='cerrar'>Cerrar Sesion</a>\n" +
-                        "<a href='CrearPregunta'>Crear Pregunta</a>\n" +
+                        "<input class=\"btn btn_existe btn_admin\" type=\"submit\" value=\"Agregar a un Examen\">\n" +
+                        "<input class=\"btn btn_existe btn_admin\" type=\"reset\">\n" +
+                        "<a class=\"btn btn_existe btn_admin\" href='cerrar'>Cerrar Sesion</a>\n" +
+                        "<a class=\"btn btn_existe btn_admin\" href='CrearPregunta'>Crear Pregunta</a>\n" +
                         "</div>\n"+
                 "</div>"
                

@@ -26,30 +26,11 @@ public class CrearPregunta extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Crear Pregunta True or False</title>"); 
+
             
-            out.println("<script type =\"text/javascript\">\n" +
-"            function letraNumVal(e) {\n" +
-"                tecla = document.all ? e.keyCode : e.which;\n" +
-"                if (tecla === 8 || tecla === 32)\n" +
-"                    return true;\n" +
-"                patron = /[a-z]|[A-Z]|á|é|í|ó|ú|Á|É|Í|Ó|Ú|[0-9]/;\n" +
-"                te = String.fromCharCode(tecla);\n" +
-"                return patron.test(te);\n" +
-"            }\n" +
-"            function numVal(e) {\n" +
-"                tecla = document.all ? e.keyCode : e.which;\n" +
-"                if (tecla === 8 || tecla === 32)\n" +
-"                    return true;\n" +
-"                patron = /[0-9]/;\n" +
-"                te = String.fromCharCode(tecla);\n" +
-"                return patron.test(te);\n" +
-"            }" );
-            out.println("</script>"); 
-            out.println("<script src=\"https://cdn.jsdelivr.net/npm/vue/dist/vue.js\"></script>");
-            
-            out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>");
             out.println("</head>");
             out.println("<body>");  //  out.println("");   out.println('');  <input type="reset"> 
+            
             out.println("<div id='app'>");     
                 out.println("<select name=\"tipoPreg\" v-model=\"selected\" options='opciones' required>\n" +
                 "<option value=\"\" selected></option>\n" +
@@ -114,6 +95,8 @@ public class CrearPregunta extends HttpServlet {
                         out.println("</form>");
                 out.println("</template>");
             out.println("</div>");
+            out.println("<script src=\"https://cdn.jsdelivr.net/npm/vue/dist/vue.js\"></script>");
+            out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>");
             out.println("<script>");
             out.println("var app=new Vue({\n" +
 "      el: '#app',\n" +
