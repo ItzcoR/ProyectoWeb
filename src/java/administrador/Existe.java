@@ -38,22 +38,27 @@ public class Existe extends HttpServlet {
                 out.println("<!DOCTYPE html>");
                 out.println("<html>");
                 out.println("<head>");
-                out.println("<title>Servlet Existe</title>");    
+                out.println("<title>Servlet Adm</title>"); 
                 out.println("<meta charset=\"utf-8\">\n" +
                 "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
                 "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
                 "<script src=\"https://cdn.jsdelivr.net/npm/vue/dist/vue.js\"></script>");
                 out.println("<link rel=\"stylesheet\" href=\"css/normalize.css\">");
                 out.println("<link rel=\"stylesheet\" href=\"css/main.css\">");
+                out.println("<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.5.0/css/all.css\" integrity=\"sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU\" crossorigin=\"anonymous\">");
                 out.println("</head>");
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<h1 >Usuario o contraseña invalidos</h1>");
-                out.println("<h3 >Intente de nuevo o contacte al administrador para registrarse o arreglar cualquier asunto reacionado a su cuenta</h3>");
-                out.println("<div class=\"row\">\n" +
-                "  <div ></div>\n" +
-                "  <div ><a href='index.html'>Regresar</a></div>\n" +
+                out.println("<body >");
+                out.println("<div class=\"contenedor_barra\">\n"+
+                "<h1>Sistema evaluador</h1>\n"+
                 "</div>");
+                out.println("<div class=\"bg_amarillo contenedor sombra\">\n"+
+                "<form id=\"contacto\" action=\"Existe\" method=\"POST\">\n"+
+          "<legend>\n"+
+           "Log in <span>Todos los campos son obligatorios</span>\n"+
+          "</legend>\n"+
+
+                "</div>");
+                
                 out.println("</body>");
                 out.println("</html>");
             }
