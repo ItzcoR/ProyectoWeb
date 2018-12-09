@@ -1,6 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Examenes>
-  <Exa id="ex1" >
-  	<Preg>
+  <Exa id="ex1" nombre="2CM7 WEB 2018B">
+    <Preg id="ptof1" />
+  </Exa>
+  <Exa id="ex2" nombre="Prueba2">
+    <Preg id="ptof2" />
+  </Exa>
+  <Exa id="pruebaMod" nombre="Pikame">
+    <Preg id="ptof1" />
+    <Preg id="ptof2" />
+    <Preg id="phs1" />
+    <Preg id="phs2" />
+  </Exa>
+  <Exa id="pruebas" nombre="ABER">
+    <Preg id="ptof1" />
+    <Preg id="ptof2" />
+    <Preg id="phs1" />
+    <Preg id="pruebachida" />
+  </Exa>
+  <Exa id="TOF" nombre="sgvlanmv">
+    <Preg id="ptof2" />
+    <Preg id="124" />
+    <Preg id="323" />
+  </Exa>
+  <Exa id="12331" nombre="sfwefwgw">
+    <Preg id="323" />
+  </Exa>
+  <Exa id="ToFTodo" nombre="Todas">
+    <Preg id="ptof1" />
+    <Preg id="ptof2" />
+    <Preg id="pruebachida" />
+    <Preg id="124" />
+    <Preg id="323" />
+  </Exa>
+  <Exa id="74" nombre="123">
+    <Preg id="ptof1" />
+  </Exa>
+  <Exa id="ju" nombre="2132">
+    <Preg id="ptof6" />
+  </Exa>
+  <Exa id="45494" nombre="unu">
+    <Preg id="ptof1" />
+    <Preg id="ptof5" />
+    <Preg id="ptof6" />
+    <Preg id="323" />
+  </Exa>
+  <Exa id="Ttodo2" nombre="Todas y unas mas">
+    <Preg id="ptof1" />
+    <Preg id="ptof2" />
+    <Preg id="ptof5" />
+    <Preg id="ptof6" />
+    <Preg id="pruebachida" />
+    <Preg id="124" />
+    <Preg id="323" />
   </Exa>
 </Examenes>
+

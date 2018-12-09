@@ -1,18 +1,17 @@
-
 package administrador;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -20,39 +19,41 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
-public class trueFalse extends HttpServlet{
-     @Override
+
+public class eliminarExamen extends HttpServlet{
+ @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String xml=request.getRealPath("WEB-INF\\ProtoToF.xml");
-        //HttpSession session=request.getSession();
-        String idpreg=request.getParameter("id");
-        String texto=request.getParameter("texto");
-        String res=request.getParameter("res");
-        String pond=request.getParameter("pond");
-        String resultado=agregar(xml,idpreg,texto,res,pond);
+        
+        String xml=request.getRealPath("WEB-INF\\ProtoExam.xml");
+        String idExam=request.getParameter("idExamen");
+        HttpSession session=request.getSession();
+        //String[] idpreg=(String [])session.getAttribute("idPreguntas");
+        //int npregs=idpreg.length;
+        
+       eliminarDelExamen(xml,idExam);
         try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Pregunta Verdadero o Falso</title>"); 
+            out.println("<title>Creacion de Examen</title>"); 
             out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>");
+            out.println("<script src=\"https://cdn.jsdelivr.net/npm/vue/dist/vue.js\"></script>");
             out.println("</head>");
             out.println("<body>");  //  out.println("");   out.println('');
-            out.println("<h1 >"+resultado+" </h1>");
-            out.println("<div \n" +
-            "  <div ></div>\n" +
-            "  <div ><a  href='Maestro'>Regresar</a></div>\n" +
+            out.println("<h1 >Eliminado: "+idExam+"</h1>");
+           // out.println("<h1 >"+resultado+"</h1>");
+            out.println(" <div ><a  href='Maestro'>Regresar</a></div>\n" +
             "</div>");
             out.println("</body>");
             out.println("</html>");
         }
     }
-        public String agregar(String ruta,String id,String texto,String res,String pond)
+    
+     public void eliminarDelExamen(String ruta,String idExamen)
     {
-        String respuesta="";
-        int aux=0;
+        
         try{
             /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
             SAXBuilder builder=new SAXBuilder();
@@ -71,34 +72,19 @@ public class trueFalse extends HttpServlet{
             for(int i=0;i<hijos.size();i++)
             {
                 Element hijo=(Element)hijos.get(i);
-                String identificador=hijo.getAttributeValue("id");
-                if(identificador.equals(id))
+                String id=hijo.getAttributeValue("id");
+                if(id.equals(idExamen))
                 {
-                    aux++;   
+                    hijos.remove(i);  
                     break;
-                 }
-         
+                }
+                
             }
-            if(aux==1)
-            {
-                respuesta="Este id ya existe";
-            }
-            else
-            { 
-                Element nuevo=new Element("ToF");
-                nuevo.setAttribute("id",id);
-                //nuevo.setAttribute("texto",texto);
-                nuevo.setAttribute("res",res);
-                nuevo.setAttribute("pond",pond);
-                nuevo.setText(texto);
-                raiz.addContent(nuevo);
-                respuesta="Pregunta agregada exitosamente";
-            } 
-      xmlOutput.output(bd_xml,new FileWriter(ruta));
+        //Se reescribe el documento bd_xml en el archivo XML
+        xmlOutput.output(bd_xml,new FileWriter(ruta));
        
         } catch (JDOMException | IOException ex) {
             Logger.getLogger(Agregar.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return respuesta;
     }
 }

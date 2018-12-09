@@ -78,7 +78,7 @@ public class Agregar extends HttpServlet {
                     //Elemento nieto
                     Element nieto=(Element)nietos.get(j);
                     String nombre=nieto.getAttributeValue("id");
-                    if(nombre.equals(usuario))
+                    if(nombre.equals(usuario))  //Checamos que el ID sea unico
                     {
                         aux++;   
                         break;
@@ -87,9 +87,9 @@ public class Agregar extends HttpServlet {
             }
             if(aux==1)
             {
-                res="El usuario ya existe";
+                res="El usuario ya existe"; // Si la bandera se activa, damos un mensaje de error
             }
-            else
+            else//En caso contrarrio agregamos al usuario en el tipo correspondiente
             {   
                 if(tipo.equals("Alumno"))
                 {

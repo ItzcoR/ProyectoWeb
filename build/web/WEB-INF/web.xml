@@ -21,6 +21,10 @@
         <servlet-class>administrador.modificar1</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>modificarExamen</servlet-name>
+        <servlet-class>administrador.modificarExamen</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>modificacion2</servlet-name>
         <servlet-class>administrador.modificacion2</servlet-class>
     </servlet>
@@ -92,6 +96,14 @@
         <servlet-name>crearExamen</servlet-name>
         <servlet-class>administrador.crearExamen</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ExamenXML</servlet-name>
+        <servlet-class>administrador.ExamenXML</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>eliminarExamen</servlet-name>
+        <servlet-class>administrador.eliminarExamen</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Existe</servlet-name>
         <url-pattern>/Existe</url-pattern>
@@ -111,6 +123,10 @@
     <servlet-mapping>
         <servlet-name>modificar1</servlet-name>
         <url-pattern>/modificar1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>modificarExamen</servlet-name>
+        <url-pattern>/modificarExamen</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>modificacion2</servlet-name>
@@ -175,6 +191,14 @@
     <servlet-mapping>
         <servlet-name>crearExamen</servlet-name>
         <url-pattern>/crearExamen</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExamenXML</servlet-name>
+        <url-pattern>/ExamenXML</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>eliminarExamen</servlet-name>
+        <url-pattern>/eliminarExamen</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ModGrupo2</servlet-name>

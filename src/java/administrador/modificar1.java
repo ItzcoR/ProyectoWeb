@@ -40,7 +40,6 @@ public class modificar1 extends HttpServlet {
             out.println("<meta charset=\"utf-8\">\n" +
             "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
             "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/main.css\" media=\"screen\"/>\n" +
-            "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\n" +
             "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n");
             out.println("</head>");
             out.println("<body>");
@@ -106,14 +105,17 @@ public class modificar1 extends HttpServlet {
               "<div class=\"campo_usuario enviar\">\n"+
                 "<input type=\"hidden\" id=\"accion\" value=\"crear\">\n"+
                 "<input type=\"submit\" class=\"btn-info\" value=\"Modificar\">\n"+
-                "<input type=\"submit\" class=\"btn-info\" value=\"Cancelar\" onclick=\"document.location='Administrador'\">\n"+
+                "<input  type=\"button\" class=\"btn-info\" value=\"Cancelar\" onclick=\"document.location='Administrador'\">\n"+
               "</div>\n"+
         
             "</form>\n"+
           "</div>");
 
 
-
+          out.println("<script src=\"js/vendor/modernizr-3.6.0.min.js\"></script>\n"+
+          "<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\" integrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"></script>\n"+
+          "<script src=\"js/plugins.js\"></script>\n"+
+          "<script src=\"js/main.js\"></script>");
 
             out.println("</body>");
             out.println("</html>");

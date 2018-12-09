@@ -24,9 +24,9 @@ public class eliminar extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String xml=request.getRealPath("WEB-INF\\practica.xml");
-        String nombre=request.getParameter("nombre");
+        String id=request.getParameter("id");
         String nodo=request.getParameter("tipo");
-        borrar(xml,nodo,nombre);
+        borrar(xml,nodo,id);
         try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
             out.println("<html style='height:100%; width:100%; margin:0px;'>");
@@ -49,7 +49,7 @@ public class eliminar extends HttpServlet {
             out.println("</html>");
         }
     }
-    public void borrar(String ruta,String nodo,String nombre)
+    public void borrar(String ruta,String nodo,String id)
     {
         
         try{
@@ -74,7 +74,7 @@ public class eliminar extends HttpServlet {
             {
                 Element nieto=(Element) nietos.get(i);
                 String usua=nieto.getAttributeValue("id");
-                if(usua.equals(nombre))
+                if(usua.equals(id))
                 {
                     nietos.remove(i);
                     break;

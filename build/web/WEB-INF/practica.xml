@@ -9,11 +9,13 @@
   <Alumno>
     <Alum password="1234" nombre="Rodrigo" id="alumno02" />
     <Alum password="1234" nombre="Lluvia" id="alumno01" />
+    <Alum password="1234" nombre="Rigby" id="alumno03" />
+    <Alum password="1234" nombre="Veronica" id="alumno04" />
+    <Alum password="1234" nombre="Luis" id="alumno05" />
   </Alumno>
   <Maestro>
     <Maes password="1234" nombre="Agustin" id="maestro01" />
     <Maes password="1234" nombre="Maria" id="maestro02" />
-    <Maes password="1234" nombre="Tellez" id="maestro03" />
   </Maestro>
 </ROOT>
 

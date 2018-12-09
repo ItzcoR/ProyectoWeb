@@ -52,7 +52,9 @@ public class Administrador extends HttpServlet {
             out.println("<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.5.0/css/all.css\" integrity=\"sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU\" crossorigin=\"anonymous\">");
             out.println("</head>");
             out.println("<body >");
-
+            out.println("<div class=\"contenedor_barra\">\n"+
+            "<h1>Sistema evaluador</h1>\n"+
+            "</div>");
 
             out.println(
                 "<div class=\"bg_blanco contenedor sombra contactos\">\n"+
@@ -76,7 +78,7 @@ public class Administrador extends HttpServlet {
                             out.println("<td>"+usuarios[0][i]+"</td>");//Nombre
                             out.println("<td>"+usuarios[2][i]+"</td>");//Tipo
                             out.println("<td><button ><a class=\"btn_editar btn\" href='modificar1?nombre="+usuarios[1][i]+"&tipo="+usuarios[2][i]+"'><i class=\"fas fa-pen-square\"></i></a></button>");//boton para modificar
-                out.println("<button ><a class=\"btn_borrar btn\" href='eliminar?nombre="+usuarios[1][i]+"&tipo="+usuarios[2][i]+"'><i class=\"fas fa-trash-alt\"></i></a></button></td>");//boton para eliminar
+                out.println("<button ><a class=\"btn_borrar btn\" href='eliminar?id="+usuarios[1][i]+"&tipo="+usuarios[2][i]+"'><i class=\"fas fa-trash-alt\"></i></a></button></td>");//boton para eliminar
                  
                         }
 
@@ -94,8 +96,10 @@ public class Administrador extends HttpServlet {
                     "</div>\n"+
                     
 
-                "</div>"
-            );
+                "</div>" );
+                out.println("</body>");
+                out.println("</html>");
+           
 
 
 
