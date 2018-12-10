@@ -63,8 +63,8 @@ out.println("<meta charset=\"utf-8\">\n" +
 ///////////////////////////////////////////////////////////////////////////////////////////   
             out.println(
                 "<div class=\"contenedor bg_amarillo sombra\">\n"+
-                    "<div class=\"\">\n"+
-                    "<p>sadfasdfasdf</p>\n"+
+                    "<div class=\"contenedor_alertas\">\n"+
+                    "<legend>Estas son las preguntas Seleccionadas </legend>\n"+
                     "</div>\n"+
                 "</div>"
                 );
