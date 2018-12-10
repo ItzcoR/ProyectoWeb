@@ -9,6 +9,7 @@
     <Alum password="1234" nombre="Rigby" id="alumno03" />
     <Alum password="1234" nombre="Veronica" id="alumno04" />
     <Alum password="1234" nombre="Luis" id="alumno05" />
+    <Alum password="1234" nombre="Itzco" id="alumo10" />
   </Alumno>
   <Maestro>
     <Maes password="1234" nombre="Agustin" id="maestro01" />

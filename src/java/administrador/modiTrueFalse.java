@@ -77,7 +77,7 @@ out.println("<meta charset=\"utf-8\">\n" +
     public String modiPreguntaTOF(String direc,String id,String texto,String res, String pondera)    
     {
         String respuesta="";
-        String[] Valores=new String[3];
+       // String[] Valores=new String[3];
         try{
             /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
             SAXBuilder builder=new SAXBuilder();

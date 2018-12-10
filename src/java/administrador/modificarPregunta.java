@@ -172,7 +172,7 @@ out.println("<meta charset=\"utf-8\">\n" +
                 }
             }
             //Se escribe el documento bd_xml en el archivo XML
-        //xmlOutput.output(bd_xml,new FileWriter(direc));
+        xmlOutput.output(bd_xml,new FileWriter(direc));
         } catch (JDOMException | IOException ex) {
             Logger.getLogger(eliminard.class.getName()).log(Level.SEVERE, null, ex);
         }
