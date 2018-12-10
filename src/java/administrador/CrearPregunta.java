@@ -49,7 +49,7 @@ public class CrearPregunta extends HttpServlet {
                     "<!--[if lte IE 9]>\n" +
                     " <p class=\"browserupgrade\">You are using an <strong>outdated</strong> browser. Please <a href=\"https://browsehappy.com/\">upgrade your browser</a> to improve your experience and security.</p>\n" +
                     "  <![endif]-->\n" +
-
+                    "<script src=\"https://cdn.jsdelivr.net/npm/vue/dist/vue.js\"></script>\n" +
                     "<div class=\"contenedor_barra\">\n" +
                     "<h1>Sistema evaluador</h1>\n" +
                     " </div>");
