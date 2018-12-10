@@ -67,7 +67,7 @@ public class Maestro extends HttpServlet {
             "<div class=\"bg_blanco contenedor sombra contactos\">\n"+
             "<legend>\n"+
             " Seleccione si desea ver preguntas o Examenes<span>La creación de examenes es en la tabla de pregunatas</span>\n"+
-            "</legend>";
+            "</legend>");
             
                 out.println("<div class=\"rounded\">");
                 out.println("<select name=\"tipoTabla\" v-model=\"selected\"  class=\"selector rounded\">\n" +
@@ -170,6 +170,13 @@ public class Maestro extends HttpServlet {
             out.println("</table>");
             out.println("</div>");
             out.println("</div>");
+            out.println("<div class=\"contenedor_botones\">\n"+
+                        // "<input class=\"btn btn_existe btn_admin\" type=\"submit\" value=\"Agregar a un Examen\">\n" +
+                        // "<input class=\"btn btn_existe btn_admin\" type=\"reset\">\n" +
+                        "<a class=\"btn btn_existe btn_admin\" href='cerrar'>Cerrar Sesion</a>\n" +
+                        // "<a class=\"btn btn_existe btn_admin\" href='CrearPregunta'>Crear Pregunta</a>\n" +
+                        "</div>");
+
             out.println("</template>");
             out.println("</div>");
             out.println("<script>\n" +
