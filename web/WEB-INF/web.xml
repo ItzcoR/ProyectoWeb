@@ -85,6 +85,10 @@
         <servlet-class>administrador.ver</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>HotS</servlet-name>
+        <servlet-class>administrador.HotS</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>verExamen</servlet-name>
         <servlet-class>administrador.verExamen</servlet-class>
     </servlet>
@@ -191,6 +195,10 @@
     <servlet-mapping>
         <servlet-name>cerrar</servlet-name>
         <url-pattern>/cerrar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HotS</servlet-name>
+        <url-pattern>/HotS</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CrearPregunta</servlet-name>

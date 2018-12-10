@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,17 +18,56 @@ import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 public class HotS extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String xml=request.getRealPath("WEB-INF\\practica.xml");
-        String nombre=request.getParameter("nombre");
-        String nodo=request.getParameter("tipo");
-        //borrar(xml,nodo,nombre);
-        try (PrintWriter out = response.getWriter()) {
+        String id=request.getParameter("id");
+        String texto=request.getParameter("texto");
+        String pond=request.getParameter("pond");
+        String imagen=request.getParameter("file");
+        boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+
+    if (isMultipart) {
+        FileItemFactory factory = new DiskFileItemFactory();
+        ServletFileUpload upload = new ServletFileUpload(factory);
+         try {
+        List items = upload.parseRequest(request);
+        Iterator iterator = items.iterator();
+        while (iterator.hasNext()) {
+            FileItem item = (FileItem) iterator.next();
+
+            if (!item.isFormField()) {
+                String fileName = item.getName();
+
+                String root = getServletContext().getRealPath("/");
+                File path = new File(root + "/uploads");
+                if (!path.exists()) {
+                    boolean status = path.mkdirs();
+                }
+
+                File uploadedFile = new File(path + "/" + fileName);
+                System.out.println(uploadedFile.getAbsolutePath());
+                item.write(uploadedFile);
+            }
+        }
+    } catch (FileUploadException e) {
+        e.printStackTrace();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+        
+        
+        
+        /*try (PrintWriter out = response.getWriter()) {
 ///////////////////////////////////////////////////////////////////////////////////////////
 // ------------  HEADER  ------------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -57,17 +97,18 @@ out.println("<meta charset=\"utf-8\">\n" +
 ///////////////////////////////////////////////////////////////////////////////////////////
 // ------------  CONTENIDO  ---------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////////////////
-                    out.println("<div class=\"bg_blanco contenedor sombra\">\n"+
-                    "<div class =\"contenedor_alertas\">\n"+
-                    "<legend>\n"+
-                     " Usuario eliminado correctacmente\n"+
-                    "</legend>\n"+
-                    
-                    "<div class=\"campo enviar\">\n" +
-                                "   <a class=\"btn-info btn_rosa\" href='Administrador'>Regresar</a>\n" +
-                                "</div>\n" +
-                                "</div>\n" +
-                    "</div>");
+                out.println(
+                "<div class=\"contenedor bg_amarillo sombra\">\n"+
+                    "<div class=\"contenedor_alertas\">\n"+
+                    "<legend>Holi </legend>");
+                            out.println("<h1>"+id+"</h1");          //        out.println("");
+                            out.println("<h1>"+texto+"</h1");
+                            out.println("<h1>"+pond+"</h1");
+                            out.println("<h1>"+imagen+"</h1");
+                
+                out.println("</div>\n"+
+                "</div>"
+                );
 
 
 
@@ -76,7 +117,7 @@ out.println("<meta charset=\"utf-8\">\n" +
         ///////////////////////////////////////////////////////////////////////////////////////////               
         out.println("</body>");
         out.println("</html>");  
-        }
+        }*/
     }
-    
+    }
 }

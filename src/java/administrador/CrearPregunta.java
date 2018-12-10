@@ -89,7 +89,7 @@ out.println("<meta charset=\"utf-8\">\n" +
                 out.println("</template>");
                     
                 out.println("<template v-if=\"selected == 'HotS'\">");
-                    out.println("<form name='HotS' action='HotS' method='get'>");
+                    out.println("<form name='HotS' action='HotS' method='post' enctype=\"multipart/form-data\">");
                     
                         out.println("<table>");
                             out.println("<tr>");
@@ -104,9 +104,9 @@ out.println("<meta charset=\"utf-8\">\n" +
                             out.println("<tr>");
                             out.println("<td> Opciones </td>");
                             out.println("</tr>");
-                            /*out.println("<tr>");
-                                out.println("<td> Agregar archivo </td><td><input type='file' name='archivo' /></td>");
-                            out.println("</tr>");*/
+                            out.println("<tr>");
+                                out.println("<td> Agregar archivo </td><td><input type='file' name='file' /></td>");
+                            out.println("</tr>");
                         out.println("</table");
                         out.println("<input type=\"reset\">");
                         out.println("<input type=\"submit\" value=\"Crear\">");
