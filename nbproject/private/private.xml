@@ -6,8 +6,22 @@
         <group/>
 =======
         <group>
+<<<<<<< HEAD
             <file>file:/F:/Documents/Programacion/web/ProyectoWeb/src/java/administrador/Maestro.java</file>
             <file>file:/F:/Documents/Programacion/web/ProyectoWeb/src/java/administrador/modificar1.java</file>
+=======
+            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/trueFalse.java</file>
+            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/Maestro.java</file>
+            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/eliminard.java</file>
+            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/modificarPregunta.java</file>
+            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/modiTrueFalse.java</file>
+            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/CrearPregunta.java</file>
+            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/verPregunta.java</file>
+            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/Administrador.java</file>
+            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/Existe.java</file>
+            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/verExamen.java</file>
+            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/modificard.java</file>
+>>>>>>> a4940376df263426a9a6b806294ab8a85d4aa7f7
         </group>
 >>>>>>> fb1c64047b3deaea2e3c4cf590550ea47860435a
     </open-files>

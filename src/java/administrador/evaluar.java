@@ -21,21 +21,22 @@ import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
 
-public class verPregunta extends HttpServlet {
+public class evaluar extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String xml=request.getRealPath("WEB-INF\\ProtoToF.xml");
-        String id=request.getParameter("id");
-        String tipo=request.getParameter("tipo");
         String[] Preset=new String[3];
-        Preset=getValuesPreguntaTOF(xml,id);
+        String resultado="";
+        String opcion=request.getParameter("opcion");
         HttpSession session=request.getSession();
-        session.setAttribute("id",id);
-        session.setAttribute("tipo",tipo);
-        session.setAttribute("res",Preset[0]);
-        session.setAttribute("pond",Preset[1]);
+        String id=(String)session.getAttribute("id");
+        String tipo=(String)session.getAttribute("tipo");
+        String res=(String)session.getAttribute("res");
+        String pond=(String)session.getAttribute("pond");
+        Preset=getValuesPreguntaTOF(xml,id);
+        resultado=evaluarTOF(xml,id,opcion);
         try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
             out.println("<html style='height:100%; width:100%; margin:0px;'>");
@@ -49,18 +50,14 @@ public class verPregunta extends HttpServlet {
             "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>");
             out.println("</head>");
             out.println("<body class='colorful'>");
-            out.println("<h1 class='blanco'>Ver Pregunta ID: "+id+" Nombre : "+tipo+"</h1>");
+            out.println("<h1 class='blanco'>Evaluando Pregunta ID: "+id+" Tipo : "+tipo+"</h1>");
             out.println("<div class=\"row\">\n" +
             "  <div class=\"col-sm-8\"></div>\n" +
             "  <div class=\"col-sm-4\"><a class='blanco' href='Maestro'>Regresar</a></div>\n" +
             "</div>");
              if (tipo.equals("ToF")) {
-                 out.println("<h1>"+Preset[2]+"");
-                 out.println("<form action='evaluar' method='get'>\n" +
-"  <input type=\"radio\" name=\"opcion\" value=\"V\"> Verdadero<br>\n" +
-"  <input type=\"radio\" name=\"opcion\" value=\"F\"> Falso<br>\n" +
-"  <input type=\"submit\" value=\"Submit\">\n" +
-"</form>");
+                 out.println("<h1>"+resultado+"");
+                 
              }
              else if (tipo.equals("HS")) {  //out.println("");
              
@@ -103,5 +100,42 @@ public class verPregunta extends HttpServlet {
             Logger.getLogger(eliminard.class.getName()).log(Level.SEVERE, null, ex);
         }
         return Valores;
+    }
+    public String evaluarTOF(String direc,String id,String opcion)    
+    {
+        String response="";
+        try{
+            /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
+            SAXBuilder builder=new SAXBuilder();
+            //Forma de abriri el archivo
+            File xmlFile = new File(direc);
+            /*Almacenamos el xml cargado en builder en un documento*/
+            Document bd_xml=builder.build(xmlFile);
+            //Elemento raiz
+            Element raiz=bd_xml.getRootElement();
+            //Se almacenan los hijos en una lista
+            List hijos=raiz.getChildren();
+            XMLOutputter xmlOutput = new XMLOutputter();
+            //Formato en el que se va a escribir
+            xmlOutput.setFormat(Format.getPrettyFormat());
+            for(int i=0;i<hijos.size();i++)
+            {
+                Element hijo=(Element)hijos.get(i);
+                String iden=hijo.getAttributeValue("id");
+                if(iden.equals(id))
+                {
+                    hijo.getAttributeValue("res");
+                   if(hijo.getAttributeValue("res").equals(opcion)){
+                       response="Respuesta correcta";
+                   }
+                }
+                
+            }
+            //Se escribe el documento bd_xml en el archivo XML
+        //xmlOutput.output(bd_xml,new FileWriter(direc));
+        } catch (JDOMException | IOException ex) {
+            Logger.getLogger(eliminard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return response;
     }
 }
