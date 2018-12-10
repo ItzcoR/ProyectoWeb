@@ -66,13 +66,13 @@ public class CrearPregunta extends HttpServlet {
                     
                         out.println("<table>");
                             out.println("<tr>");
-                                out.println("<td> ID de la pregunta </td><td><input type='text' name='id' onkeypress=\"return letraNumVal(event)\" required /></td>");
+                                out.println("<td> ID de la pregunta </td><td><input type='text' name='id' required /></td>");
                             out.println("</tr>");
                             out.println("<tr>");
-                                out.println("<td> Texto de la pregunta </td><td><input type='text' name='texto' onkeypress=\"return letraNumVal(event)\" required /></td>");
+                                out.println("<td> Texto de la pregunta </td><td><input type='text' name='texto' required /></td>");
                             out.println("</tr>");
                             out.println("<tr>");
-                                out.println("<td> Valor de la pregunta </td><td><input type='text' name='pond' onkeypress=\"return numVal(event)\" required /></td>");
+                                out.println("<td> Valor de la pregunta </td><td><input type='text' name='pond' required /></td>");
                             out.println("</tr>");
                             out.println("<tr>");
                                 out.println("<td> Respuesta </td><td><select name=\"res\">\n" +
@@ -174,17 +174,17 @@ public class CrearPregunta extends HttpServlet {
         }
         return aux;
     }
-    public String[][] preguntas(String direc)
+    /*public String[][] preguntas(String direc)
     {
         int aux=tamano(direc);
         String[][] nombU=new String[4][aux];    //Se crea un arreglo bidimensional que contendra los elementos de cada pregunta
         
         try{
-            /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
+            SAXBuilder se encarga de cargar el archivo XML del disco o de un String 
             SAXBuilder builder=new SAXBuilder();
             //Forma de abriri el archivo
             File xmlFile = new File(direc);
-            /*Almacenamos el xml cargado en builder en un documento*/
+            //Almacenamos el xml cargado en builder en un documento
             Document bd_xml=builder.build(xmlFile);
             //Elemento raiz
             Element raiz=bd_xml.getRootElement();
@@ -202,5 +202,5 @@ public class CrearPregunta extends HttpServlet {
             Logger.getLogger(Maestro.class.getName()).log(Level.SEVERE, null, ex);
         }
         return nombU;
-    }
+    }*/
 }

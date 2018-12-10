@@ -21,8 +21,16 @@
         <servlet-class>administrador.modificar1</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>modificarPregunta</servlet-name>
+        <servlet-class>administrador.modificarPregunta</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>modificarExamen</servlet-name>
         <servlet-class>administrador.modificarExamen</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>modiTrueFalse</servlet-name>
+        <servlet-class>administrador.modiTrueFalse</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>modificacion2</servlet-name>
@@ -69,6 +77,10 @@
         <servlet-class>administrador.ver</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>verExamen</servlet-name>
+        <servlet-class>administrador.verExamen</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>CrearGrupo</servlet-name>
         <servlet-class>administrador.CrearGrupo</servlet-class>
     </servlet>
@@ -87,6 +99,10 @@
     <servlet>
         <servlet-name>ModGrupo2</servlet-name>
         <servlet-class>administrador.ModGrupo2</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>verPregunta</servlet-name>
+        <servlet-class>administrador.verPregunta</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EliminarGrupo</servlet-name>
@@ -129,8 +145,20 @@
         <url-pattern>/modificarExamen</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>verExamen</servlet-name>
+        <url-pattern>/verExamen</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>verPregunta</servlet-name>
+        <url-pattern>/verPregunta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>modificacion2</servlet-name>
         <url-pattern>/modificacion2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>modiTrueFalse</servlet-name>
+        <url-pattern>/modiTrueFalse</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>eliminar</servlet-name>
@@ -167,6 +195,10 @@
     <servlet-mapping>
         <servlet-name>modificard</servlet-name>
         <url-pattern>/modificard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>modificarPregunta</servlet-name>
+        <url-pattern>/modificarPregunta</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ver</servlet-name>
