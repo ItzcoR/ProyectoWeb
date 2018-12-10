@@ -24,43 +24,22 @@ public class eliminar extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String xml=request.getRealPath("WEB-INF\\practica.xml");
-        String id=request.getParameter("id");
+        String nombre=request.getParameter("nombre");
         String nodo=request.getParameter("tipo");
-        borrar(xml,nodo,id);
+        borrar(xml,nodo,nombre);
         try (PrintWriter out = response.getWriter()) {
-                /////////////////////////////////////////////////////////////////////////////////////////////////////////
-                // Header
-                /////////////////////////////////////////////////////////////////////////////////////////////////////////
-                out.println(
-                    "<!doctype html>\n" +
-                    " <html class=\"no-js\" lang=\"\">\n" +
-
-                    "<head>\n" +
-                    "<meta charset=\"utf-8\">\n" +
-                    "<meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\">\n" +
-                    "<title></title>\n" +
-                    "<meta name=\"description\" content=\"\">\n" +
-                    "   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n" +
-
-                    "<link rel=\"manifest\" href=\"site.webmanifest\">\n" +
-                    " <link rel=\"apple-touch-icon\" href=\"icon.png\">\n" +
-                    "   <!-- Place favicon.ico in the root directory -->\n" +
-
-                    "<link rel=\"stylesheet\" href=\"css/normalize.css\">\n" +
-                    " <link rel=\"stylesheet\" href=\"css/main.css\">\n" +
-                    "<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.5.0/css/all.css\" integrity=\"sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU\" crossorigin=\"anonymous\">\n"+
-                    " </head>\n" +
-
-                    "<body>\n" +
-                    "<!--[if lte IE 9]>\n" +
-                    " <p class=\"browserupgrade\">You are using an <strong>outdated</strong> browser. Please <a href=\"https://browsehappy.com/\">upgrade your browser</a> to improve your experience and security.</p>\n" +
-                    "  <![endif]-->\n" +
-
-                    "<div class=\"contenedor_barra\">\n" +
-                    "<h1>Sistema evaluador</h1>\n" +
-                    " </div>");
-
-                    
+            out.println("<!DOCTYPE html>");
+            out.println("<html style='height:100%; width:100%; margin:0px;'>");
+            out.println("<head>");
+            out.println("<title>Servlet Maestro</title>"); 
+            out.println("<meta charset=\"utf-8\">\n" +
+            "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
+            "<link rel=\"stylesheet\" type=\"text/css\" href=\"estilos.css\" media=\"screen\"/>\n" +
+            "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\n" +
+            "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
+            "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>");
+            out.println("</head>");
+            out.println("<body class='colorful'>");
             out.println("<h1 class='blanco'>Usuario Eliminado Correctamente</h1>");
             out.println("<div class=\"row\">\n" +
             "  <div class=\"col-sm-8\"></div>\n" +
@@ -85,8 +64,9 @@ public class eliminar extends HttpServlet {
                     "</body>\n" +
 
                     "</html>");
+        }
     }
-    public void borrar(String ruta,String nodo,String id)
+    public void borrar(String ruta,String nodo,String nombre)
     {
         
         try{
@@ -111,7 +91,7 @@ public class eliminar extends HttpServlet {
             {
                 Element nieto=(Element) nietos.get(i);
                 String usua=nieto.getAttributeValue("id");
-                if(usua.equals(id))
+                if(usua.equals(nombre))
                 {
                     nietos.remove(i);
                     break;
