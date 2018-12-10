@@ -52,6 +52,8 @@ public class Alumno extends HttpServlet {
                     "<div class=\"contenedor_barra\">\n" +
                     "<h1>Sistema evaluador</h1>\n" +
                     " </div>");
+
+
             out.println("<h1>Bienvenido "+tipo+": "+id+"</h1>");
             out.println("<div>\n" +
             "  <div ></div>\n" +

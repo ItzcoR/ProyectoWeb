@@ -44,22 +44,37 @@ public class Maestro extends HttpServlet {
 
 
             
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Adm</title>"); 
-            out.println("<meta charset=\"utf-8\">\n" +
-            "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
-            "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
-            "<script src=\"https://cdn.jsdelivr.net/npm/vue/dist/vue.js\"></script>");
-            out.println("<link rel=\"stylesheet\" href=\"css/normalize.css\">");
-            out.println("<link rel=\"stylesheet\" href=\"css/main.css\">");
-            out.println("<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.5.0/css/all.css\" integrity=\"sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU\" crossorigin=\"anonymous\">");
-            out.println("</head>");
-            out.println("<body >");
-                 out.println("<div class=\"contenedor_barra\">\n"+
-            "<h1>Sistema evaluador</h1>\n"+
-            "</div>");
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                // Header
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                out.println(
+                    "<!doctype html>\n" +
+                    " <html class=\"no-js\" lang=\"\">\n" +
+
+                    "<head>\n" +
+                    "<meta charset=\"utf-8\">\n" +
+                    "<meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\">\n" +
+                    "<title></title>\n" +
+                    "<meta name=\"description\" content=\"\">\n" +
+                    "   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n" +
+
+                    "<link rel=\"manifest\" href=\"site.webmanifest\">\n" +
+                    " <link rel=\"apple-touch-icon\" href=\"icon.png\">\n" +
+                    "   <!-- Place favicon.ico in the root directory -->\n" +
+
+                    "<link rel=\"stylesheet\" href=\"css/normalize.css\">\n" +
+                    " <link rel=\"stylesheet\" href=\"css/main.css\">\n" +
+                    "<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.5.0/css/all.css\" integrity=\"sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU\" crossorigin=\"anonymous\">\n"+
+                    " </head>\n" +
+
+                    "<body>\n" +
+                    "<!--[if lte IE 9]>\n" +
+                    " <p class=\"browserupgrade\">You are using an <strong>outdated</strong> browser. Please <a href=\"https://browsehappy.com/\">upgrade your browser</a> to improve your experience and security.</p>\n" +
+                    "  <![endif]-->\n" +
+
+                    "<div class=\"contenedor_barra\">\n" +
+                    "<h1>Sistema evaluador</h1>\n" +
+                    " </div>");
 
 
             out.println("<div id='appselect'>\n"+

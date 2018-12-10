@@ -34,36 +34,37 @@ public class ModGrupo extends HttpServlet {
         String[] usuarios2=new String[auxr];
         usuarios2=alumno(xml2);
         try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html style='height:100%; width:100%; margin:0px;'>");
-            out.println("<head>");
-            out.println("<title>Servlet modificar1</title>");  
-            out.println("<script type =\"text/javascript\">\n" +
-            "function letraNumVal(e) {\n" +
-            "   tecla = document.all ? e.keyCode : e.which;\n" +
-            "   if (tecla === 8 || tecla === 32)\n" +
-            "           return true;\n" +
-            "       patron = /[a-z]|[A-Z]|á|é|í|ó|ú|Á|É|Í|Ó|Ú|[0-9]/;\n" +
-            "       te = String.fromCharCode(tecla);\n" +
-            "           return patron.test(te);\n" +
-            "   }\n" +
-            "function letraVal(e) {\n" +
-            "   tecla = document.all ? e.keyCode : e.which;\n" +
-            "   if (tecla === 8 || tecla === 32)\n" +
-            "           return true;\n" +
-            "       patron = /[a-z]|[A-Z]|á|é|í|ó|ú|Á|É|Í|Ó|Ú/;\n" +
-            "       te = String.fromCharCode(tecla);\n" +
-            "           return patron.test(te);\n" +
-            "   }\n" +
-            "</script>");
-            out.println("<meta charset=\"utf-8\">\n" +
-            "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
-            "<link rel=\"stylesheet\" type=\"text/css\" href=\"estilos.css\" media=\"screen\"/>\n" +
-            "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\n" +
-            "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
-            "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>");
-            out.println("</head>");
-            out.println("<body class='colorful'>");
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                // Header
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                out.println(
+                    "<!doctype html>\n" +
+                    " <html class=\"no-js\" lang=\"\">\n" +
+
+                    "<head>\n" +
+                    "<meta charset=\"utf-8\">\n" +
+                    "<meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\">\n" +
+                    "<title></title>\n" +
+                    "<meta name=\"description\" content=\"\">\n" +
+                    "   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n" +
+
+                    "<link rel=\"manifest\" href=\"site.webmanifest\">\n" +
+                    " <link rel=\"apple-touch-icon\" href=\"icon.png\">\n" +
+                    "   <!-- Place favicon.ico in the root directory -->\n" +
+
+                    "<link rel=\"stylesheet\" href=\"css/normalize.css\">\n" +
+                    " <link rel=\"stylesheet\" href=\"css/main.css\">\n" +
+                    "<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.5.0/css/all.css\" integrity=\"sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU\" crossorigin=\"anonymous\">\n"+
+                    " </head>\n" +
+
+                    "<body>\n" +
+                    "<!--[if lte IE 9]>\n" +
+                    " <p class=\"browserupgrade\">You are using an <strong>outdated</strong> browser. Please <a href=\"https://browsehappy.com/\">upgrade your browser</a> to improve your experience and security.</p>\n" +
+                    "  <![endif]-->\n" +
+
+                    "<div class=\"contenedor_barra\">\n" +
+                    "<h1>Sistema evaluador</h1>\n" +
+                    " </div>");
             out.println("<form action='ModGrupo2' method='post'>");
             out.println("<div class=\"container\">\n" +
             "  <h2 class='blanco'>Modificar</h2>           \n" +

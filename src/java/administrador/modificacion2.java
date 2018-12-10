@@ -34,7 +34,11 @@ public class modificacion2 extends HttpServlet {
         String idviejo=(String) session.getAttribute("idv");
         atributo(xml,idviejo,usuario,contra,nom,tipo,a);
         try (PrintWriter out = response.getWriter()) {
-            out.println(
+
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                // Header
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                out.println(
                     "<!doctype html>\n" +
                     " <html class=\"no-js\" lang=\"\">\n" +
 

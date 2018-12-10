@@ -33,6 +33,10 @@ public class Existe extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             if (existe.equals("")) {
+
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                // Header
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
                 out.println(
                     "<!doctype html>\n" +
                     " <html class=\"no-js\" lang=\"\">\n" +

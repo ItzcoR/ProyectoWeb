@@ -26,15 +26,38 @@ public class modificard extends HttpServlet {
         String idc=request.getParameter("idc");
         String canv=recuperar(xml,idc);
         try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Crear Diagrama</title>"); 
-            out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>");
-            out.println("<script src='fabric.js'></script>");
-            out.println("<script src='http://code.responsivevoice.org/responsivevoice.js'></script>");
-            out.println("</head>");
-            out.println("<body>");
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                // Header
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                out.println(
+                    "<!doctype html>\n" +
+                    " <html class=\"no-js\" lang=\"\">\n" +
+
+                    "<head>\n" +
+                    "<meta charset=\"utf-8\">\n" +
+                    "<meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\">\n" +
+                    "<title></title>\n" +
+                    "<meta name=\"description\" content=\"\">\n" +
+                    "   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n" +
+
+                    "<link rel=\"manifest\" href=\"site.webmanifest\">\n" +
+                    " <link rel=\"apple-touch-icon\" href=\"icon.png\">\n" +
+                    "   <!-- Place favicon.ico in the root directory -->\n" +
+
+                    "<link rel=\"stylesheet\" href=\"css/normalize.css\">\n" +
+                    " <link rel=\"stylesheet\" href=\"css/main.css\">\n" +
+                    "<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.5.0/css/all.css\" integrity=\"sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU\" crossorigin=\"anonymous\">\n"+
+                    " </head>\n" +
+
+                    "<body>\n" +
+                    "<!--[if lte IE 9]>\n" +
+                    " <p class=\"browserupgrade\">You are using an <strong>outdated</strong> browser. Please <a href=\"https://browsehappy.com/\">upgrade your browser</a> to improve your experience and security.</p>\n" +
+                    "  <![endif]-->\n" +
+
+                    "<div class=\"contenedor_barra\">\n" +
+                    "<h1>Sistema evaluador</h1>\n" +
+                    " </div>");
+                    
             out.println("<div style='width:1200px;height:80px;float:center;border:1px solid #A6C9E2'>");
             out.println("<input value='Salvar' type='button' onClick='salvar()'/>|");
             out.println("<a href='Maestro'>Menu Profesor</a>|");
