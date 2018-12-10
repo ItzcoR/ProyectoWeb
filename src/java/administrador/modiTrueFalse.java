@@ -35,18 +35,35 @@ public class modiTrueFalse extends HttpServlet {
         String resultado="";
         resultado=modiPreguntaTOF(xml,idPregunta,texto,res,pond);
         try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html style='height:100%; width:100%; margin:0px;'>");
-            out.println("<head>");
-            out.println("<title>Servlet Maestro</title>"); 
-            out.println("<meta charset=\"utf-8\">\n" +
-            "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
-            "<link rel=\"stylesheet\" type=\"text/css\" href=\"estilos.css\" media=\"screen\"/>\n" +
-            "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\n" +
-            "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
-            "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>");
-            out.println("</head>");
-            out.println("<body class='colorful'>");
+///////////////////////////////////////////////////////////////////////////////////////////
+// ------------  HEADER  ------------------------------------------------------------------
+///////////////////////////////////////////////////////////////////////////////////////////
+out.println("<!DOCTYPE html>");
+out.println("<html>");
+out.println("<head>");
+out.println("<title>Servlet Adm</title>"); 
+out.println("<meta charset=\"utf-8\">\n" +
+"<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
+"<script src=\"js/vendor/modernizr-3.6.0.min.js\"></script>\n" +
+"<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\" integrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"></script>\n" +
+"<script src=\"js/plugins.js\"></script>\n" +
+"<script src=\"js/main.js\"></script>\n" +
+"<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
+"<script src=\"https://cdn.jsdelivr.net/npm/vue/dist/vue.js\"></script>\n" +
+"<link rel=\"stylesheet\" href=\"css/normalize.css\">\n" +
+"<link rel=\"stylesheet\" href=\"css/main.css\">\n" +
+"<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.5.0/css/all.css\" integrity=\"sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU\" crossorigin=\"anonymous\">\n" +
+"</head>\n" +
+"<body>\n" +
+"<div class=\"contenedor_barra\">\n"+
+"<h1>Sistema evaluador</h1>\n"+
+"</div>");
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// ------------  CONTENIDO  ---------------------------------------------------------------
+///////////////////////////////////////////////////////////////////////////////////////////
             out.println("<h1 class='blanco'>Pregunta ID: "+idPregunta+"del tipo"+tipo+"Modificada</h1>");
             out.println("<h1 class='blanco'>"+resultado+"</h1>");
             out.println("<div class=\"row\">\n" +
