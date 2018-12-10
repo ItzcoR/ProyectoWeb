@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ROOT>
   <Administrador>
-    <Adm password="1234" nombre="Alex" id="admin01" />
+    <Adm password="1234" nombre="Juan" id="admin02" />
     <Adm password="1234" nombre="Itzco" id="admin03" />
     <Adm password="1234" nombre="Ruben" id="admin04" />
   </Administrador>
