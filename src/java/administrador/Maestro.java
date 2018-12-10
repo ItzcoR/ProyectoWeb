@@ -112,9 +112,9 @@ public class Maestro extends HttpServlet {
                             out.println(pregs[3][i]);        //out.println("<>");   out.println("");  out.println(''); 
                             out.println("</td>");
                             out.println("<td>");
-                            out.println("<a class=\"btn_ver btn\" href='ver?id="+pregs[0][i]+"'><i class=\"far fa-eye\"></i></a>");
-                            out.println("<a class=\"btn_borrar btn\" href='eliminard?idc="+pregs[0][i]+"'><i class=\"fas fa-trash-alt\"></i></a>");
-                            out.println("<a class=\"btn_editar btn\" href='modificard?idc="+pregs[0][i]+"'><i class=\"fas fa-pen-square\"></i></i></a>");
+                            out.println("<a class=\"btn_ver btn\" href='verPregunta?id="+pregs[0][i]+"&tipo="+pregs[3][i]+"'><i class=\"far fa-eye\"></i></a>");
+                            out.println("<a class=\"btn_borrar btn\" href='eliminard?id="+pregs[0][i]+"&tipo="+pregs[3][i]+"'><i class=\"fas fa-trash-alt\"></i></a>");
+                            out.println("<a class=\"btn_editar btn\" href='modificarPregunta?id="+pregs[0][i]+"&tipo="+pregs[3][i]+"'><i class=\"fas fa-pen-square\"></i></i></a>");
                             out.println("</td>");
                             out.println("<td class=\"checkbox\">");
                             out.println(
