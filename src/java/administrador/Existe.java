@@ -73,7 +73,7 @@ public class Existe extends HttpServlet {
                 out.println(
                     "<div class=\"bg_amarillo contenedor sombra\">\n" +
                         "<div class=\"contenedor_alertas\">\n" +
-                        "<legend class=\"alertas\">Log in <span>Todos los campos son obligatorios</span>\n" +
+                        "<legend class=\"alertas\">Log in <span>Intente de nuevo o contacte al administrador para registrarse o arreglar cualquier asunto reacionado a su cuenta</span>\n" +
                         "</legend>\n" +
                         
                         "<div class=\"campo enviar\">\n" +
