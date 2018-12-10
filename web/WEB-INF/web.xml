@@ -29,6 +29,10 @@
         <servlet-class>administrador.modificarExamen</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>modiExamen</servlet-name>
+        <servlet-class>administrador.modiExamen</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>modiTrueFalse</servlet-name>
         <servlet-class>administrador.modiTrueFalse</servlet-class>
     </servlet>
@@ -39,6 +43,10 @@
     <servlet>
         <servlet-name>eliminar</servlet-name>
         <servlet-class>administrador.eliminar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>evaluar</servlet-name>
+        <servlet-class>administrador.evaluar</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Maestro</servlet-name>
@@ -75,6 +83,10 @@
     <servlet>
         <servlet-name>ver</servlet-name>
         <servlet-class>administrador.ver</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HotS</servlet-name>
+        <servlet-class>administrador.HotS</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>verExamen</servlet-name>
@@ -133,6 +145,10 @@
         <url-pattern>/Agregar</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>evaluar</servlet-name>
+        <url-pattern>/evaluar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>trueFalse</servlet-name>
         <url-pattern>/trueFalse</url-pattern>
     </servlet-mapping>
@@ -143,6 +159,10 @@
     <servlet-mapping>
         <servlet-name>modificarExamen</servlet-name>
         <url-pattern>/modificarExamen</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>modiExamen</servlet-name>
+        <url-pattern>/modiExamen</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>verExamen</servlet-name>
@@ -175,6 +195,10 @@
     <servlet-mapping>
         <servlet-name>cerrar</servlet-name>
         <url-pattern>/cerrar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HotS</servlet-name>
+        <url-pattern>/HotS</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CrearPregunta</servlet-name>

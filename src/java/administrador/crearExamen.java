@@ -60,7 +60,17 @@ out.println("<meta charset=\"utf-8\">\n" +
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 // ------------  CONTENIDO  ---------------------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////////////////    
+///////////////////////////////////////////////////////////////////////////////////////////   
+            out.println(
+                "<div class=\"contenedor bg_amarillo sombra\">\n"+
+                    "<div class=\"contenedor_alertas\">\n"+
+                    "<legend>Estas son las preguntas Seleccionadas </legend>\n"+
+                    "</div>\n"+
+                "</div>"
+                );
+
+
+
             out.println("<h1 >Estas son las preguntas Seleccionadas </h1>");
             for(int i=0;i<npregs;i++){
                 out.println("<h2>Pregunta "+idpreg[i]+" agregada</h2>");

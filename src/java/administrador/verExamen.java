@@ -60,8 +60,14 @@ out.println("<meta charset=\"utf-8\">\n" +
             "  <div class=\"col-sm-8\"></div>\n" +
             "  <div class=\"col-sm-4\"><a class='blanco' href='Maestro'>Regresar</a></div>\n" +
             "</div>");
-            out.println("</body>");
-            out.println("</html>");
+
+            
+
+////////////////////////////////////////////////////////////////////////////////////////////
+// ------------  FOOTER  -------------------------------------------------------------------
+///////////////////////////////////////////////////////////////////////////////////////////               
+out.println("</body>");
+out.println("</html>");
         }
     }
     public int tamano(String direc)//Esta funcion regresa el numero de hijos del elemento raiz
@@ -179,9 +185,7 @@ out.println("<meta charset=\"utf-8\">\n" +
                     nombU[1][n]=hijo.getText();//En la ultima posicion estara la pregunta la cual esta como texto entre la pregunta
                     nombU[2][n]=hijo.getName();//En la cuarta posicion se guarda el nombre del tag, el cual nos indica el tipo de pregunta
                     n++;
-                }
-                
-                	
+                }               	
             }
         } catch (JDOMException | IOException ex) {
             Logger.getLogger(Maestro.class.getName()).log(Level.SEVERE, null, ex);
