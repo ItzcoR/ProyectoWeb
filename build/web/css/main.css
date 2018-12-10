@@ -212,7 +212,13 @@ h2{
 }
 .contenedor_barra{
     background-color: var(--primarioOscuro);
+    margin-bottom: 4rem;
 }
+/*---------------------------------- Legend en blanco-----------------------------*/
+.bg_blanco legend{
+    padding-top: 2rem;
+}
+
 
 /*-------------------------------------------- Formulario --------------------------------------------*/
 form{
@@ -225,6 +231,7 @@ form legend{
     font-family: var(--fuenteSecundaria);
     font-size: 2rem;
     text-align: center;
+    display: block;
 }
 
 legend span{
@@ -427,6 +434,10 @@ legend span{
     margin-top: 3rem;
     display: flex;
     justify-content: space-around;
+}
+
+.contenedor_botones .btn_admin a{
+    margin-bottom: 30px;
 }
 
 
