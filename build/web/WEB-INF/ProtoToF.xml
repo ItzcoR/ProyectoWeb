@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Preguntas>
+<<<<<<< HEAD
   <ToF id="ptof1" res="F" pond="12">Grifith no hizo nada malo</ToF>
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+  <ToF id="ptof1" res="F" pond="15">Grifith no hizo nada malo</ToF>
+  <ToF id="ptof2" res="V" pond="100">Misato best girl</ToF>
+  <ToF id="ptof3" res="F" pond="30">Moth es joto</ToF>
+=======
+  <ToF id="ptof1" res="V" pond="1">asdasdffasd</ToF>
   <ToF id="ptof2" res="F" pond="1">Rei best girl</ToF>
   <ToF id="ptof3" res="V" pond="3">Moth es goi</ToF>
+>>>>>>> 291785af231a377253e2f3a39683d9ad9bd666c5
+=======
+  <ToF id="ptof1" res="V" pond="1">Grifith no hizo nada malo</ToF>
+>>>>>>> 1517228c761898cb187a64277544913ebafe6fbd
+  <ToF id="ptof2" res="F" pond="1">Rei best girl</ToF>
+  <ToF id="ptof3" res="V" pond="3">Moth es goi</ToF>
+>>>>>>> a4940376df263426a9a6b806294ab8a85d4aa7f7
   <ToF id="ptof4" res="F" pond="4">BB es joto</ToF>
   <ToF id="ptof5" res="V" pond="2">Misato besto wifi</ToF>
   <ToF id="ptof6" res="F" pond="3">Rei best girl</ToF>
@@ -20,5 +37,31 @@
     <HS id="op2c3" src="imagenp2o3.jpg" />
     <HS id="op2c4" src="imagenp2o4.jpg" />
   </HotSpot>
+<<<<<<< HEAD
 </Preguntas>
 
+=======
+<<<<<<< HEAD
+</Preguntas>
+
+=======
+  <ToF id="ptof1"  res="V" pond="1">Grifith no hizo nada malo</ToF>
+  <ToF id="ptof2" res="F" pond="1"> Rei best girl </ToF>
+  <HotSpot id="phs1" res="op1c2" pond="1">Identifica la best girl
+  	<HS id="op1c1" src="imagenp1o1.jpg"></HS>
+	<HS id="op1c2" src="imagenp1o2.jpg"></HS> 
+	<HS id="op1c3" src="imagenp1o3.jpg"></HS> 
+	<HS id="op1c4" src="imagenp1o4.jpg"></HS>
+  </HotSpot>
+  <HotSpot id="phs2" res="op2c6" pond="1">Rei best girl
+  	<HS id="op2c1" src="imagenp2o1.jpg" />
+  	<HS id="op2c2" src="imagenp2o2.jpg" />
+  	<HS id="op2c3" src="imagenp2o3.jpg" />
+  	<HS id="op2c4" src="imagenp2o4.jpg" />
+  </HotSpot>
+</Preguntas>
+>>>>>>> fb1c64047b3deaea2e3c4cf590550ea47860435a
+=======
+</Preguntas>
+>>>>>>> a4940376df263426a9a6b806294ab8a85d4aa7f7
+>>>>>>> 1517228c761898cb187a64277544913ebafe6fbd

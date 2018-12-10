@@ -34,38 +34,73 @@ public class modificacion2 extends HttpServlet {
         String idviejo=(String) session.getAttribute("idv");
         atributo(xml,idviejo,usuario,contra,nom,tipo,a);
         try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Adm</title>"); 
-            out.println("<meta charset=\"utf-8\">\n" +
-            "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
-            "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
-            "<script src=\"https://cdn.jsdelivr.net/npm/vue/dist/vue.js\"></script>");
-            out.println("<link rel=\"stylesheet\" href=\"css/normalize.css\">");
-            out.println("<link rel=\"stylesheet\" href=\"css/main.css\">");
-            out.println("<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.5.0/css/all.css\" integrity=\"sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU\" crossorigin=\"anonymous\">");
-            out.println("</head>");
-            out.println("<body >");
-            
-            out.println("<div class=\"contenedor_barra\">\n"+
-            "<h1>Sistema evaluador</h1>\n"+
-            "</div>");
 
-            out.println("<div class=\"bg_amarillo contenedor sombra\">\n"+
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                // Header
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                out.println(
+                    "<!doctype html>\n" +
+                    " <html class=\"no-js\" lang=\"\">\n" +
+
+                    "<head>\n" +
+                    "<meta charset=\"utf-8\">\n" +
+                    "<meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\">\n" +
+                    "<title></title>\n" +
+                    "<meta name=\"description\" content=\"\">\n" +
+                    "   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n" +
+
+                    "<link rel=\"manifest\" href=\"site.webmanifest\">\n" +
+                    " <link rel=\"apple-touch-icon\" href=\"icon.png\">\n" +
+                    "   <!-- Place favicon.ico in the root directory -->\n" +
+
+                    "<link rel=\"stylesheet\" href=\"css/normalize.css\">\n" +
+                    " <link rel=\"stylesheet\" href=\"css/main.css\">\n" +
+                    "<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.5.0/css/all.css\" integrity=\"sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU\" crossorigin=\"anonymous\">\n"+
+                    " </head>\n" +
+
+                    "<body>\n" +
+                    "<!--[if lte IE 9]>\n" +
+                    " <p class=\"browserupgrade\">You are using an <strong>outdated</strong> browser. Please <a href=\"https://browsehappy.com/\">upgrade your browser</a> to improve your experience and security.</p>\n" +
+                    "  <![endif]-->\n" +
+
+                    "<div class=\"contenedor_barra\">\n" +
+                    "<h1>Sistema evaluador</h1>\n" +
+                    " </div>");
+
+
+            out.println("<div class=\"bg_blanco contenedor sombra\">\n"+
+            "<div class =\"contenedor_alertas\">\n"+
             "<legend>\n"+
              " Usuario modificado correctacmente\n"+
             "</legend>\n"+
-            "El nuevo usuario: "+usuario+"<br> La contraseña: "+contra+"<br> El nombre: "+nom+"<br> El tipo: "+tipo+" <br></h1>\n"+
+            "<div class=\"modif\"><i class=\"fas fa-check\"></i> <span>Usuario: </span>"+usuario+"<br> <i class=\"fas fa-check\"></i> <span>Contraseña:</span> "+contra+"<br><i class=\"fas fa-check\"></i> <span>Nombre:</span> "+nom+"<br><i class=\"fas fa-check\"></i> <span>Tipo:</span> "+tipo+" <br></div>\n"+
             
-            "  <div class=\"col-sm-8\"></div>\n" +
-            "  <div class=\"col-sm-4\"><a class='blanco' href='Administrador'>Regresar</a></div>\n" +
-
+            "<div class=\"campo enviar\">\n" +
+                        "   <a class=\"btn-info btn_rosa\" href='Administrador'>Regresar</a>\n" +
+                        "</div>\n" +
+                        "</div>\n" +
             "</div>");
 
             
-            out.println("</body>");
-            out.println("</html>");
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // Footer
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////
+            out.println(
+                    "<script src=\"js/vendor/modernizr-3.6.0.min.js\"></script>\n" +
+                    "<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\" integrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"></script>\n" +
+                    "<script>window.jQuery || document.write('<script src=\"js/vendor/jquery-3.3.1.min.js\"></script>')</script>\n"+
+                    "<script src=\"js/plugins.js\"></script>\n" +
+                    "<script src=\"js/main.js\"></script>\n" +
+
+                    "<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->\n" +
+                    "<script > \n "+
+                    "  window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;\n" +
+                    "  ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')\n" +
+                    "</script>\n" +
+                    " <script src=\"https://www.google-analytics.com/analytics.js\" async defer></script>\n" +
+                    "</body>\n" +
+
+                    "</html>");
         }
     }
     public void atributo(String ruta,String idv,String idn,String password,String nombre,String nodon,String nodov) 

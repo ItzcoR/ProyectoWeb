@@ -35,27 +35,64 @@ public class ModGrupo2 extends HttpServlet {
         //String idviejo=(String) session.getAttribute("idv");
         atributo(xml,id,maestro,alumnos,idviejo);
         try (PrintWriter out = response.getWriter()) {
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                // Header
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                out.println(
+                    "<!doctype html>\n" +
+                    " <html class=\"no-js\" lang=\"\">\n" +
 
-            out.println("<!DOCTYPE html>");
-            out.println("<html style='height:100%; width:100%; margin:0px;'>");
-            out.println("<head>");
-            out.println("<title>Servlet modificacion2</title>");        
-            out.println("<meta charset=\"utf-8\">\n" +
-            "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
-            "<link rel=\"stylesheet\" type=\"text/css\" href=\"estilos.css\" media=\"screen\"/>\n" +
-            "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\n" +
-            "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
-            "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>");
-            out.println("</head>");
-            out.println("<body class='colorful'>");
+                    "<head>\n" +
+                    "<meta charset=\"utf-8\">\n" +
+                    "<meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\">\n" +
+                    "<title></title>\n" +
+                    "<meta name=\"description\" content=\"\">\n" +
+                    "   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n" +
+
+                    "<link rel=\"manifest\" href=\"site.webmanifest\">\n" +
+                    " <link rel=\"apple-touch-icon\" href=\"icon.png\">\n" +
+                    "   <!-- Place favicon.ico in the root directory -->\n" +
+
+                    "<link rel=\"stylesheet\" href=\"css/normalize.css\">\n" +
+                    " <link rel=\"stylesheet\" href=\"css/main.css\">\n" +
+                    "<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.5.0/css/all.css\" integrity=\"sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU\" crossorigin=\"anonymous\">\n"+
+                    " </head>\n" +
+
+                    "<body>\n" +
+                    "<!--[if lte IE 9]>\n" +
+                    " <p class=\"browserupgrade\">You are using an <strong>outdated</strong> browser. Please <a href=\"https://browsehappy.com/\">upgrade your browser</a> to improve your experience and security.</p>\n" +
+                    "  <![endif]-->\n" +
+
+                    "<div class=\"contenedor_barra\">\n" +
+                    "<h1>Sistema evaluador</h1>\n" +
+                    " </div>");
+
+                    
             out.println("<h1 class='blanco'>Usuario Modificado</h1>");
             //out.println("El nuevo usuario: "+usuario+"<br> La contraseña: "+contra+"<br> El nombre: "+nom+"<br> El tipo: "+tipo+" <br>El tipo viejo: "+a+"<br> El viejo usuario: "+idviejo+"</h1>");
             out.println("<div class=\"row\">\n" +
             "  <div class=\"col-sm-8\"></div>\n" +
             "  <div class=\"col-sm-4\"><button class='btn-info'><a class='blanco' href='VerGrupos'>Regresar</a></button></div>\n" +
             "</div>");
-            out.println("</body>");
-            out.println("</html>");
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // Footer
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////
+            out.println(
+                    "<script src=\"js/vendor/modernizr-3.6.0.min.js\"></script>\n" +
+                    "<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\" integrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"></script>\n" +
+                    "<script>window.jQuery || document.write('<script src=\"js/vendor/jquery-3.3.1.min.js\"></script>')</script>\n"+
+                    "<script src=\"js/plugins.js\"></script>\n" +
+                    "<script src=\"js/main.js\"></script>\n" +
+
+                    "<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->\n" +
+                    "<script > \n "+
+                    "  window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;\n" +
+                    "  ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')\n" +
+                    "</script>\n" +
+                    " <script src=\"https://www.google-analytics.com/analytics.js\" async defer></script>\n" +
+                    "</body>\n" +
+
+                    "</html>");
         }
     }
     public void atributo(String ruta,String id,String maestro,String alumnos, String idviejo) 
