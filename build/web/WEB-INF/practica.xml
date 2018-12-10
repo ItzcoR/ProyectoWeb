@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ROOT>
   <Administrador>
-    <Adm password="1234" nombre="Juan" id="admin02" />
-    <Adm password="1234" nombre="Itzco" id="admin03" />
-    <Adm password="1234" nombre="Ruben" id="admin04" />
+    <Adm password="1234" nombre="Izaird Alexander Mothelet Delgado" id="admin01" />
   </Administrador>
   <Alumno>
     <Alum password="1234" nombre="Rodrigo" id="alumno02" />
@@ -16,6 +14,7 @@
     <Maes password="1234" nombre="Agustin" id="maestro01" />
     <Maes password="1234" nombre="Maria" id="maestro02" />
     <Maes password="1234" nombre="Tellez" id="maestro03" />
+    <Maestro id="maestro08" nombre="Rubensito" password="12345" />
   </Maestro>
 </ROOT>
 
