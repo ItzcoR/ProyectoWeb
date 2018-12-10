@@ -221,13 +221,8 @@ h2{
 
 
 /*-------------------------------------------- Formulario --------------------------------------------*/
-form{
-    padding: 3rem;
-    margin-top: 2rem;
 
-}
-
-form legend{
+legend{
     font-family: var(--fuenteSecundaria);
     font-size: 2rem;
     text-align: center;
@@ -575,11 +570,7 @@ form.modificar_1 legend{
     text-transform: none;
 }
 
-.bg_blanco form{
-    padding: 0;
-    margin: 0;
-}
-
+    
 
 
  .listado_contactos.maestro td:nth-child(3){
@@ -610,6 +601,17 @@ form.modificar_1 legend{
     margin-top: 20px;
 }
  
+/* ------------------------------------------- ALERTAS --------------------------------------- */
+
+.alertas legend{
+    margin-top: 2rem;
+}
+
+.contenedor_alertas{
+    padding: 3rem;
+    margin-top: 2rem;
+}
+
 
 
 

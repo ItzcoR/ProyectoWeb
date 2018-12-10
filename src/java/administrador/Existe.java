@@ -50,6 +50,7 @@ public class Existe extends HttpServlet {
 
                     "<link rel=\"stylesheet\" href=\"css/normalize.css\">\n" +
                     " <link rel=\"stylesheet\" href=\"css/main.css\">\n" +
+                    "<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.5.0/css/all.css\" integrity=\"sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU\" crossorigin=\"anonymous\">\n"+
                     " </head>\n" +
 
                     "<body>\n" +
@@ -67,12 +68,13 @@ public class Existe extends HttpServlet {
 
                 out.println(
                     "<div class=\"bg_amarillo contenedor sombra\">\n" +
-                    "<legend>\n" +
-                    "    Log in <span>Todos los campos son obligatorios</span>\n" +
-                    "</legend>\n" +
-                    
-                    "<div class=\"campo enviar\">\n" +
-                    "    <input type=\"submit\" class=\"btn-info\" value=\"Iniciar sesion\">\n" +
+                        "<div class=\"contenedor_alertas\">\n" +
+                        "<legend class=\"alertas\">Log in <span>Todos los campos son obligatorios</span>\n" +
+                        "</legend>\n" +
+                        
+                        "<div class=\"campo enviar\">\n" +
+                        "    <input type=\"submit\" class=\"btn-info\" value=\"Iniciar sesion\">\n" +
+                        "</div>\n" +
                     "</div>\n" +
 
 
