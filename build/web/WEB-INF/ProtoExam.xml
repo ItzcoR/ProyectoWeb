@@ -54,13 +54,4 @@
     <Preg id="124" />
     <Preg id="323" />
   </Exa>
-  <Exa id="wawis" nombre="Putos todos">
-    <Preg id="ptof1" />
-    <Preg id="ptof2" />
-    <Preg id="ptof4" />
-    <Preg id="ptof6" />
-    <Preg id="phs1" />
-    <Preg id="phs2" />
-  </Exa>
 </Examenes>
-

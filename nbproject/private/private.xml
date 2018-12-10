@@ -3,16 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/trueFalse.java</file>
             <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/Maestro.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/eliminar.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/Existe.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/eliminarExamen.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/nbproject/build-impl.xml</file>
+            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/eliminard.java</file>
+            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/modificarPregunta.java</file>
+            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/modiTrueFalse.java</file>
+            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/CrearPregunta.java</file>
+            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/verPregunta.java</file>
             <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/Administrador.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/ExamenXML.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/crearExamen.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/modificarExamen.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/web/WEB-INF/web.xml</file>
+            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/Existe.java</file>
+            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/verExamen.java</file>
+            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/modificard.java</file>
         </group>
     </open-files>
 </project-private>

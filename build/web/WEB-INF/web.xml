@@ -41,6 +41,10 @@
         <servlet-class>administrador.eliminar</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>evaluar</servlet-name>
+        <servlet-class>administrador.evaluar</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>Maestro</servlet-name>
         <servlet-class>administrador.Maestro</servlet-class>
     </servlet>
@@ -131,6 +135,10 @@
     <servlet-mapping>
         <servlet-name>Agregar</servlet-name>
         <url-pattern>/Agregar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>evaluar</servlet-name>
+        <url-pattern>/evaluar</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>trueFalse</servlet-name>
