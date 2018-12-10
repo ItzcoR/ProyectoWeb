@@ -30,10 +30,11 @@ public class HotS extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String xml=request.getRealPath("WEB-INF\\practica.xml");
-        String id=request.getParameter("id");
-        String texto=request.getParameter("texto");
-        String pond=request.getParameter("pond");
-        String imagen=request.getParameter("file");
+        String id="";
+        String texto="";
+        String pond="";
+        String imagen="";
+        String[][] P= new String[2][3];
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 
     if (isMultipart) {
@@ -44,10 +45,27 @@ public class HotS extends HttpServlet {
         Iterator iterator = items.iterator();
         while (iterator.hasNext()) {
             FileItem item = (FileItem) iterator.next();
-
-            if (!item.isFormField()) {
+            if (item.isFormField()){
+                String name = item.getFieldName();
+                System.out.println(name);
+                if(name.equals("id")){
+                     id=item.getString();
+                    System.out.println(id);
+                }
+                else if(name.equals("texto")){
+                     texto=item.getString();
+                    System.out.println(texto);
+                }
+                else if(name.equals("pond")){
+                     pond=item.getString();
+                    System.out.println(pond);
+                }
+                //String value = item.getString();
+                //System.out.println(value);
+            }
+            else {
                 String fileName = item.getName();
-
+                //System.out.println("");
                 String root = getServletContext().getRealPath("/");
                 File path = new File(root + "/uploads");
                 if (!path.exists()) {
@@ -55,6 +73,7 @@ public class HotS extends HttpServlet {
                 }
 
                 File uploadedFile = new File(path + "/" + fileName);
+                imagen="/uploads/" + fileName;
                 System.out.println(uploadedFile.getAbsolutePath());
                 item.write(uploadedFile);
             }
@@ -67,7 +86,7 @@ public class HotS extends HttpServlet {
         
         
         
-        /*try (PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
 ///////////////////////////////////////////////////////////////////////////////////////////
 // ------------  HEADER  ------------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -101,10 +120,10 @@ out.println("<meta charset=\"utf-8\">\n" +
                 "<div class=\"contenedor bg_amarillo sombra\">\n"+
                     "<div class=\"contenedor_alertas\">\n"+
                     "<legend>Holi </legend>");
-                            out.println("<h1>"+id+"</h1");          //        out.println("");
-                            out.println("<h1>"+texto+"</h1");
-                            out.println("<h1>"+pond+"</h1");
-                            out.println("<h1>"+imagen+"</h1");
+                            out.println("<h1>"+id+"</h1>");          //        out.println("");
+                            out.println("<h1>"+texto+"</h1>");
+                            out.println("<h1>"+pond+"</h1>");
+                            out.println("<h1>"+imagen+"</h1>");
                 
                 out.println("</div>\n"+
                 "</div>"
@@ -117,7 +136,7 @@ out.println("<meta charset=\"utf-8\">\n" +
         ///////////////////////////////////////////////////////////////////////////////////////////               
         out.println("</body>");
         out.println("</html>");  
-        }*/
+        }
     }
     }
 }
