@@ -17,6 +17,7 @@
     <Maes password="1234" nombre="Maria" id="maestro02" />
     <Maes password="1234" nombre="Tellez" id="maestro03" />
     <Alumno id="admin01" nombre="Alex" password="1234" />
+    <Alumno id="null" nombre="null" password="null" />
   </Maestro>
 </ROOT>
 

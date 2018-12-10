@@ -52,8 +52,26 @@ public class ver extends HttpServlet {
                         "responsiveVoice.speak(say,\"Spanish Latin American Female\");\n" +
                         "};");
             out.println("</script>");
-            out.println("</body>");
-            out.println("</html>");
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                // Footer
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                out.println(
+                        "<script src=\"js/vendor/modernizr-3.6.0.min.js\"></script>\n" +
+                        "<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\" integrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"></script>\n" +
+                        "<script>window.jQuery || document.write('<script src=\"js/vendor/jquery-3.3.1.min.js\"><\/script>')</script>\n" +
+                        "<script src=\"js/plugins.js\"></script>\n" +
+                        "<script src=\"js/main.js\"></script>\n" +
+
+                        "<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->\n" +
+                        <
+                        script > \n "+
+                        "  window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;\n" +
+                        "  ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')\n" +
+                        "</script>\n" +
+                        " <script src=\"https://www.google-analytics.com/analytics.js\" async defer></script>\n" +
+                        "</body>\n" +
+
+                        "</html>");
            
         }   
     }
