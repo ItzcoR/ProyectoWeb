@@ -30,11 +30,14 @@ public class modificarExamen extends HttpServlet{
         String xmlExam=request.getRealPath("WEB-INF\\ProtoExam.xml");
         String xmlPreg=request.getRealPath("WEB-INF\\ProtoToF.xml");
         String idExam=request.getParameter("idExamen");
+        //String texto=request.getParameter("nombre");
         String nombreExam=request.getParameter("nombreExamen");
         int cantPregs=numPregs(xmlExam,idExam);
-        //HttpSession session=request.getSession();
+        HttpSession session=request.getSession();
+        session.setAttribute("idViejo",idExam);
+        session.setAttribute("nombre",nombreExam);
         String[] idpreg=getIDPreguntasDeExamen(xmlExam,idExam);
-        String[][] valuesPregs=new String[3][cantPregs];
+        String[][] valuesPregs=new String[4][cantPregs];
         valuesPregs=getValuesDePreguntas(xmlPreg,idpreg);
         //String[] resultado=getPreguntas(xmlExam,idExam,idpreg);
         int valorExamen=getValorExamen(xmlPreg,idpreg);
@@ -45,60 +48,98 @@ public class modificarExamen extends HttpServlet{
             out.println("<title>Modificacion de Examen</title>"); 
             out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>");
             out.println("<script src=\"https://cdn.jsdelivr.net/npm/vue/dist/vue.js\"></script>");
+            out.println("<script type =\"text/javascript\">\n" +
+"            function letraNumVal(e) {\n" +
+"                tecla = document.all ? e.keyCode : e.which;\n" +
+"                if (tecla === 8 || tecla === 32)\n" +
+"                    return true;\n" +
+"                patron = /[a-z]|[A-Z]|á|é|í|ó|ú|Á|É|Í|Ó|Ú|[0-9]/;\n" +
+"                te = String.fromCharCode(tecla);\n" +
+"                return patron.test(te);\n" +
+"            }\n" +
+"            function numVal(e) {\n" +
+"                tecla = document.all ? e.keyCode : e.which;\n" +
+"                if (tecla === 8 || tecla === 32)\n" +
+"                    return true;\n" +
+"                patron = /[0-9]/;\n" +
+"                te = String.fromCharCode(tecla);\n" +
+"                return patron.test(te);\n" +
+"            }" );
+            out.println("</script>"); 
             out.println("</head>");
             out.println("<body>");  //  out.println("");   out.println('');
-            out.println("<h1 >Modificando el Examen con nombre: "+nombreExam+"</h1>");
-            
-            out.println("<h1 >numero de Preguntas en el examen: "+cantPregs+"</h1>");
-            out.println("<h1 >Total de puntos en el examen: "+valorExamen+"</h1>");
-            out.println("<form action='modExm' method='get'>");
-            out.println("<table id='listadoPregunatas'>");
-            out.println("   <thead>\n" +
-                        "     <tr>\n" +
-                        "       <th>ID Pregunta</th>\n" +
-                        "       <th>Pregunta</th>\n" +
-                        "       <th>Tipo</th>\n" +
-                        "       <th>Valor</th>\n" +
-                        "       <th>Acciones</th>\n" +
-                        "       <th>valor</th>\n" +
-                        "     </tr>\n" +
-                        "     </thead>\n" +
-                        "     <tbody>");
-            for(int i=0;i<cantPregs;i++)
-            {   
-                out.println("<tr>");
-                out.println("<td>");
-                out.println(idpreg[i]);    //out.println("<>");   out.println("");  out.println(''); 
-                out.println("</td>");
-                out.println("<td>");
-                out.println(valuesPregs[1][i]);
-                out.println("</td>");
-                out.println("<td>");
-                out.println(valuesPregs[2][i]);        //out.println("<>");   out.println("");  out.println(''); 
-                out.println("</td>");
-                out.println("<td>");
-                out.println(valuesPregs[0][i]);        //out.println("<>");   out.println("");  out.println(''); 
-                out.println("</td>");
-                out.println("<td>");
-                out.println("<a class=\"btn_ver btn\" href='ver?id="+idpreg[i]+"'><i class=\"far fa-eye\"></i></a>");
-                out.println("<a class=\"btn_borrar btn\" href='eliminard?idc="+idpreg[i]+"'><i class=\"fas fa-trash-alt\"></i></a>");
-                out.println("<a class=\"btn_editar btn\" href='modificard?idc="+idpreg[i]+"'><i class=\"fas fa-pen-square\"></i></i></a>");
-                out.println("</td>");
-                out.println("<td class=\"checkbox\">");
-                out.println(
-                "<label class=\"switch\">\n" +
-                "<input type=\"checkbox\"name='agregarExamen' value="+idpreg[i]+">\n" +
-                "<span class=\"slider round\"></span>\n" +
-                "</label>");                           
-                out.println("</td>");                           
-                out.println("</tr>");
-            }
-
-            out.println( "</tbody>");
-            out.println("</table>");	
-            out.println("</form>");
-            out.println(" <div ><a  href='Maestro'>Regresar</a></div>\n" +
-            "</div>");
+            out.println("<div>");
+                out.println("<div>");
+                    out.println("<h1 >Modificando el Examen con nombre: "+nombreExam+"</h1>");
+                    
+                    out.println("<h1 >numero de Preguntas en el examen: "+cantPregs+"</h1>");
+                    out.println("<h1 >Total de puntos en el examen: "+valorExamen+"</h1>");
+                    out.println("<form name='EditarPreguntas' action='modExm' method='get'>");
+                    out.println("<table id='listadoPregunatas'>");
+                    out.println("   <thead>\n" +
+                                "     <tr>\n" +
+                                "       <th>ID Pregunta</th>\n" +
+                                "       <th>Pregunta</th>\n" +
+                                "       <th>Tipo</th>\n" +
+                                "       <th>Respuesta</th>\n" +
+                                "       <th>Valor</th>\n" +
+                                "       <th>Acciones</th>\n" +
+                                "       <th>valor</th>\n" +
+                                "     </tr>\n" +
+                                "     </thead>\n" +
+                                "     <tbody>");
+                    for(int i=0;i<cantPregs;i++)
+                    {   
+                        out.println("<tr>");
+                        out.println("<td>");
+                        out.println(idpreg[i]);    //out.println("<>");   out.println("");  out.println(''); 
+                        out.println("</td>");
+                        out.println("<td>");
+                        out.println(valuesPregs[1][i]);//Texto Pregunta
+                        out.println("</td>");
+                        out.println("<td>");
+                        out.println(valuesPregs[2][i]);  //Tipo out.println("<>");   out.println("");  out.println(''); 
+                        out.println("</td>");
+                        out.println("<td>");
+                        out.println(valuesPregs[0][i]);    // Respuesta out.println("<>");   out.println("");  out.println(''); 
+                        out.println("</td>");
+                        out.println("<td>");
+                        out.println(valuesPregs[3][i]);    // Valor out.println("<>");   out.println("");  out.println(''); 
+                        out.println("</td>");
+                        out.println("<td>");
+                         out.println("<a class=\"btn_ver btn\" href='verPregunta?id="+idpreg[i]+"&tipo="+valuesPregs[2][i]+"'><i class=\"far fa-eye\"></i></a>");
+                         out.println("<a class=\"btn_borrar btn\" href='eliminarDeExamen?id="+idpreg[i]+"&tipo="+valuesPregs[2][i]+"'><i class=\"fas fa-trash-alt\"></i></a>");
+                         out.println("<a class=\"btn_editar btn\" href='modificarPregunta?id="+idpreg[i]+"&tipo="+valuesPregs[2][i]+"'><i class=\"fas fa-pen-square\"></i></i></a>");
+                        out.println("</td>");
+                         /* out.println("<td class=\"checkbox\">");
+                        out.println(
+                        "<label class=\"switch\">\n" +
+                        "<input type=\"checkbox\"name='agregarExamen' value="+idpreg[i]+">\n" +
+                        "<span class=\"slider round\"></span>\n" +
+                        "</label>"); */                          
+                        out.println("</td>");                           
+                        out.println("</tr>");
+                    }
+        
+                    out.println( "</tbody>");
+                    out.println("</table>");	
+                    out.println("</form>");
+                    
+                    out.println("<form action='modiExamen' method='get'>");
+                    out.println("<h1 >Proporciona un nombre y un ID, para el examen. El ID debe ser único</h1>");
+                    out.println("ID");
+                    out.println("<input type='text' name='idNuevo' onkeypress=\"return letraNumVal(event)\" value='"+idExam+"'required />");
+                    out.println("Nombre");
+                    out.println("<input type='text' name='nombre' onkeypress=\"return letraNumVal(event)\"value='"+nombreExam+"' required />");
+                
+                    out.println("<input type=\"reset\">");
+                    out.println("<input type=\"submit\" value=\"Crear\">");
+                    out.println("</form>");
+                    out.println(" <div ><a  href='Maestro'>Regresar</a></div>\n" +
+                            "</div>");
+                    
+                out.println("</div>");
+            out.println("</div>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -197,7 +238,7 @@ public class modificarExamen extends HttpServlet{
     {
         int aux=idpregs.length;
         int n=0;
-        String[][] nombU=new String[3][aux];    //Se crea un arreglo bidimensional que contendra los elementos de cada pregunta
+        String[][] nombU=new String[4][aux];    //Se crea un arreglo bidimensional que contendra los elementos de cada pregunta
         
         try{
             /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
@@ -218,6 +259,7 @@ public class modificarExamen extends HttpServlet{
                     nombU[0][n]=hijo.getAttributeValue("res");  //En la Posicion 1 estara si la respuesta es Verdadera o Falsa
                     nombU[1][n]=hijo.getText();//En la ultima posicion estara la pregunta la cual esta como texto entre la pregunta
                     nombU[2][n]=hijo.getName();//En la cuarta posicion se guarda el nombre del tag, el cual nos indica el tipo de pregunta
+                    nombU[3][n]=hijo.getAttributeValue("pond");
                     n++;
                 }
                 

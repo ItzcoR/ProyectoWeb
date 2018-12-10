@@ -37,12 +37,16 @@ public class verExamen extends HttpServlet {
             "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n" +
             "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>");
             out.println("</head>");
-            out.println("<body class='colorful'>");
-            out.println("<h1 class='blanco'>Ver Examen ID: "+idExamen+" Nombre : "+nombreExamen+"</h1>");
-            out.println("<div class=\"row\">\n" +
-            "  <div class=\"col-sm-8\"></div>\n" +
-            "  <div class=\"col-sm-4\"><a class='blanco' href='Maestro'>Regresar</a></div>\n" +
-            "</div>");
+            out.println("<div>");
+                out.println("<div>");
+                    out.println("<body class='colorful'>");
+                    out.println("<h1 class='blanco'>Ver Examen ID: "+idExamen+" Nombre : "+nombreExamen+"</h1>");
+                    out.println("<div class=\"row\">\n" +
+                    "  <div class=\"col-sm-8\"></div>\n" +
+                    "  <div class=\"col-sm-4\"><a class='blanco' href='Maestro'>Regresar</a></div>\n" +
+                    "</div>");
+                out.println("<div>");
+            out.println("</div>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -162,9 +166,7 @@ public class verExamen extends HttpServlet {
                     nombU[1][n]=hijo.getText();//En la ultima posicion estara la pregunta la cual esta como texto entre la pregunta
                     nombU[2][n]=hijo.getName();//En la cuarta posicion se guarda el nombre del tag, el cual nos indica el tipo de pregunta
                     n++;
-                }
-                
-                	
+                }               	
             }
         } catch (JDOMException | IOException ex) {
             Logger.getLogger(Maestro.class.getName()).log(Level.SEVERE, null, ex);

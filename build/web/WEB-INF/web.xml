@@ -29,6 +29,10 @@
         <servlet-class>administrador.modificarExamen</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>modiExamen</servlet-name>
+        <servlet-class>administrador.modiExamen</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>modiTrueFalse</servlet-name>
         <servlet-class>administrador.modiTrueFalse</servlet-class>
     </servlet>
@@ -151,6 +155,10 @@
     <servlet-mapping>
         <servlet-name>modificarExamen</servlet-name>
         <url-pattern>/modificarExamen</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>modiExamen</servlet-name>
+        <url-pattern>/modiExamen</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>verExamen</servlet-name>

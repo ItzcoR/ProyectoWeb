@@ -45,7 +45,7 @@
     <Preg id="ptof6" />
     <Preg id="323" />
   </Exa>
-  <Exa id="Ttodo2" nombre="Todas y unas mas">
+  <Exa id="Ttodo3" nombre="Todas y unas mas">
     <Preg id="ptof1" />
     <Preg id="ptof2" />
     <Preg id="ptof5" />
@@ -54,4 +54,10 @@
     <Preg id="124" />
     <Preg id="323" />
   </Exa>
+  <Exa id="12popo" nombre="Pitoqlo kk pedo">
+    <Preg id="ptof1" />
+    <Preg id="ptof2" />
+    <Preg id="ptof3" />
+  </Exa>
 </Examenes>
+
