@@ -2,7 +2,6 @@
 <ROOT>
   <Administrador>
     <Adm password="1234" nombre="Alex" id="admin01" />
-    <Adm password="1234" nombre="Juan" id="admin02" />
     <Adm password="1234" nombre="Itzco" id="admin03" />
     <Adm password="1234" nombre="Ruben" id="admin04" />
   </Administrador>
@@ -17,6 +16,7 @@
     <Maes password="1234" nombre="Agustin" id="maestro01" />
     <Maes password="1234" nombre="Maria" id="maestro02" />
     <Maes password="1234" nombre="Tellez" id="maestro03" />
+    <Maestro id="admin02" nombre="Juan" password="1234" />
   </Maestro>
 </ROOT>
 
