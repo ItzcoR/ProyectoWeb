@@ -32,32 +32,39 @@ public class crearExamen extends HttpServlet{
         session.setAttribute("idPreguntas",idpreg);
         //String resultado=agregarAlExamen(xml,"ExamenPrueba2","idpruebas2",idpreg);
         try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Creacion de Examen</title>"); 
-            out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>");
-            out.println("<script src=\"https://cdn.jsdelivr.net/npm/vue/dist/vue.js\"></script>");
-            out.println("<script type =\"text/javascript\">\n" +
-"            function letraNumVal(e) {\n" +
-"                tecla = document.all ? e.keyCode : e.which;\n" +
-"                if (tecla === 8 || tecla === 32)\n" +
-"                    return true;\n" +
-"                patron = /[a-z]|[A-Z]|á|é|í|ó|ú|Á|É|Í|Ó|Ú|[0-9]/;\n" +
-"                te = String.fromCharCode(tecla);\n" +
-"                return patron.test(te);\n" +
-"            }\n" +
-"            function numVal(e) {\n" +
-"                tecla = document.all ? e.keyCode : e.which;\n" +
-"                if (tecla === 8 || tecla === 32)\n" +
-"                    return true;\n" +
-"                patron = /[0-9]/;\n" +
-"                te = String.fromCharCode(tecla);\n" +
-"                return patron.test(te);\n" +
-"            }" );
-            out.println("</script>"); 
-            out.println("</head>");
-            out.println("<body>");  //  out.println("");   out.println('');
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                // Header
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                out.println(
+                    "<!doctype html>\n" +
+                    " <html class=\"no-js\" lang=\"\">\n" +
+
+                    "<head>\n" +
+                    "<meta charset=\"utf-8\">\n" +
+                    "<meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\">\n" +
+                    "<title></title>\n" +
+                    "<meta name=\"description\" content=\"\">\n" +
+                    "   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n" +
+
+                    "<link rel=\"manifest\" href=\"site.webmanifest\">\n" +
+                    " <link rel=\"apple-touch-icon\" href=\"icon.png\">\n" +
+                    "   <!-- Place favicon.ico in the root directory -->\n" +
+
+                    "<link rel=\"stylesheet\" href=\"css/normalize.css\">\n" +
+                    " <link rel=\"stylesheet\" href=\"css/main.css\">\n" +
+                    "<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.5.0/css/all.css\" integrity=\"sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU\" crossorigin=\"anonymous\">\n"+
+                    " </head>\n" +
+
+                    "<body>\n" +
+                    "<!--[if lte IE 9]>\n" +
+                    " <p class=\"browserupgrade\">You are using an <strong>outdated</strong> browser. Please <a href=\"https://browsehappy.com/\">upgrade your browser</a> to improve your experience and security.</p>\n" +
+                    "  <![endif]-->\n" +
+
+                    "<div class=\"contenedor_barra\">\n" +
+                    "<h1>Sistema evaluador</h1>\n" +
+                    " </div>");
+
+                    
             out.println("<h1 >Estas son las preguntas Seleccionadas </h1>");
             for(int i=0;i<npregs;i++){
                 out.println("<h2>Pregunta "+idpreg[i]+" agregada</h2>");
@@ -76,26 +83,25 @@ public class crearExamen extends HttpServlet{
             "</div>");
 
             
-                /////////////////////////////////////////////////////////////////////////////////////////////////////////
-                // Footer
-                /////////////////////////////////////////////////////////////////////////////////////////////////////////
-                out.println(
-                        "<script src=\"js/vendor/modernizr-3.6.0.min.js\"></script>\n" +
-                        "<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\" integrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"></script>\n" +
-                        "<script>window.jQuery || document.write('<script src=\"js/vendor/jquery-3.3.1.min.js\"><\/script>')</script>\n" +
-                        "<script src=\"js/plugins.js\"></script>\n" +
-                        "<script src=\"js/main.js\"></script>\n" +
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////
+            // Footer
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////
+            out.println(
+                    "<script src=\"js/vendor/modernizr-3.6.0.min.js\"></script>\n" +
+                    "<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\" integrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"></script>\n" +
+                    "<script>window.jQuery || document.write('<script src=\"js/vendor/jquery-3.3.1.min.js\"></script>')</script>\n"+
+                    "<script src=\"js/plugins.js\"></script>\n" +
+                    "<script src=\"js/main.js\"></script>\n" +
 
-                        "<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->\n" +
-                        <
-                        script > \n "+
-                        "  window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;\n" +
-                        "  ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')\n" +
-                        "</script>\n" +
-                        " <script src=\"https://www.google-analytics.com/analytics.js\" async defer></script>\n" +
-                        "</body>\n" +
+                    "<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->\n" +
+                    "<script > \n "+
+                    "  window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;\n" +
+                    "  ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')\n" +
+                    "</script>\n" +
+                    " <script src=\"https://www.google-analytics.com/analytics.js\" async defer></script>\n" +
+                    "</body>\n" +
 
-                        "</html>");
+                    "</html>");
         }
     }
 }
