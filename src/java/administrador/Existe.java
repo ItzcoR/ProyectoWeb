@@ -73,15 +73,15 @@ public class Existe extends HttpServlet {
                 out.println(
                     "<div class=\"bg_amarillo contenedor sombra\">\n" +
                         "<div class=\"contenedor_alertas\">\n" +
-                        "<legend class=\"alertas\">Log in <span>Intente de nuevo o contacte al administrador para registrarse o arreglar cualquier asunto reacionado a su cuenta</span>\n" +
+                        "<legend class=\"alertas\">Usuario o contraseña invalidos<span>Intente de nuevo o contacte al administrador para registrarse o arreglar cualquier asunto reacionado a su cuenta</span>\n" +
                         "</legend>\n" +
                         
                         "<div class=\"campo enviar\">\n" +
-                        "    <input type=\"submit\" class=\"btn-info\" value=\"Iniciar sesion\">\n" +
+                        "   <a class=\"btn-info btn_rosa\" href='index.html'>Regresar</a>\n" +
                         "</div>\n" +
                     "</div>\n" +
 
-
+                    
                     "</div>");
 
 

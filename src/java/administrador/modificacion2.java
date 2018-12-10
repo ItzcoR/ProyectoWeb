@@ -68,16 +68,17 @@ public class modificacion2 extends HttpServlet {
                     " </div>");
 
 
-            out.println("<div class=\"bg_amarillo contenedor sombra\">\n"+
+            out.println("<div class=\"bg_blanco contenedor sombra\">\n"+
             "<div class =\"contenedor_alertas\">\n"+
             "<legend>\n"+
              " Usuario modificado correctacmente\n"+
             "</legend>\n"+
-            "El nuevo usuario: "+usuario+"<br> La contraseña: "+contra+"<br> El nombre: "+nom+"<br> El tipo: "+tipo+" <br></h1>\n"+
+            "<div class=\"modif\"><i class=\"fas fa-check\"></i> <span>Usuario: </span>"+usuario+"<br> <i class=\"fas fa-check\"></i> <span>Contraseña:</span> "+contra+"<br><i class=\"fas fa-check\"></i> <span>Nombre:</span> "+nom+"<br><i class=\"fas fa-check\"></i> <span>Tipo:</span> "+tipo+" <br></div>\n"+
             
-            "  <div class=\"col-sm-8\"></div>\n" +
-            "  <div class=\"col-sm-4\"><a class='blanco' href='Administrador'>Regresar</a></div>\n" +
-            "</div>\n" +
+            "<div class=\"campo enviar\">\n" +
+                        "   <a class=\"btn-info btn_rosa\" href='Administrador'>Regresar</a>\n" +
+                        "</div>\n" +
+                        "</div>\n" +
             "</div>");
 
             

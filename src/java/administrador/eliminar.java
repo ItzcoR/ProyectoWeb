@@ -61,11 +61,17 @@ public class eliminar extends HttpServlet {
                     " </div>");
 
                     
-            out.println("<h1 class='blanco'>Usuario Eliminado Correctamente</h1>");
-            out.println("<div class=\"row\">\n" +
-            "  <div class=\"col-sm-8\"></div>\n" +
-            "  <div class=\"col-sm-4\"><a class='blanco' href='Administrador'>Regresar</a></div>\n" +
-            "</div>");
+                    out.println("<div class=\"bg_blanco contenedor sombra\">\n"+
+                    "<div class =\"contenedor_alertas\">\n"+
+                    "<legend>\n"+
+                     " Usuario eliminado correctacmente\n"+
+                    "</legend>\n"+
+                    
+                    "<div class=\"campo enviar\">\n" +
+                                "   <a class=\"btn-info btn_rosa\" href='Administrador'>Regresar</a>\n" +
+                                "</div>\n" +
+                                "</div>\n" +
+                    "</div>");
             /////////////////////////////////////////////////////////////////////////////////////////////////////////
             // Footer
             /////////////////////////////////////////////////////////////////////////////////////////////////////////
