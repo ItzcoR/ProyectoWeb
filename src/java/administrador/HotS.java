@@ -129,10 +129,11 @@ out.println("<meta charset=\"utf-8\">\n" +
                             out.println("<h1>"+pond+"</h1>");
                             out.println("<h1>"+imagen+"</h1>");
                             out.println("<h1>"+resultado+"</h1>");
-                out.println("</div>\n"+
-                "</div>"
-                );
-
+                            out.println("<div class=\"campo enviar\">\n" +
+                            "   <a class=\"btn-info btn_rosa\" href='Maestro'>Regresar</a>\n" +
+                            "</div>\n" +
+                    "</div>\n" +
+                "</div>");  
 
 
         ////////////////////////////////////////////////////////////////////////////////////////////
