@@ -37,6 +37,7 @@ public class Maestro extends HttpServlet {
         HttpSession session=request.getSession();
         String id=(String) session.getAttribute("id");
         String tipo=(String) session.getAttribute("tipo");
+        String nombre=(String) session.getAttribute("nombre");
         if(id!=null)
         {
         try (PrintWriter out = response.getWriter()) {
@@ -87,7 +88,7 @@ out.println("<meta charset=\"utf-8\">\n" +
             out.println("<form action='crearExamen' method='get'>");
             
             out.println(
-                "<h2 class=\"espacio\">Bienvenido profesor: "+id+"</h2>\n" +
+                "<h2 class=\"espacio\">Bienvenido profesor: "+nombre+"</h2>\n" +
                    
                     "<div class=\"contenedor_contactos\">\n"+
                     
@@ -110,18 +111,18 @@ out.println("<meta charset=\"utf-8\">\n" +
                         {   
                             out.println("<tr>");
                             out.println("<td>");
-                            out.println(pregs[0][i]);    //out.println("<>");   out.println("");  out.println(''); 
+                            out.println(pregs[0][i]);    // ID out.println("<>");   out.println("");  out.println(''); 
                             out.println("</td>");
                             out.println("<td>");
-                            out.println(pregs[2][i]);
+                            out.println(pregs[2][i]);   //Pregunta texto
                             out.println("</td>");
                             out.println("<td>");
-                            out.println(pregs[3][i]);        //out.println("<>");   out.println("");  out.println(''); 
+                            out.println(pregs[3][i]);        // Tipo  out.println("<>");   out.println("");  out.println(''); 
                             out.println("</td>");
                             out.println("<td>");
-                            out.println("<a class=\"btn_ver btn\" href='ver?id="+pregs[0][i]+"'><i class=\"far fa-eye\"></i></a>");
-                            out.println("<a class=\"btn_borrar btn\" href='eliminard?idc="+pregs[0][i]+"'><i class=\"fas fa-trash-alt\"></i></a>");
-                            out.println("<a class=\"btn_editar btn\" href='modificard?idc="+pregs[0][i]+"'><i class=\"fas fa-pen-square\"></i></i></a>");
+                            out.println("<a class=\"btn_ver btn\" href='verPregunta?id="+pregs[0][i]+"&tipo="+pregs[3][i]+"'><i class=\"far fa-eye\"></i></a>");
+                            out.println("<a class=\"btn_borrar btn\" href='eliminard?id="+pregs[0][i]+"&tipo="+pregs[3][i]+"'><i class=\"fas fa-trash-alt\"></i></a>");
+                            out.println("<a class=\"btn_editar btn\" href='modificarPregunta?id="+pregs[0][i]+"&tipo="+pregs[3][i]+"'><i class=\"fas fa-pen-square\"></i></i></a>");
                             out.println("</td>");
                             out.println("<td class=\"checkbox\">");
                             out.println(

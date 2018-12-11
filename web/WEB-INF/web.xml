@@ -73,6 +73,10 @@
         <servlet-class>administrador.eliminard</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ExamenApp</servlet-name>
+        <servlet-class>administrador.ExamenApp</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>UploadServlet</servlet-name>
         <servlet-class>administrador.UploadServlet</servlet-class>
     </servlet>
@@ -83,6 +87,14 @@
     <servlet>
         <servlet-name>ver</servlet-name>
         <servlet-class>administrador.ver</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HotS</servlet-name>
+        <servlet-class>administrador.HotS</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>modiHs</servlet-name>
+        <servlet-class>administrador.modiHs</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>verExamen</servlet-name>
@@ -123,6 +135,10 @@
     <servlet>
         <servlet-name>ExamenXML</servlet-name>
         <servlet-class>administrador.ExamenXML</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Mapear</servlet-name>
+        <servlet-class>administrador.Mapear</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>eliminarExamen</servlet-name>
@@ -177,8 +193,16 @@
         <url-pattern>/modiTrueFalse</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>modiHs</servlet-name>
+        <url-pattern>/modiHs</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>eliminar</servlet-name>
         <url-pattern>/eliminar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Mapear</servlet-name>
+        <url-pattern>/Mapear</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Maestro</servlet-name>
@@ -191,6 +215,10 @@
     <servlet-mapping>
         <servlet-name>cerrar</servlet-name>
         <url-pattern>/cerrar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HotS</servlet-name>
+        <url-pattern>/HotS</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CrearPregunta</servlet-name>
@@ -255,6 +283,10 @@
     <servlet-mapping>
         <servlet-name>EliminarGrupo</servlet-name>
         <url-pattern>/EliminarGrupo</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>ExamenApp</servlet-name>
+        <url-pattern>/ExamenApp</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

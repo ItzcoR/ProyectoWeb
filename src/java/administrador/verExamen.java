@@ -2,6 +2,7 @@
 package administrador;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
@@ -16,7 +17,8 @@ import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
-
+import org.jdom.output.Format;
+import org.jdom.output.XMLOutputter;
 public class verExamen extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -57,8 +59,10 @@ out.println("<meta charset=\"utf-8\">\n" +
 ///////////////////////////////////////////////////////////////////////////////////////////
             out.println("<h1 class='blanco'>Ver Examen ID: "+idExamen+" Nombre : "+nombreExamen+"</h1>");
             out.println("<div class=\"row\">\n" +
-            "  <div class=\"col-sm-8\"></div>\n" +
-            "  <div class=\"col-sm-4\"><a class='blanco' href='Maestro'>Regresar</a></div>\n" +
+            "  <div class=\"col-sm-8\"></div>\n" );
+                    
+                    
+            out.println("<div class=\"col-sm-4\"><a class='blanco' href='Maestro'>Regresar</a></div>\n" +
             "</div>");
 
             
@@ -223,4 +227,140 @@ out.println("</html>");
         }
         return total;
     } 
+    public String agregarOpciones(String ruta,String id,String[] idopc,String[] coordX,String[] coordY,String[] radios)
+    {
+        String resultado="";
+        int numeroOpciones=coordX.length;
+        int aux=0;
+        try{
+            /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
+            SAXBuilder builder=new SAXBuilder();
+            //Forma de abriri el archivo
+            File xmlFile = new File(ruta);
+            /*Almacenamos el xml cargado en builder en un documento*/
+            Document bd_xml=builder.build(xmlFile);
+            //Elemento raiz
+            Element raiz=bd_xml.getRootElement();
+            //Se almacenan los hijos en una lista
+            List hijos=raiz.getChildren();
+            //Objeto que escribe en el archivo xml
+            XMLOutputter xmlOutput = new XMLOutputter();
+            //Formato en el que se va a escribir
+            xmlOutput.setFormat(Format.getPrettyFormat());
+            for(int i=0;i<hijos.size();i++)
+            {
+                Element hijo=(Element)hijos.get(i);
+                String identificador=hijo.getAttributeValue("id");
+                if(identificador.equals(id))
+                {
+                    for (int j=0;j<numeroOpciones ;j++ ) {
+                        Element nuevo=new Element("HS");
+                        nuevo.setAttribute("id",idopc[j]);
+                        nuevo.setAttribute("coordX",coordX[j]);
+                        nuevo.setAttribute("coordY",coordY[j]);
+                        nuevo.setAttribute("radio",radios[j]);
+                        hijo.addContent(nuevo);
+                        resultado="Pregunta agregada exitosamente";
+                    }
+                        
+                 }
+                
+            }
+      xmlOutput.output(bd_xml,new FileWriter(ruta));
+       
+        } catch (JDOMException | IOException ex) {
+            Logger.getLogger(Mapear.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultado;
+    }
+    public int numOpciones(String ruta,String id)
+    {
+        
+        //int numeroOpciones=coordX.length;
+        int aux=0;
+       // String[][] opciones=new String[4][aux];
+        try{
+            /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
+            SAXBuilder builder=new SAXBuilder();
+            //Forma de abriri el archivo
+            File xmlFile = new File(ruta);
+            /*Almacenamos el xml cargado en builder en un documento*/
+            Document bd_xml=builder.build(xmlFile);
+            //Elemento raiz
+            Element raiz=bd_xml.getRootElement();
+            //Se almacenan los hijos en una lista
+            List hijos=raiz.getChildren();
+            //Objeto que escribe en el archivo xml
+            XMLOutputter xmlOutput = new XMLOutputter();
+
+            //Formato en el que se va a escribir
+            xmlOutput.setFormat(Format.getPrettyFormat());
+            for(int i=0;i<hijos.size();i++)
+            {
+                Element hijo=(Element)hijos.get(i);
+                String identificador=hijo.getAttributeValue("id");
+                if(identificador.equals(id))
+                {
+                    List opciones=hijo.getChildren();
+                    aux=opciones.size();
+                    return aux;
+                        
+                 }
+                
+            }
+      //xmlOutput.output(bd_xml,new FileWriter(ruta));
+       
+        } catch (JDOMException | IOException ex) {
+            Logger.getLogger(Mapear.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return aux;
+    }
+    public String[][] ObtenerOpciones(String ruta,String id)
+    {
+        
+        int n=0;
+        int aux=numOpciones(ruta,id);
+        String[][] opcionesValues=new String[4][aux];
+        try{
+            /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
+            SAXBuilder builder=new SAXBuilder();
+            //Forma de abriri el archivo
+            File xmlFile = new File(ruta);
+            /*Almacenamos el xml cargado en builder en un documento*/
+            Document bd_xml=builder.build(xmlFile);
+            //Elemento raiz
+            Element raiz=bd_xml.getRootElement();
+            //Se almacenan los hijos en una lista
+            List hijos=raiz.getChildren();
+            //Objeto que escribe en el archivo xml
+            XMLOutputter xmlOutput = new XMLOutputter();
+
+            //Formato en el que se va a escribir
+            xmlOutput.setFormat(Format.getPrettyFormat());
+            for(int i=0;i<hijos.size();i++)
+            {
+                Element hijo=(Element)hijos.get(i);
+                String identificador=hijo.getAttributeValue("id");
+                if(identificador.equals(id))
+                {
+                    List opciones=hijo.getChildren();
+                    for (int j=0;j<opciones.size() ;j++ ) {
+                        Element opcion=(Element)opciones.get(j);
+                        opcionesValues[0][n]=opcion.getAttributeValue("id");
+                        opcionesValues[1][n]=opcion.getAttributeValue("coordX");
+                        opcionesValues[2][n]=opcion.getAttributeValue("coordY");
+                        opcionesValues[3][n]=opcion.getAttributeValue("radio");
+                        n++;
+                    }
+                        
+                 }
+                 
+            }
+      //xmlOutput.output(bd_xml,new FileWriter(ruta));
+       
+        } catch (JDOMException | IOException ex) {
+            Logger.getLogger(Mapear.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return opcionesValues;
+    }
 }

@@ -20,26 +20,27 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
-public class modificarPregunta extends HttpServlet {
+
+public class Mapear extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String xml=request.getRealPath("WEB-INF\\ProtoToF.xml");
-        String idPregunta=request.getParameter("id");
-        String tipoPregunta=request.getParameter("tipo");
         HttpSession session=request.getSession();
-        session.setAttribute("id",idPregunta);
-        session.setAttribute("tipo",tipoPregunta);
-        String[] Preset=new String[3];
-        String[] ValoresHotS=new String[4];
+        String idPregunta=(String)session.getAttribute("id");
         //String nombreExamen=request.getParameter("nombreExamen");
-        if (tipoPregunta.equals("ToF")) { 
-            Preset=getValuesPreguntaTOF(xml,idPregunta);
-        }
-        else if (tipoPregunta.equals("HotSpot")) {
-            ValoresHotS=getValuesPreguntaHotS(xml,idPregunta);
-        }
+        String [] ValoresHotS=new String[4];
+        ValoresHotS=getValuesPreguntaHotS(xml,idPregunta);
+        String[] idOpciones=request.getParameterValues("idOpcion");
+        int nIDs=idOpciones.length;
+        String[] coordenadasX=request.getParameterValues("coordX");
+        int numCoordX=coordenadasX.length;
+        String[] coordenadasY=request.getParameterValues("coordY");
+        int numCoordY=coordenadasY.length;
+        String[] radios=request.getParameterValues("radio");
+        int numRadio=radios.length;
+        String resultado=agregarOpciones(xml,idPregunta,idOpciones,coordenadasX,coordenadasY,radios);
         try (PrintWriter out = response.getWriter()) {
 ///////////////////////////////////////////////////////////////////////////////////////////
 // ------------  HEADER  ------------------------------------------------------------------
@@ -70,129 +71,33 @@ out.println("<meta charset=\"utf-8\">\n" +
 ///////////////////////////////////////////////////////////////////////////////////////////
 // ------------  CONTENIDO  ---------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////////////////
-            out.println("<h1 class='blanco'>Modificar Pregunta ID: "+idPregunta+" del Tipo: "+tipoPregunta+"</h1>");
-            if (tipoPregunta.equals("ToF")) {    
-                    out.println("<form name='VoF' action='modiTrueFalse' method='get'>");                    
-                        out.println("<table>");
-                            /*out.println("<tr>");
-                                out.println("<td> ID de la pregunta </td><td><input type='text' name='id' value="+idPregunta+" required /></td>");
-                            out.println("</tr>");*/
-                            out.println("<tr>");
-                                out.println("<td> Texto de la pregunta </td><td><input type='text' name='texto' value='"+Preset[2]+"' required /></td>");
-                            out.println("</tr>");
-                            out.println("<tr>");
-                                out.println("<td> Valor de la pregunta </td><td><input type='text' name='pond' value='"+Preset[1]+"' required /></td>");
-                            out.println("</tr>");
-                            out.println("<tr>");
-                                out.println("<td> Respuesta </td><td><select name=\"res\" >" );    //selected='selected'
-                                if (Preset[0].equals("V")) {
-                                    out.println("<option selected='selected' value=\"V\">Verdadero</option>");
-                                    out.println("<option value=\"F\">Falso</option>");
-                                }
-                                else {
-                                    out.println("<option value=\"V\">Verdadero</option>");
-                                    out.println("<option selected='selected' value=\"F\">Falso</option>");
-                                }
-                                out.println("</select>");
-                                
-                            out.println("</tr>");
-                         /*out.println("<tr>");
-                                out.println("<td> Agregar archivo </td><td><input type='file' name='archivo' /></td>");
-                            out.println("</tr>");*/
-                        out.println("</table");
-                        out.println("<input type=\"reset\">");
-                        out.println("<input type=\"submit\" value=\"Modificar\">");
-                        out.println("<input type=\"button\" value=\"Cancelar\" onclick=\"document.location='Maestro'\">");
-            
-                    out.println("</form>");
-                }
-                else if (tipoPregunta.equals("HotSpot")) {
-                    int nOps=numOpciones(xml,idPregunta);
-                    String[][] ValoresOpciones=new String[4][nOps];
-                    ValoresOpciones=ObtenerOpciones(xml,idPregunta);
-                    out.println("<tr>");
-                                out.println("<h1 class='blanco'> ID de la pregunta "+idPregunta+"</h1>");
-                            out.println("</tr>");
-                    out.println("<h1 class='blanco'>numero de Opciones: "+nOps+"</h1>");
-                    out.println("<img src='"+ValoresHotS[2]+"'>");
-                    out.println("<form name='HotS' action='modiHs' method='get'>");                    
-                        out.println("<table>");
-                            
-                            
-                            //out.println("<tr>");
-                                //out.println("<td> Texto de la pregunta </td><td><input type='text' name='texto' value='"+ValoresHotS[3]+"' required /></td>");
-                            //out.println("</tr>");
-                            out.println("<tr>");
-                                out.println("<td> Valor de la pregunta </td><td><input type='text' name='pond' value='"+ValoresHotS[1]+"' required /></td>");
-                            out.println("</tr>");
-                            out.println("<tr>");
-                                out.println("<td> Respuesta </td><td><input type='text' name=\"res\" value='"+ValoresHotS[0]+"' required /></td>");    //selected='selected'                                                                                                
-                            out.println("</tr>");
-                            for (int l=0;l<nOps ;l++ ) {
-                                out.println("<tr>");
-                                out.println("<td>ID de la opcion </td><td><input type='text' name='idOpcion' value="+ValoresOpciones[0][l]+" required /></td>");
-                                out.println("<tr>");
-                                out.println("<tr>");
-                                out.println("<td>CoordenadaX</td><td><input type='text' name='coordX' value="+ValoresOpciones[1][l]+" required /></td>");
-                                out.println("<tr>");
-                                out.println("<tr>");
-                                out.println("<td>CoordenadaY </td><td><input type='text' name='coordY' value="+ValoresOpciones[2][l]+" required /></td>");
-                                out.println("<tr>");
-                                out.println("<tr>");
-                                out.println("<td>Radio </td><td><input type='text' name='radio' value="+ValoresOpciones[3][l]+" required /></td>");
-                                out.println("<tr>");
-                            }                         
-                            
-                        out.println("</table");
-                        out.println("<input type=\"reset\">");
-                        out.println("<input type=\"submit\" value=\"Crear\">");
-                        out.println("<input type=\"button\" value=\"Cancelar\" onclick=\"document.location='Maestro'\">");
-            
-                    out.println("</form>");
-                }
+            out.println("<h1 class='blanco'>Mapear Pregunta: "+idPregunta+"</h1>");
+             out.println("<h1 class='blanco'>Resultado: "+resultado+"</h1>");
             out.println("<div class=\"row\">\n" +
-            "  <div class=\"col-sm-8\"></div>\n" +
-            "  <div class=\"col-sm-4\"><a class='blanco' href='Maestro'>Regresar</a></div>\n" +
+            "  <div class=\"col-sm-8\"></div>\n" );
+            //out.println("<div class='blanco'>");
+             /*for (int k=0;k<nIDs ;k++ ) {
+                out.println("<h2 class='blanco'> IDOpciones: "+idOpciones[k]+"</h1>");
+                out.println("<h2 class='blanco'> CoordenadasX: "+coordenadasX[k]+"</h1>");
+                out.println("<h2 class='blanco'> CoordenadasY: "+coordenadasY[k]+"</h1>");
+                out.println("<h2 class='blanco'> Radios: "+radios[k]+"</h1>");
+                
+                                        
+                }    */   
+            //out.println("</div>");        
+            out.println("<div class=\"col-sm-4\"><a class='blanco' href='Maestro'>Regresar</a></div>\n" +
             "</div>");
-            out.println("</body>");
-            out.println("</html>");
+
+            
+
+////////////////////////////////////////////////////////////////////////////////////////////
+// ------------  FOOTER  -------------------------------------------------------------------
+///////////////////////////////////////////////////////////////////////////////////////////               
+out.println("</body>");
+out.println("</html>");
         }
     }
-    public String[] getValuesPreguntaTOF(String direc,String id)    
-    {
-        String[] Valores=new String[3];
-        try{
-            /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
-            SAXBuilder builder=new SAXBuilder();
-            //Forma de abriri el archivo
-            File xmlFile = new File(direc);
-            /*Almacenamos el xml cargado en builder en un documento*/
-            Document bd_xml=builder.build(xmlFile);
-            //Elemento raiz
-            Element raiz=bd_xml.getRootElement();
-            //Se almacenan los hijos en una lista
-            List hijos=raiz.getChildren();
-            XMLOutputter xmlOutput = new XMLOutputter();
-            //Formato en el que se va a escribir
-            xmlOutput.setFormat(Format.getPrettyFormat());
-            for(int i=0;i<hijos.size();i++)
-            {
-                Element hijo=(Element)hijos.get(i);
-                String iden=hijo.getAttributeValue("id");
-                if(iden.equals(id))
-                {
-                    Valores[0]=hijo.getAttributeValue("res");
-                    Valores[1]=hijo.getAttributeValue("pond");
-                    Valores[2]=hijo.getText();
-                }
-            }
-            //Se escribe el documento bd_xml en el archivo XML
-        //xmlOutput.output(bd_xml,new FileWriter(direc));
-        } catch (JDOMException | IOException ex) {
-            Logger.getLogger(modificarPregunta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return Valores;
-    }
+    
     public String[] getValuesPreguntaHotS(String direc,String id)    
     {
         String[] Valores=new String[4];
@@ -365,4 +270,5 @@ out.println("<meta charset=\"utf-8\">\n" +
         }
         return opcionesValues;
     }
+
 }

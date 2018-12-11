@@ -63,30 +63,43 @@ out.println("<meta charset=\"utf-8\">\n" +
 ///////////////////////////////////////////////////////////////////////////////////////////   
             out.println(
                 "<div class=\"contenedor bg_amarillo sombra\">\n"+
-                    "<div class=\"contenedor_alertas\">\n"+
-                    "<legend>Estas son las preguntas Seleccionadas </legend>\n"+
-                    "</div>\n"+
+                    "<form action='ExamenXML' method='get'>\n"+
+                        "<div class=\"contenedor_alertas\">\n"+
+                            "<legend>Estas son las preguntas Seleccionadas<span>Proporciona un nombre y un ID, para el examen.El id debe de ser unico</span> </legend>\n"+
+                            "<div class=\"campos_usuario\">\n"+
+
+                    
+                                "<div class=\"campo_usuario\">\n"+
+                        
+                                "<label for=\"nombre\">Id:</label>\n"+
+                                "<input type='text' name='id' onkeypress=\"return letraNumVal(event)\" required autocomplete=\"off\"/>\n"+
+                        
+                                "</div>\n"+
+
+                                "<div class=\"campo_usuario\">\n"+
+                        
+                                "<label for=\"nombre\">Nombre:</label>\n"+
+                                "<input type='text' name='nombre' onkeypress=\"return letraNumVal(event)\" required autocomplete=\"off\" />\n"+
+                        
+                                "</div>\n"+
+                            
+                            "</div>\n"+
+
+
+                            "<div class=\"campo_usuario enviar\">\n"+
+                                
+                                "<input class=\"btn btn-info btn_rosa\" type=\"reset\">\n"+
+                                "<input class=\"btn btn-info btn_rosa\" type=\"submit\" value=\"Crear\">\n"+
+                                "<a class=\"btn btn-info btn_rosa\" href='Maestro'>Regresar</a>\n"+
+
+                            "</div>\n"+
+
+
+
+                        "</div>\n"+
+                    "</form>\n"+
                 "</div>"
                 );
-
-
-
-            out.println("<h1 >Estas son las preguntas Seleccionadas </h1>");
-            for(int i=0;i<npregs;i++){
-                out.println("<h2>Pregunta "+idpreg[i]+" agregada</h2>");
-            }
-            out.println("<form action='ExamenXML' method='get'>");
-                out.println("<h1 >Proporciona un nombre y un ID, para el examen. El ID debe ser único</h1>");
-                out.println("ID");
-                out.println("<input type='text' name='id' onkeypress=\"return letraNumVal(event)\" required />");
-                out.println("Nombre");
-                out.println("<input type='text' name='nombre' onkeypress=\"return letraNumVal(event)\" required />");
-            
-                out.println("<input type=\"reset\">");
-                out.println("<input type=\"submit\" value=\"Crear\">");
-            out.println("</form>");
-            out.println(" <div ><a  href='Maestro'>Regresar</a></div>\n" +
-            "</div>");
 
 
 

@@ -23,9 +23,9 @@ public class Existe extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String usuario = request.getParameter("id");
         String contra = request.getParameter("password");
-        String nomb = request.getParameter("nombre");
         String xml = request.getRealPath("WEB-INF\\practica.xml");
         String existe = verificar(xml, usuario, contra);
+        String nomb =obtenerNombre(xml,usuario);
         HttpSession session = request.getSession();
         session.setAttribute("id", usuario);
         session.setAttribute("tipo", existe);
@@ -123,6 +123,44 @@ out.println("</html>");
                         String pass = nieto.getAttributeValue("password");
                         if (nombre.equals(usuario) && pass.equals(contra)) {
                             res = tipo;
+                            break;
+                        }
+                    }
+                }
+                /*NUEVOS ELEMENTOS
+            Element raiz=new Element("ROOT");
+            Element hoja = new Element("hoja");*/
+            } catch (JDOMException | IOException ex) {
+                Logger.getLogger(Existe.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+
+            return res;
+        }
+        public String obtenerNombre(String xml, String usuario) {
+            String res = "";
+            try {
+                /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
+                SAXBuilder builder = new SAXBuilder();
+                //Forma de abrir el archivo
+                File xmlFile = new File(xml);
+                /*Almacenamos el xml cargado en builder en un documento*/
+                Document bd_xml = builder.build(xmlFile);
+                /*Indica el elemento raiz que se guardo en la variable Document*/
+                Element raiz = bd_xml.getRootElement();
+                //Lista con los nodos hijos 
+                List hijos = raiz.getChildren();
+                for (int i = 0; i < hijos.size(); i++) {
+                    Element hijo = (Element) hijos.get(i);
+                    List nietos = hijo.getChildren();
+                    String tipo = hijo.getName();
+                    for (int j = 0; j < nietos.size(); j++) {
+                        Element nieto = (Element) nietos.get(j);
+                        //Valor que tiene el atributo numero
+                        String nombre = nieto.getAttributeValue("id");
+                        String pass = nieto.getAttributeValue("password");
+                        if (nombre.equals(usuario) ) {
+                            res = nieto.getAttributeValue("nombre");
                             break;
                         }
                     }
