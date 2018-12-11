@@ -60,7 +60,7 @@ public class evaluar extends HttpServlet {
                  
              }
              else if (tipo.equals("HS")) {  //out.println("");
-             
+                 
              }
             out.println("</body>");
             out.println("</html>");

@@ -15,10 +15,10 @@
   </HotSpot>
   <HotSpot id="phs2" res="op2c6" pond="1" src="uploads/momocrist.png">
     Rei best girl
-    <HS id="op2c1" />
-    <HS id="op2c2" />
-    <HS id="op2c3" />
-    <HS id="op2c4" />
+    <HS id="op2c1" coordX="123" coordY="121" radio="120"/>
+    <HS id="op2c2" coordX="78" coordY="45" radio="74"/>
+    <HS id="op2c3" coordX="787" coordY="464" radio="44"/>
+    <HS id="op2c4" oordX="10" coordY="10" radio="10"/>
   </HotSpot>
   <HotSpot id="hots03" res="opc02" pond="12" src="uploads/DocWl7mU0AArB0u.jpg">Selecciona a Chun Li</HotSpot>
   <HotSpot id="wasdd" res="opc1" pond="12" src="uploads/DrFKokIU4AI0ZE1.png">
