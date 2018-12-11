@@ -72,7 +72,7 @@ out.println("<meta charset=\"utf-8\">\n" +
 // ------------  CONTENIDO  ---------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////////////////
             out.println("<div class=\"contenedor bg_blanco sombra contactos\">");
-                    out.println("<legend >Modificando Examen: "+nombreExam+"<span>Numero de preguntas: "+cantPregs+"<br>Total de puntos: "+valorExamen+"</span></legend>");
+                    //out.println("<legend >Modificando Examen: "+nombreExam+"<span>Numero de preguntas: "+cantPregs+"<br>Total de puntos: "+valorExamen+"</span></legend>");
                     out.println("<form name='QuitarPreguntas' action='modExm' method='get'>");
 
                 out.println("<div class=\"contenedor_contactos\">");
