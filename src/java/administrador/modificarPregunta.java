@@ -107,40 +107,48 @@ out.println("<meta charset=\"utf-8\">\n" +
                     out.println("</form>");
                 }
                 else if (tipoPregunta.equals("HotSpot")) {
+                    int nOps=numOpciones(xml,idPregunta);
+                    String[][] ValoresOpciones=new String[4][nOps];
+                    ValoresOpciones=ObtenerOpciones(xml,idPregunta);
+                    out.println("<tr>");
+                                out.println("<h1 class='blanco'> ID de la pregunta "+idPregunta+"</h1>");
+                            out.println("</tr>");
+                    out.println("<h1 class='blanco'>numero de Opciones: "+nOps+"</h1>");
                     out.println("<img src='"+ValoresHotS[2]+"'>");
-                   /* out.println("<form name='VoF' action='modiHS' method='get'>");                    
+                    out.println("<form name='HotS' action='modiHs' method='get'>");                    
                         out.println("<table>");
+                            
+                            
+                            //out.println("<tr>");
+                                //out.println("<td> Texto de la pregunta </td><td><input type='text' name='texto' value='"+ValoresHotS[3]+"' required /></td>");
+                            //out.println("</tr>");
                             out.println("<tr>");
-                                out.println("<td> ID de la pregunta </td><td><input type='text' name='id' value="+idPregunta+" required /></td>");
+                                out.println("<td> Valor de la pregunta </td><td><input type='text' name='pond' value='"+ValoresHotS[1]+"' required /></td>");
                             out.println("</tr>");
                             out.println("<tr>");
-                                out.println("<td> Texto de la pregunta </td><td><input type='text' name='texto' value='"+Preset[2]+"' required /></td>");
+                                out.println("<td> Respuesta </td><td><input type='text' name=\"res\" value='"+ValoresHotS[0]+"' required /></td>");    //selected='selected'                                                                                                
                             out.println("</tr>");
-                            out.println("<tr>");
-                                out.println("<td> Valor de la pregunta </td><td><input type='text' name='pond' value='"+Preset[1]+"' required /></td>");
-                            out.println("</tr>");
-                            out.println("<tr>");
-                                out.println("<td> Respuesta </td><td><select name=\"res\" >" );    //selected='selected'
-                                if (Preset[0]=="V") {
-                                    out.println("<option selected='selected' value=\"V\">Verdadero</option>");
-                                    out.println("<option value=\"F\">Falso</option>");
-                                }
-                                else {
-                                    out.println("<option value=\"V\">Verdadero</option>");
-                                    out.println("<option selected='selected' value=\"F\">Falso</option>");
-                                }
-                                out.println("</select>");
-                                
-                            out.println("</tr>");
-                         /*out.println("<tr>");
-                                out.println("<td> Agregar archivo </td><td><input type='file' name='archivo' /></td>");
-                            out.println("</tr>");
+                            for (int l=0;l<nOps ;l++ ) {
+                                out.println("<tr>");
+                                out.println("<td>ID de la opcion </td><td><input type='text' name='idOpcion' value="+ValoresOpciones[0][l]+" required /></td>");
+                                out.println("<tr>");
+                                out.println("<tr>");
+                                out.println("<td>CoordenadaX</td><td><input type='text' name='coordX' value="+ValoresOpciones[1][l]+" required /></td>");
+                                out.println("<tr>");
+                                out.println("<tr>");
+                                out.println("<td>CoordenadaY </td><td><input type='text' name='coordY' value="+ValoresOpciones[2][l]+" required /></td>");
+                                out.println("<tr>");
+                                out.println("<tr>");
+                                out.println("<td>Radio </td><td><input type='text' name='radio' value="+ValoresOpciones[3][l]+" required /></td>");
+                                out.println("<tr>");
+                            }                         
+                            
                         out.println("</table");
                         out.println("<input type=\"reset\">");
                         out.println("<input type=\"submit\" value=\"Crear\">");
                         out.println("<input type=\"button\" value=\"Cancelar\" onclick=\"document.location='Maestro'\">");
             
-                    out.println("</form>");*/
+                    out.println("</form>");
                 }
             out.println("<div class=\"row\">\n" +
             "  <div class=\"col-sm-8\"></div>\n" +
@@ -220,5 +228,141 @@ out.println("<meta charset=\"utf-8\">\n" +
             Logger.getLogger(modificarPregunta.class.getName()).log(Level.SEVERE, null, ex);
         }
         return Valores;
+    }
+    public String agregarOpciones(String ruta,String id,String[] idopc,String[] coordX,String[] coordY,String[] radios)
+    {
+        String resultado="";
+        int numeroOpciones=coordX.length;
+        int aux=0;
+        try{
+            /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
+            SAXBuilder builder=new SAXBuilder();
+            //Forma de abriri el archivo
+            File xmlFile = new File(ruta);
+            /*Almacenamos el xml cargado en builder en un documento*/
+            Document bd_xml=builder.build(xmlFile);
+            //Elemento raiz
+            Element raiz=bd_xml.getRootElement();
+            //Se almacenan los hijos en una lista
+            List hijos=raiz.getChildren();
+            //Objeto que escribe en el archivo xml
+            XMLOutputter xmlOutput = new XMLOutputter();
+            //Formato en el que se va a escribir
+            xmlOutput.setFormat(Format.getPrettyFormat());
+            for(int i=0;i<hijos.size();i++)
+            {
+                Element hijo=(Element)hijos.get(i);
+                String identificador=hijo.getAttributeValue("id");
+                if(identificador.equals(id))
+                {
+                    for (int j=0;j<numeroOpciones ;j++ ) {
+                        Element nuevo=new Element("HS");
+                        nuevo.setAttribute("id",idopc[j]);
+                        nuevo.setAttribute("coordX",coordX[j]);
+                        nuevo.setAttribute("coordY",coordY[j]);
+                        nuevo.setAttribute("radio",radios[j]);
+                        hijo.addContent(nuevo);
+                        resultado="Pregunta agregada exitosamente";
+                    }
+                        
+                 }
+                
+            }
+      xmlOutput.output(bd_xml,new FileWriter(ruta));
+       
+        } catch (JDOMException | IOException ex) {
+            Logger.getLogger(Mapear.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return resultado;
+    }
+    public int numOpciones(String ruta,String id)
+    {
+        
+        //int numeroOpciones=coordX.length;
+        int aux=0;
+       // String[][] opciones=new String[4][aux];
+        try{
+            /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
+            SAXBuilder builder=new SAXBuilder();
+            //Forma de abriri el archivo
+            File xmlFile = new File(ruta);
+            /*Almacenamos el xml cargado en builder en un documento*/
+            Document bd_xml=builder.build(xmlFile);
+            //Elemento raiz
+            Element raiz=bd_xml.getRootElement();
+            //Se almacenan los hijos en una lista
+            List hijos=raiz.getChildren();
+            //Objeto que escribe en el archivo xml
+            XMLOutputter xmlOutput = new XMLOutputter();
+
+            //Formato en el que se va a escribir
+            xmlOutput.setFormat(Format.getPrettyFormat());
+            for(int i=0;i<hijos.size();i++)
+            {
+                Element hijo=(Element)hijos.get(i);
+                String identificador=hijo.getAttributeValue("id");
+                if(identificador.equals(id))
+                {
+                    List opciones=hijo.getChildren();
+                    aux=opciones.size();
+                    return aux;
+                        
+                 }
+                
+            }
+      //xmlOutput.output(bd_xml,new FileWriter(ruta));
+       
+        } catch (JDOMException | IOException ex) {
+            Logger.getLogger(Mapear.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return aux;
+    }
+    public String[][] ObtenerOpciones(String ruta,String id)
+    {
+        
+        int n=0;
+        int aux=numOpciones(ruta,id);
+        String[][] opcionesValues=new String[4][aux];
+        try{
+            /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
+            SAXBuilder builder=new SAXBuilder();
+            //Forma de abriri el archivo
+            File xmlFile = new File(ruta);
+            /*Almacenamos el xml cargado en builder en un documento*/
+            Document bd_xml=builder.build(xmlFile);
+            //Elemento raiz
+            Element raiz=bd_xml.getRootElement();
+            //Se almacenan los hijos en una lista
+            List hijos=raiz.getChildren();
+            //Objeto que escribe en el archivo xml
+            XMLOutputter xmlOutput = new XMLOutputter();
+
+            //Formato en el que se va a escribir
+            xmlOutput.setFormat(Format.getPrettyFormat());
+            for(int i=0;i<hijos.size();i++)
+            {
+                Element hijo=(Element)hijos.get(i);
+                String identificador=hijo.getAttributeValue("id");
+                if(identificador.equals(id))
+                {
+                    List opciones=hijo.getChildren();
+                    for (int j=0;j<opciones.size() ;j++ ) {
+                        Element opcion=(Element)opciones.get(j);
+                        opcionesValues[0][n]=opcion.getAttributeValue("id");
+                        opcionesValues[1][n]=opcion.getAttributeValue("coordX");
+                        opcionesValues[2][n]=opcion.getAttributeValue("coordY");
+                        opcionesValues[3][n]=opcion.getAttributeValue("radio");
+                        n++;
+                    }
+                        
+                 }
+                 
+            }
+      //xmlOutput.output(bd_xml,new FileWriter(ruta));
+       
+        } catch (JDOMException | IOException ex) {
+            Logger.getLogger(Mapear.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return opcionesValues;
     }
 }

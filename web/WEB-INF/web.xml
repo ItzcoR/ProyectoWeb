@@ -13,6 +13,10 @@
         <servlet-class>administrador.Agregar</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>modiHs</servlet-name>
+        <servlet-class>administrador.modiHs</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>trueFalse</servlet-name>
         <servlet-class>administrador.trueFalse</servlet-class>
     </servlet>
@@ -139,6 +143,10 @@
     <servlet-mapping>
         <servlet-name>Existe</servlet-name>
         <url-pattern>/Existe</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>modiHs</servlet-name>
+        <url-pattern>/modiHs</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Administrador</servlet-name>
