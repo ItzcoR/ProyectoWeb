@@ -93,6 +93,10 @@
         <servlet-class>administrador.HotS</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>modiHs</servlet-name>
+        <servlet-class>administrador.modiHs</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>verExamen</servlet-name>
         <servlet-class>administrador.verExamen</servlet-class>
     </servlet>
@@ -187,6 +191,10 @@
     <servlet-mapping>
         <servlet-name>modiTrueFalse</servlet-name>
         <url-pattern>/modiTrueFalse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>modiHs</servlet-name>
+        <url-pattern>/modiHs</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>eliminar</servlet-name>
