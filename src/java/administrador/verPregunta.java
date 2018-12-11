@@ -91,16 +91,14 @@ out.println("<meta charset=\"utf-8\">\n" +
                  ValoresOpciones=ObtenerOpciones(xml,id);
                  out.println("<h1 class='blanco'>Pregunta: "+ValoresHotS[3]+"</h1>");
                  out.println("<img src='"+ValoresHotS[2]+"' usemap='#mapa'>");
-                 /*out.println("<map name=\"planetmap\">");
-                 for(int i=0; i<nOps; ){
-                    out.println("<area shape=\"circle\" coords='"+ValoresOpciones[1][i]+","+ValoresOpciones[2][i]+","+ValoresOpciones[3][i]+"'  href='evaluar?id="+id+"&res="+ValoresHotS[0]+"&pond="+ValoresHotS[1]+"'>");
+                 out.println("<map name=\"mapa\">");
+                 
+                 for(int i=0; i<nOps;i++ ){
+                   out.println("<area shape=\"circle\" coords='"+ValoresOpciones[1][i]+","+ValoresOpciones[2][i]+","+ValoresOpciones[3][i]+"'  href='evaluar?id="+id+"&res="+ValoresHotS[0]+"&pond="+ValoresHotS[1]+"$ev="+ValoresOpciones[0][i]+"'>");
                     
                 }
                  out.println("</map>");
-                               // /*out.println("<td>ID de la opcion </td><td><input type='text' name='idOpcion' value="+ValoresOpciones[0][l]+" required /></td>");                             
-                                out.println("<td>CoordenadaX</td><td><input type='text' name='coordX' value="+ValoresOpciones[1][l]+" required /></td>");                              
-                                out.println("<td>CoordenadaY </td><td><input type='text' name='coordY' value="+ValoresOpciones[2][l]+" required /></td>");          
-                                out.println("<td>Radio </td><td><input type='text' name='radio' value="+ValoresOpciones[3][l]+" required /></td>");*/
+                             
                   //out.println(""); 
                  
              }

@@ -20,16 +20,23 @@
     <HS id="op2c3" coordX="787" coordY="464" radio="44"/>
     <HS id="op2c4" oordX="10" coordY="10" radio="10"/>
   </HotSpot>
-  <HotSpot id="hots03" res="opc02" pond="12" src="uploads/DocWl7mU0AArB0u.jpg">Selecciona a Chun Li</HotSpot>
+  <HotSpot id="hots03" res="opc02" pond="12" src="uploads/DocWl7mU0AArB0u.jpg">Selecciona a Chun Li
+  <HS id="op2c1" coordX="123" coordY="121" radio="120" />
+    <HS id="op2c2" coordX="78" coordY="45" radio="74" />
+    <HS id="op2c3" coordX="787" coordY="464" radio="44" />
+    <HS id="op2c4" oordX="10" coordY="10" radio="10" />
+  </HotSpot>
+
   <HotSpot id="wasdd" res="opc1" pond="12" src="uploads/DrFKokIU4AI0ZE1.png">
     dngn
     <HS id="opc1" coordX="123" coordY="121" radio="120" />
     <HS id="opc2" coordX="78" coordY="45" radio="74" />
     <HS id="opc3" coordX="787" coordY="464" radio="44" />
   </HotSpot>
-  <HotSpot id="uiui" res="opc2" pond="2" src="uploads/">
-    dfggfgyg afjoqj hoqfh
-    <HS id="opc1" coordX="12" coordY="90" radio="90" />
-    <HS id="opc2" coordX="12" coordY="980" radio="12" />
+  
+  <HotSpot id="88" res="12" pond="5" src="uploads/3ca.jpg">
+    88
+    <HS id="2" coordX="25" coordY="25" radio="250" />
+    <HS id="3" coordX="120" coordY="120" radio="820" />
   </HotSpot>
 </Preguntas>
