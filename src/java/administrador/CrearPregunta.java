@@ -90,7 +90,7 @@ out.println("<div class='contenedor_alertas'>");
                         "<div class=\"campo_usuario\">\n"+
                 
                           "<label>Valor:</label>\n"+
-                          "<input type='text' name='pond' required placeholder=\"Cuanto vale tu pregunta?\">\n"+
+                          "<input type='text' name='pond' onkeypress=\"return numVal(event)\" required placeholder=\"Cuanto vale tu pregunta?\">\n"+
                 
                         "</div>\n"+
 
@@ -141,7 +141,13 @@ out.println("<div class='contenedor_alertas'>");
                           "<input type='text' name='texto' onkeypress=\"return letraNumVal(event)\" required autocomplete=\"off\" placeholder=\"Aqui va tu pregunta ...\">\n"+
                 
                         "</div>\n"+
+                         
+                         "<div class=\"campo_usuario\">\n"+
                 
+                          "<label>Respuesta:</label>\n"+
+                          "<input type='text' name='res' onkeypress=\"return letranumVal(event)\" required placeholder=\"ID de la Opcion correcta\">\n"+
+                
+                        "</div>\n"+
                 
                 
                         "<div class=\"campo_usuario\">\n"+
@@ -154,9 +160,6 @@ out.println("<div class='contenedor_alertas'>");
                         "<div class=\"campo_usuario\">\n"+
                 
                         "<label>Opciones:</label>\n"+
-
-      
-              
                       "</div>\n"+
                         "</div>");
   
@@ -168,10 +171,7 @@ out.println("<div class='contenedor_alertas'>");
                         out.println("<input type=\"button\" value=\"Cancelar\" onclick=\"document.location='Maestro'\">");
                         
                         out.println("</div>");
-
-
-
-                        out.println("</form>");
+                     out.println("</form>");
                
                 out.println("</template>");
             out.println("</div>");

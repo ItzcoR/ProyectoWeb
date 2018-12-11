@@ -29,12 +29,12 @@ public class HotS extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String xml=request.getRealPath("WEB-INF\\practica.xml");
+        String xml=request.getRealPath("WEB-INF\\ProtoToF.xml");
         String id="";
         String texto="";
         String pond="";
         String imagen="";
-        String[][] P= new String[2][3];
+        String res="";
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 
     if (isMultipart) {
@@ -59,6 +59,10 @@ public class HotS extends HttpServlet {
                 else if(name.equals("pond")){
                      pond=item.getString();
                     System.out.println(pond);
+                }
+                else if(name.equals("res")){
+                     res=item.getString();
+                    System.out.println(res);
                 }
                 //String value = item.getString();
                 //System.out.println(value);
@@ -85,7 +89,7 @@ public class HotS extends HttpServlet {
     }
         
         
-        
+        String resultado=agregarHotS(xml,id,texto,res,pond,imagen);
         try (PrintWriter out = response.getWriter()) {
 ///////////////////////////////////////////////////////////////////////////////////////////
 // ------------  HEADER  ------------------------------------------------------------------
@@ -124,7 +128,7 @@ out.println("<meta charset=\"utf-8\">\n" +
                             out.println("<h1>"+texto+"</h1>");
                             out.println("<h1>"+pond+"</h1>");
                             out.println("<h1>"+imagen+"</h1>");
-                
+                            out.println("<h1>"+resultado+"</h1>");
                 out.println("</div>\n"+
                 "</div>"
                 );
@@ -138,5 +142,57 @@ out.println("<meta charset=\"utf-8\">\n" +
         out.println("</html>");  
         }
     }
+    }
+    public String agregarHotS(String ruta,String id,String texto,String res,String pond,String urlImagen)
+    {
+        String respuesta="";
+        int aux=0;
+        try{
+            /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
+            SAXBuilder builder=new SAXBuilder();
+            //Forma de abriri el archivo
+            File xmlFile = new File(ruta);
+            /*Almacenamos el xml cargado en builder en un documento*/
+            Document bd_xml=builder.build(xmlFile);
+            //Elemento raiz
+            Element raiz=bd_xml.getRootElement();
+            //Se almacenan los hijos en una lista
+            List hijos=raiz.getChildren();
+            //Objeto que escribe en el archivo xml
+            XMLOutputter xmlOutput = new XMLOutputter();
+            //Formato en el que se va a escribir
+            xmlOutput.setFormat(Format.getPrettyFormat());
+            for(int i=0;i<hijos.size();i++)
+            {
+                Element hijo=(Element)hijos.get(i);
+                String identificador=hijo.getAttributeValue("id");
+                if(identificador.equals(id))
+                {
+                    aux++;   
+                    break;
+                 }
+         
+            }
+            if(aux==1)
+            {
+                respuesta="Este id ya existe";
+            }
+            else
+            { 
+                Element nuevo=new Element("HotSpot");
+                nuevo.setAttribute("id",id);
+                nuevo.setAttribute("res",res);
+                nuevo.setAttribute("pond",pond);
+                nuevo.setAttribute("src",urlImagen);
+                nuevo.setText(texto);
+                raiz.addContent(nuevo);
+                respuesta="Pregunta agregada exitosamente";
+            } 
+      xmlOutput.output(bd_xml,new FileWriter(ruta));
+       
+        } catch (JDOMException | IOException ex) {
+            Logger.getLogger(Agregar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return respuesta;
     }
 }
