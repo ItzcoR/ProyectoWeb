@@ -24,9 +24,15 @@ public class verExamen extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String xml=request.getRealPath("WEB-INF\\practica.xml");
-        String idExamen=request.getParameter("id");
+        String xmlExam=request.getRealPath("WEB-INF\\ProtoExam.xml");
+        String xmlPreg=request.getRealPath("WEB-INF\\ProtoToF.xml");;
+        String idExam=request.getParameter("id");
         String nombreExamen=request.getParameter("nombreExamen");
+        int cantPregs=numPregs(xmlExam,idExam);
+        
+        String[] idpreg=getIDPreguntasDeExamen(xmlExam,idExam);
+        String[][] valuesPregs=new String[4][cantPregs];
+        valuesPregs=getValuesDePreguntas(xmlPreg,idpreg);
         try (PrintWriter out = response.getWriter()) {
 ///////////////////////////////////////////////////////////////////////////////////////////
 // ------------  HEADER  ------------------------------------------------------------------
@@ -57,10 +63,17 @@ out.println("<meta charset=\"utf-8\">\n" +
 ///////////////////////////////////////////////////////////////////////////////////////////
 // ------------  CONTENIDO  ---------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////////////////
-            out.println("<h1 class='blanco'>Ver Examen ID: "+idExamen+" Nombre : "+nombreExamen+"</h1>");
+            out.println("<h1 class='blanco'>Ver Examen ID: "+idExam+" Nombre : "+nombreExamen+"</h1>");
+            out.println("<h1 class='blanco'>numero de Preguntas: "+cantPregs+"</h1>");
             out.println("<div class=\"row\">\n" +
             "  <div class=\"col-sm-8\"></div>\n" );
-                    
+            for(int i=0;i<cantPregs;i++){
+                out.println("<h3>"+idpreg[i]+"</h3>"); //id
+                out.println("<h3>"+valuesPregs[0][i]+"</h3>"); //res
+                out.println("<h3>"+valuesPregs[1][i]+"</h3>");  //text
+                out.println("<h3>"+valuesPregs[2][i]+"</h3>");//tipo
+                out.println("<h3>"+valuesPregs[3][i]+"</h3>");//pond
+            }
                     
             out.println("<div class=\"contenedor_botones\"><a class='blanco' href='Maestro'>Regresar</a></div>\n" +
             "</div>");
@@ -167,7 +180,7 @@ out.println("</html>");
     {
         int aux=idpregs.length;
         int n=0;
-        String[][] nombU=new String[3][aux];    //Se crea un arreglo bidimensional que contendra los elementos de cada pregunta
+        String[][] nombU=new String[4][aux];    //Se crea un arreglo bidimensional que contendra los elementos de cada pregunta
         
         try{
             /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
@@ -188,6 +201,7 @@ out.println("</html>");
                     nombU[0][n]=hijo.getAttributeValue("res");  //En la Posicion 1 estara si la respuesta es Verdadera o Falsa
                     nombU[1][n]=hijo.getText();//En la ultima posicion estara la pregunta la cual esta como texto entre la pregunta
                     nombU[2][n]=hijo.getName();//En la cuarta posicion se guarda el nombre del tag, el cual nos indica el tipo de pregunta
+                    nombU[3][n]=hijo.getAttributeValue("pond");
                     n++;
                 }               	
             }
