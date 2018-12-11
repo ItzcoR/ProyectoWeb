@@ -129,6 +129,10 @@
         <servlet-class>administrador.ExamenXML</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>Mapear</servlet-name>
+        <servlet-class>administrador.Mapear</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>eliminarExamen</servlet-name>
         <servlet-class>administrador.eliminarExamen</servlet-class>
     </servlet>
@@ -183,6 +187,10 @@
     <servlet-mapping>
         <servlet-name>eliminar</servlet-name>
         <url-pattern>/eliminar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Mapear</servlet-name>
+        <url-pattern>/Mapear</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Maestro</servlet-name>
