@@ -71,14 +71,18 @@ out.println("<meta charset=\"utf-8\">\n" +
 ///////////////////////////////////////////////////////////////////////////////////////////
 // ------------  CONTENIDO  ---------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////////////////
-            out.println("<div>");
-                out.println("<div>");
+            out.println("<div class=\"contenedor bg_amarillo sombra contactos\">");
                     out.println("<h1 >Modificando el Examen con nombre: "+nombreExam+"</h1>");
                     
                     out.println("<h1 >numero de Preguntas en el examen: "+cantPregs+"</h1>");
                     out.println("<h1 >Total de puntos en el examen: "+valorExamen+"</h1>");
                     out.println("<form name='EditarPreguntas' action='modExm' method='get'>");
-                    out.println("<table id='listadoPregunatas'>");
+
+                out.println("<div class=\"contenedor_contactos\">");
+                out.println("<div class=\"contenedor_tabla\">");
+
+                    
+                    out.println("<table id='listadoPregunatas' class=\"listado_contactos maestro\">");
                     out.println("   <thead>\n" +
                                 "     <tr>\n" +
                                 "       <th>ID Pregunta</th>\n" +
@@ -126,6 +130,9 @@ out.println("<meta charset=\"utf-8\">\n" +
         
                     out.println( "</tbody>");
                     out.println("</table>");	
+                    out.println("</div>");
+                    out.println("</div>");
+
                     out.println("</form>");
                     
                     out.println("<form action='modiExamen' method='get'>");
@@ -141,7 +148,6 @@ out.println("<meta charset=\"utf-8\">\n" +
                     out.println(" <div ><a  href='Maestro'>Regresar</a></div>\n" +
                             "</div>");
                     
-                out.println("</div>");
             out.println("</div>");
 
 
