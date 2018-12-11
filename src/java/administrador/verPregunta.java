@@ -66,7 +66,7 @@ out.println("<meta charset=\"utf-8\">\n" +
 ///////////////////////////////////////////////////////////////////////////////////////////
 // ------------  CONTENIDO  ---------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////////////////
-            out.println("<h1 class='blanco'>Ver Pregunta ID: "+id+" Nombre : "+tipo+"</h1>");
+            out.println("<h1 class='blanco'>Ver Pregunta ID: "+id+" Tipo : "+tipo+"</h1>");
             out.println("<div class=\"row\">\n" +
             "  <div class=\"col-sm-8\"></div>\n" +
             "  <div class=\"col-sm-4\"><a class='blanco' href='Maestro'>Regresar</a></div>\n" +
