@@ -73,6 +73,10 @@
         <servlet-class>administrador.eliminard</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ExamenApp</servlet-name>
+        <servlet-class>administrador.ExamenApp</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>UploadServlet</servlet-name>
         <servlet-class>administrador.UploadServlet</servlet-class>
     </servlet>
@@ -263,6 +267,10 @@
     <servlet-mapping>
         <servlet-name>EliminarGrupo</servlet-name>
         <url-pattern>/EliminarGrupo</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>ExamenApp</servlet-name>
+        <url-pattern>/ExamenApp</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
