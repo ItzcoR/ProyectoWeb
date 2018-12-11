@@ -30,7 +30,7 @@ public class modExm extends HttpServlet {
         HttpSession session=request.getSession();
         String[] idpregs=request.getParameterValues("QuitarExamen");
         int npregs=idpregs.length;
-        String nodo=request.getParameter("idViejo");
+        String nodo=(String) session.getValue("idViejo");
         String respuesta=Quitar(xml,nodo,idpregs);
         try (PrintWriter out=response.getWriter()) {
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -73,9 +73,11 @@ out.println("<meta charset=\"utf-8\">\n" +
                     out.println("<h1>"+idpregs[k]+"</h1>");
                 }
                 
+                   out.println("<div class=\"contenedor_botones\"><a class='blanco' href='Maestro'>Regresar</a></div>\n" +
+            "</div>");
 
 
-
+                
         ////////////////////////////////////////////////////////////////////////////////////////////
         // ------------  FOOTER  -------------------------------------------------------------------
         ///////////////////////////////////////////////////////////////////////////////////////////               
@@ -243,7 +245,7 @@ out.println("<meta charset=\"utf-8\">\n" +
     {
         String resultado="";
         int numeropregs=idpregs.length;
-        int aux=0;
+        int aux=0,n=0;
         try{
             /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
             SAXBuilder builder=new SAXBuilder();
@@ -263,15 +265,22 @@ out.println("<meta charset=\"utf-8\">\n" +
             {
                 Element hijo=(Element)hijos.get(i);
                 String id=hijo.getAttributeValue("id"); //Checamos si las ids 
-                if(id.equals(idExam))//
+                if(id.equals(idExam))
                 {
                     List preguntas = hijo.getChildren();
-                    for(int j=0;j<numeropregs;j++){
+                    resultado="id Examen Encontrado";
+                    for(int j=0;j<preguntas.size();j++){
                         Element preg=(Element)preguntas.get(j); 
-                        String idpreg=hijo.getAttributeValue("id"); 
-                        if(idpreg.equals(idpregs[j])){
-                            preguntas.remove(j);
+                        String idpreg=preg.getAttributeValue("id");
+                        resultado=idpreg+" id pregunta en "+j+"numero de preguntas"+numeropregs; 
+                        for(int h=0;h<numeropregs;h++)  {  
+                            if(idpreg.equals(idpregs[h])){
+                                resultado="id Pregunta Encontado";
+                                preguntas.remove(j);
+                            //n++;
+                            }
                         }
+                        //n++;
                     }  
                 }
             }

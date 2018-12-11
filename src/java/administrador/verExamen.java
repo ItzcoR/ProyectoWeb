@@ -62,7 +62,7 @@ out.println("<meta charset=\"utf-8\">\n" +
             "  <div class=\"col-sm-8\"></div>\n" );
                     
                     
-            out.println("<div class=\"col-sm-4\"><a class='blanco' href='Maestro'>Regresar</a></div>\n" +
+            out.println("<div class=\"contenedor_botones\"><a class='blanco' href='Maestro'>Regresar</a></div>\n" +
             "</div>");
 
             

@@ -3,35 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/C:/Users/iza_a/Documents/Programacion/ProyectoWeb/src/java/administrador/Maestro.java</file>
-            <file>file:/C:/Users/iza_a/Documents/Programacion/ProyectoWeb/src/java/administrador/modificarExamen.java</file>
-            <file>file:/C:/Users/iza_a/Documents/Programacion/ProyectoWeb/src/java/administrador/Administrador.java</file>
+            <file>file:/C:/Users/iza_a/Documents/Programacion/ProyectoWeb/src/java/administrador/modExm.java</file>
             <file>file:/C:/Users/iza_a/Documents/Programacion/ProyectoWeb/src/java/administrador/verExamen.java</file>
-=======
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/Agregar.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/modificarExamen.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/modificard.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/web/WEB-INF/ProtoToF.xml</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/modificar1.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/Maestro.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/web/WEB-INF/practica2.xml</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/ExamenApp.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/verExamen.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/HotS.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/web/WEB-INF/web.xml</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/eliminard.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/modiHs.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/CrearPregunta.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/evaluar.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/verPregunta.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/eliminar.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/modificarPregunta.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/modificacion2.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/modiTrueFalse.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/Administrador.java</file>
-            <file>file:/B:/Tareas/WEB/Proyectos/ProyectoWeb/src/java/administrador/crearExamen.java</file>
->>>>>>> bc46e34f7088ed4ca932cf5f37f9f917475d6b5b
+            <file>file:/C:/Users/iza_a/Documents/Programacion/ProyectoWeb/src/java/administrador/modificarExamen.java</file>
         </group>
     </open-files>
 </project-private>

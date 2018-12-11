@@ -13,6 +13,10 @@
         <servlet-class>administrador.Agregar</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>modExm</servlet-name>
+        <servlet-class>administrador.modExm</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>trueFalse</servlet-name>
         <servlet-class>administrador.trueFalse</servlet-class>
     </servlet>
@@ -167,6 +171,10 @@
     <servlet-mapping>
         <servlet-name>modificar1</servlet-name>
         <url-pattern>/modificar1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>modExm</servlet-name>
+        <url-pattern>/modExm</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>modificarExamen</servlet-name>
