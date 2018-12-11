@@ -31,9 +31,15 @@ public class modificarPregunta extends HttpServlet {
         HttpSession session=request.getSession();
         session.setAttribute("id",idPregunta);
         session.setAttribute("tipo",tipoPregunta);
-        //String nombreExamen=request.getParameter("nombreExamen");
         String[] Preset=new String[3];
-        Preset=getValuesPreguntaTOF(xml,idPregunta);
+        String[] ValoresHotS=new String[4];
+        //String nombreExamen=request.getParameter("nombreExamen");
+        if (tipoPregunta.equals("ToF")) { 
+            Preset=getValuesPreguntaTOF(xml,idPregunta);
+        }
+        else if (tipoPregunta.equals("HotSpot")) {
+            ValoresHotS=getValuesPreguntaHotS(xml,idPregunta);
+        }
         try (PrintWriter out = response.getWriter()) {
 ///////////////////////////////////////////////////////////////////////////////////////////
 // ------------  HEADER  ------------------------------------------------------------------
@@ -100,7 +106,8 @@ out.println("<meta charset=\"utf-8\">\n" +
             
                     out.println("</form>");
                 }
-                else if (tipoPregunta.equals("HS")) {
+                else if (tipoPregunta.equals("HotSpot")) {
+                    out.println("<img src='"+ValoresHotS[2]+"'>");
                    /* out.println("<form name='VoF' action='modiHS' method='get'>");                    
                         out.println("<table>");
                             out.println("<tr>");
@@ -172,9 +179,45 @@ out.println("<meta charset=\"utf-8\">\n" +
                 }
             }
             //Se escribe el documento bd_xml en el archivo XML
-        xmlOutput.output(bd_xml,new FileWriter(direc));
+        //xmlOutput.output(bd_xml,new FileWriter(direc));
         } catch (JDOMException | IOException ex) {
-            Logger.getLogger(eliminard.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(modificarPregunta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return Valores;
+    }
+    public String[] getValuesPreguntaHotS(String direc,String id)    
+    {
+        String[] Valores=new String[4];
+        try{
+            /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
+            SAXBuilder builder=new SAXBuilder();
+            //Forma de abriri el archivo
+            File xmlFile = new File(direc);
+            /*Almacenamos el xml cargado en builder en un documento*/
+            Document bd_xml=builder.build(xmlFile);
+            //Elemento raiz
+            Element raiz=bd_xml.getRootElement();
+            //Se almacenan los hijos en una lista
+            List hijos=raiz.getChildren();
+            XMLOutputter xmlOutput = new XMLOutputter();
+            //Formato en el que se va a escribir
+            xmlOutput.setFormat(Format.getPrettyFormat());
+            for(int i=0;i<hijos.size();i++)
+            {
+                Element hijo=(Element)hijos.get(i);
+                String iden=hijo.getAttributeValue("id");
+                if(iden.equals(id))
+                {
+                    Valores[0]=hijo.getAttributeValue("res");
+                    Valores[1]=hijo.getAttributeValue("pond");
+                    Valores[2]=hijo.getAttributeValue("src");
+                    Valores[3]=hijo.getText();
+                }
+            }
+            //Se escribe el documento bd_xml en el archivo XML
+        //xmlOutput.output(bd_xml,new FileWriter(direc));
+        } catch (JDOMException | IOException ex) {
+            Logger.getLogger(modificarPregunta.class.getName()).log(Level.SEVERE, null, ex);
         }
         return Valores;
     }

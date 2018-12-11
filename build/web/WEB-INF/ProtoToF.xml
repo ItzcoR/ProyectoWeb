@@ -6,21 +6,19 @@
   <ToF id="ptof4" res="F" pond="4">BB es joto</ToF>
   <ToF id="ptof5" res="V" pond="2">Misato besto wifi</ToF>
   <ToF id="ptof6" res="F" pond="3">Rei best girl</ToF>
-  <HotSpot id="phs1" res="op1c2" pond="1" src="/uploads/3ca">
+  <HotSpot id="phs1" res="op1c2" pond="1" src="uploads/3ca.jpg">
     Identifica la best girl
     <HS id="op1c1" />
     <HS id="op1c2" />
     <HS id="op1c3" />
     <HS id="op1c4" />
   </HotSpot>
-  <HotSpot id="phs2" res="op2c6" pond="1" src="/uploads/momocrist">
+  <HotSpot id="phs2" res="op2c6" pond="1" src="uploads/momocrist.png">
     Rei best girl
     <HS id="op2c1" />
     <HS id="op2c2" />
     <HS id="op2c3" />
     <HS id="op2c4" />
   </HotSpot>
-  <HotSpot id="hots03" res="opc02" pond="12" src="/uploads/DocWl7mU0AArB0u.jpg">Selecciona a Chun Li</HotSpot>
-  <HotSpot id="hots06" res="hots06opc04" pond="4" src="/uploads/">Selecciona  a Mexico</HotSpot>
+  <HotSpot id="hots03" res="opc02" pond="12" src="uploads/DocWl7mU0AArB0u.jpg">Selecciona a Chun Li</HotSpot>
 </Preguntas>
-

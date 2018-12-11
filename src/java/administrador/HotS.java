@@ -77,7 +77,7 @@ public class HotS extends HttpServlet {
                 }
 
                 File uploadedFile = new File(path + "/" + fileName);
-                imagen="/uploads/" + fileName;
+                imagen="uploads/" + fileName;
                 System.out.println(uploadedFile.getAbsolutePath());
                 item.write(uploadedFile);
             }

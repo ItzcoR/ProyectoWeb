@@ -26,7 +26,7 @@ public class eliminard extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String xml=request.getRealPath("WEB-INF\\ProtoToF.xml");
-        String ide=request.getParameter("idc");
+        String ide=request.getParameter("id");
         diagrama(xml,ide);
         try (PrintWriter out = response.getWriter()) {
            response.sendRedirect("Maestro");

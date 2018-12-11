@@ -79,8 +79,8 @@ out.println("<meta charset=\"utf-8\">\n" +
 "  <input type=\"submit\" value=\"Submit\">\n" +
 "</form>");
              }
-             else if (tipo.equals("HS")) {  //out.println("");
-             
+             else if (tipo.equals("HotSpot")) {  //out.println("");
+                 out.println("<img src='uploads/3ca.jpg'>");
              }
             out.println("</body>");
             out.println("</html>");
