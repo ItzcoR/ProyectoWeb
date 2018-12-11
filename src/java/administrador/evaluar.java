@@ -36,7 +36,7 @@ public class evaluar extends HttpServlet {
         String res=(String)session.getAttribute("res");
         String pond=(String)session.getAttribute("pond");
         Preset=getValuesPreguntaTOF(xml,id);
-        resultado=evaluarTOF(xml,id,opcion);
+        //resultado=evaluarTOF(xml,id,opcion);
         try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
             out.println("<html style='height:100%; width:100%; margin:0px;'>");
@@ -51,17 +51,20 @@ public class evaluar extends HttpServlet {
             out.println("</head>");
             out.println("<body class='colorful'>");
             out.println("<h1 class='blanco'>Evaluando Pregunta ID: "+id+" Tipo : "+tipo+"</h1>");
-            out.println("<div class=\"row\">\n" +
+            
+             if (tipo.equals("ToF")) {
+                 resultado=evaluarTOF(xml,id,opcion);
+                 out.println("<h1>"+resultado+"</h1>");
+                 
+             }
+             else if (tipo.equals("HotSpot")) {  //out.println("");
+                 resultado=evaluarHotS(xml,id,opcion);
+                 out.println("<h1>"+resultado+"</h1>");
+             }
+             out.println("<div class=\"row\">\n" +
             "  <div class=\"col-sm-8\"></div>\n" +
             "  <div class=\"col-sm-4\"><a class='blanco' href='Maestro'>Regresar</a></div>\n" +
             "</div>");
-             if (tipo.equals("ToF")) {
-                 out.println("<h1>"+resultado+"");
-                 
-             }
-             else if (tipo.equals("HS")) {  //out.println("");
-                 
-             }
             out.println("</body>");
             out.println("</html>");
         }
@@ -124,9 +127,55 @@ public class evaluar extends HttpServlet {
                 String iden=hijo.getAttributeValue("id");
                 if(iden.equals(id))
                 {
+                    response="Se encontro el id";
                     hijo.getAttributeValue("res");
                    if(hijo.getAttributeValue("res").equals(opcion)){
                        response="Respuesta correcta";
+                   }
+                   else{
+                       response="Respuesta incorrecta";
+                   } 
+                }
+                
+            }
+            //Se escribe el documento bd_xml en el archivo XML
+        //xmlOutput.output(bd_xml,new FileWriter(direc));
+        } catch (JDOMException | IOException ex) {
+            Logger.getLogger(eliminard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return response;
+    }
+    public String evaluarHotS(String direc,String id,String opcion)    
+    {
+        String response="";
+        try{
+            /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
+            SAXBuilder builder=new SAXBuilder();
+            //Forma de abriri el archivo
+            File xmlFile = new File(direc);
+            /*Almacenamos el xml cargado en builder en un documento*/
+            Document bd_xml=builder.build(xmlFile);
+            //Elemento raiz
+            Element raiz=bd_xml.getRootElement();
+            //Se almacenan los hijos en una lista
+            List hijos=raiz.getChildren();
+            XMLOutputter xmlOutput = new XMLOutputter();
+            //Formato en el que se va a escribir
+            xmlOutput.setFormat(Format.getPrettyFormat());
+            for(int i=0;i<hijos.size();i++)
+            {
+                Element hijo=(Element)hijos.get(i);
+                String iden=hijo.getAttributeValue("id");
+                if(iden.equals(id))
+                {
+                    response="Se encontro el id";
+                    hijo.getAttributeValue("res");
+                   if(hijo.getAttributeValue("res").equals(opcion)){
+                       response="Respuesta correcta";
+                       break;
+                   }
+                   else{
+                       response="Respuesta incorrecta";
                    }
                 }
                 

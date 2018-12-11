@@ -37,6 +37,7 @@ public class Maestro extends HttpServlet {
         HttpSession session=request.getSession();
         String id=(String) session.getAttribute("id");
         String tipo=(String) session.getAttribute("tipo");
+        String nombre=(String) session.getAttribute("nombre");
         if(id!=null)
         {
         try (PrintWriter out = response.getWriter()) {
@@ -87,7 +88,7 @@ out.println("<meta charset=\"utf-8\">\n" +
             out.println("<form action='crearExamen' method='get'>");
             
             out.println(
-                "<h2 class=\"espacio\">Bienvenido profesor: "+id+"</h2>\n" +
+                "<h2 class=\"espacio\">Bienvenido profesor: "+nombre+"</h2>\n" +
                    
                     "<div class=\"contenedor_contactos\">\n"+
                     
