@@ -260,7 +260,7 @@ out.println("<meta charset=\"utf-8\">\n" +
             {
                 Element hijo=(Element)hijos.get(i);
                 String id=hijo.getAttributeValue("id"); //Checamos si las ids 
-                if(id.equals(idExam))//Si encuentra un elemento con el mismo id rompemos el ciclo
+                if(id.equals(idExam))//
                 {
                     List preguntas = hijo.getChildren();
                     for(int j=0;j<numeropregs;j++){
