@@ -71,11 +71,8 @@ out.println("<meta charset=\"utf-8\">\n" +
 ///////////////////////////////////////////////////////////////////////////////////////////
 // ------------  CONTENIDO  ---------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////////////////
-            out.println("<div class=\"contenedor bg_amarillo sombra contactos\">");
-                    out.println("<h1 >Modificando el Examen con nombre: "+nombreExam+"</h1>");
-                    
-                    out.println("<h1 >numero de Preguntas en el examen: "+cantPregs+"</h1>");
-                    out.println("<h1 >Total de puntos en el examen: "+valorExamen+"</h1>");
+            out.println("<div class=\"contenedor bg_blanco sombra contactos\">");
+                    out.println("<legend >Modificando Examen: "+nombreExam+"<span>Numero de preguntas: "+cantPregs+"<br>Total de puntos: "+valorExamen+"</span></legend>");
                     out.println("<form name='EditarPreguntas' action='modExm' method='get'>");
 
                 out.println("<div class=\"contenedor_contactos\">");
@@ -127,16 +124,23 @@ out.println("<meta charset=\"utf-8\">\n" +
                         out.println("</td>");                           
                         out.println("</tr>");
                     }
-        
+
+
                     out.println( "</tbody>");
                     out.println("</table>");	
+                    out.println("</form>");
+                    out.println("</div>");
                     out.println("</div>");
                     out.println("</div>");
 
-                    out.println("</form>");
+
+
                     
+                    out.println("<div class=\"contenedor bg_amarillo sombra contactos\">");
+
+
                     out.println("<form action='modiExamen' method='get'>");
-                    out.println("<h1 >Proporciona un nombre y un ID, para el examen. El ID debe ser único</h1>");
+                    out.println("<legend >Nombre y Id para el examen.<span>El ID debe ser único</span></legend>");
                     out.println("ID");
                     out.println("<input type='text' name='idNuevo' onkeypress=\"return letraNumVal(event)\" value='"+idExam+"'required />");
                     out.println("Nombre");
