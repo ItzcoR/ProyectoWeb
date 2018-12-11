@@ -54,4 +54,15 @@
     <Preg id="124" />
     <Preg id="323" />
   </Exa>
+  <Exa id="Elexamen" nombre="perrisimo">
+    <Preg id="ptof5" />
+    <Preg id="ptof6" />
+    <Preg id="phs1" />
+    <Preg id="phs2" />
+  </Exa>
+  <Exa id="Examindfklsadjf" nombre="2wdfopsf">
+    <Preg id="asdfasdf" />
+    <Preg id="12123132" />
+  </Exa>
 </Examenes>
+

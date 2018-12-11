@@ -51,77 +51,139 @@ out.println("<meta charset=\"utf-8\">\n" +
 ///////////////////////////////////////////////////////////////////////////////////////////
 // ------------  CONTENIDO  ---------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////////////////
-            out.println("<div id='app'>");     
-                out.println("<select name=\"tipoPreg\" v-model=\"selected\" options='opciones' required>\n" +
+
+// ------------  True or False -----------------------------------------------------------
+out.println("<div class='bg_amarillo sombra contenedor'>");     
+out.println("<div class='contenedor_alertas'>");     
+            out.println("<div id='app'>");
+            out.println("<div class='contenedor_selector'>");     
+                out.println("<select class=\"selector rounded\" name=\"tipoPreg\" v-model=\"selected\" options='opciones' required>\n" +
                 "<option value=\"\" selected></option>\n" +
                 "<option value=\"ToF\">Verdadero o Falso</option>\n" +
                 "<option value=\"HotS\">HotSpot</option>\n" +
                 "</select>");
-                
+                out.println("</div>");
+
                 out.println("<template v-if=\"selected == 'ToF'\">");
                     out.println("<form name='VoF' action='trueFalse' method='get'>");
-                    
-                        out.println("<table>");
-                            out.println("<tr>");
-                                out.println("<td> ID de la pregunta </td><td><input type='text' name='id' required /></td>");
-                            out.println("</tr>");
-                            out.println("<tr>");
-                                out.println("<td> Texto de la pregunta </td><td><input type='text' name='texto' required /></td>");
-                            out.println("</tr>");
-                            out.println("<tr>");
-                                out.println("<td> Valor de la pregunta </td><td><input type='text' name='pond' required /></td>");
-                            out.println("</tr>");
-                            out.println("<tr>");
-                                out.println("<td> Respuesta </td><td><select name=\"res\">\n" +
-                                "<option value=\"V\">Verdadero</option>\n" +
-                                "<option value=\"F\">Falso</option>\n" +
-                                "</select>");
-                            out.println("</tr>");
-                         /*out.println("<tr>");
-                                out.println("<td> Agregar archivo </td><td><input type='file' name='archivo' /></td>");
-                            out.println("</tr>");*/
-                        out.println("</table");
+                    out.println(
+                        "<div class=\"campos_usuario\">\n"+
+
+              
+                        "<div class=\"campo_usuario\">\n"+
+                
+                          "<label>Id:</label>\n"+
+                          "<input type='text' name='id' required autocomplete=\"off\"  placeholder=\"Id unico\">\n"+
+                
+                        "</div>\n"+
+                
+                        
+                        "<div class=\"campo_usuario\">\n"+
+                
+                          "<label>Pregunta:</label>\n"+
+                          "<input type='text' name='texto' required autocomplete=\"off\" placeholder=\"Aqui va tu pregunta ...\">\n"+
+                
+                        "</div>\n"+
+                
+                
+                
+                        "<div class=\"campo_usuario\">\n"+
+                
+                          "<label>Valor:</label>\n"+
+                          "<input type='text' name='pond' required placeholder=\"Cuanto vale tu pregunta?\">\n"+
+                
+                        "</div>\n"+
+
+                        "<div class=\"campo_usuario\">\n"+
+                
+                        "<label>Respuesta:</label>\n"+
+                        "<select name=\"res\">\n"+
+                        "<option value=\"V\">Verdadero</option>\n" +
+                        "<option value=\"F\">Falso</option>\n" +
+                        "</select>\n"+
+              
+                      "</div>\n"+
+                        "</div>");
+
+
+
+                        out.println("<div class=\"campo_usuario enviar\">");
                         out.println("<input type=\"reset\">");
                         out.println("<input type=\"submit\" value=\"Crear\">");
                         out.println("<input type=\"button\" value=\"Cancelar\" onclick=\"document.location='Maestro'\">");
-            
+                        out.println("</div>");
+
                     out.println("</form>");
                 out.println("</template>");
                     
+
+// ------------  Hot Spot ---------------------------------------------------------------
+
                 out.println("<template v-if=\"selected == 'HotS'\">");
                     out.println("<form name='HotS' action='HotS' method='post' enctype=\"multipart/form-data\">");
                     
-                        out.println("<table>");
-                            out.println("<tr>");
-                                out.println("<td> ID de la pregunta </td><td><input type='text' name='id' onkeypress=\"return letraNumVal(event)\" required /></td>");
-                            out.println("</tr>");
-                            out.println("<tr>");
-                                out.println("<td> Texto de la pregunta </td><td><input type='text' name='texto' onkeypress=\"return letraNumVal(event)\" required /></td>");
-                            out.println("</tr>");
-                            out.println("<tr>");
-                                out.println("<td> Valor de la pregunta </td><td><input type='text' name='pond' onkeypress=\"return numVal(event)\" required /></td>");
-                            out.println("</tr>");
-                            out.println("<tr>");
-                            out.println("<td> Opciones </td>");
-                            out.println("</tr>");
-                            out.println("<tr>");
-                                out.println("<td> Agregar archivo </td><td><input type='file' name='file' /></td>");
-                            out.println("</tr>");
-                        out.println("</table");
+
+                    out.println(
+                        "<div class=\"campos_usuario\">\n"+
+
+              
+                        "<div class=\"campo_usuario\">\n"+
+                
+                          "<label>Id:</label>\n"+
+                          "<input type='text' name='id' onkeypress=\"return letraNumVal(event)\" required autocomplete=\"off\"input type='text' name='pond' onkeypress=\"return numVal(event)\" required placeholder=\"Id unico\">\n"+
+                
+                        "</div>\n"+
+                
+                        
+                        "<div class=\"campo_usuario\">\n"+
+                
+                          "<label>Pregunta:</label>\n"+
+                          "<input type='text' name='texto' onkeypress=\"return letraNumVal(event)\" required autocomplete=\"off\" placeholder=\"Aqui va tu pregunta ...\">\n"+
+                
+                        "</div>\n"+
+                
+                
+                
+                        "<div class=\"campo_usuario\">\n"+
+                
+                          "<label>Valor:</label>\n"+
+                          "<input type='text' name='pond' onkeypress=\"return numVal(event)\" required placeholder=\"Cuanto vale tu pregunta?\">\n"+
+                
+                        "</div>\n"+
+
+                        "<div class=\"campo_usuario\">\n"+
+                
+                        "<label>Opciones:</label>\n"+
+
+      
+              
+                      "</div>\n"+
+                        "</div>");
+  
+                    
+                        out.println("<div class=\"campo_usuario enviar\">");
+                        out.println("<input type='file' name='file' />");
                         out.println("<input type=\"reset\">");
                         out.println("<input type=\"submit\" value=\"Crear\">");
                         out.println("<input type=\"button\" value=\"Cancelar\" onclick=\"document.location='Maestro'\">");
-                            
+                        
+                        out.println("</div>");
+
+
+
                         out.println("</form>");
+               
                 out.println("</template>");
             out.println("</div>");
-            out.println("<script src=\"https://cdn.jsdelivr.net/npm/vue/dist/vue.js\"></script>");
-            out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>");
+
+
+
+
             out.println("<script>");
             out.println("var app=new Vue({\n" +
 "      el: '#app',\n" +
 "      data: {\n" +
-"               selected: ''\n" +
+"               selected: 'HotS'\n" +
                 //"opciones= [\n"+
                     //"{text: 'Verdadero o Falso', value: 'ToF'},\n"+
                     //"{text: 'HotSpot', value: 'HotS'},\n"+

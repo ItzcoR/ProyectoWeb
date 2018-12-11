@@ -311,7 +311,8 @@ legend span{
 
 
 .enviar input[type="submit"],
-.enviar input[type="button"]{
+.enviar input[type="button"],
+.enviar input[type="reset"]{
     background-color: var(--principal);
     border: none;
     color: white;
@@ -324,7 +325,9 @@ legend span{
 }
 
 .enviar input[type="submit"]:hover,
-.enviar input[type="button"]:hover{
+.enviar input[type="button"]:hover,
+.enviar input[type="reset"]:hover
+{
     cursor: pointer;
     background-color: var(--primarioOscuro);
 }
@@ -333,7 +336,8 @@ legend span{
 
 @media (min-width:798px){
     .enviar input[type="submit"],
-    .enviar input[type="button"]
+    .enviar input[type="button"],
+    .enviar input[type="reset"]
     {
         
         flex: 0 0 auto;
@@ -657,6 +661,16 @@ a.btn_rosa{
     padding: 3rem;
     margin-top: 2rem;
 }
+
+/* -------------------------------------- Crear pregunta -------------------------------------- */
+.bg_amarillo select.selector{
+    background-color: white;
+}
+
+.contenedor_selector{
+    margin-bottom:20px;
+}
+
 
 
 
