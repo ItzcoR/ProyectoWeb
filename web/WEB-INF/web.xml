@@ -13,6 +13,10 @@
         <servlet-class>administrador.Agregar</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>verSiguiente</servlet-name>
+        <servlet-class>administrador.verSiguiente</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>modExm</servlet-name>
         <servlet-class>administrador.modExm</servlet-class>
     </servlet>
@@ -265,8 +269,8 @@
         <url-pattern>/GuardarGrupo</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>VerGrupos</servlet-name>
-        <url-pattern>/VerGrupos</url-pattern>
+        <servlet-name>verSiguiente</servlet-name>
+        <url-pattern>/verSiguiente</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ModGrupo</servlet-name>

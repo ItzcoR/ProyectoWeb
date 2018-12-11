@@ -75,14 +75,15 @@ out.println("<meta charset=\"utf-8\">\n" +
             out.println("<h1 class='blanco'>numero de Preguntas: "+cantPregs+"</h1>");
             out.println("<div class=\"row\">\n" +
             "  <div class=\"col-sm-8\"></div>\n" );
-            for(int i=0;i<cantPregs;i++){
+            /*for(int i=0;i<cantPregs;i++){
                 out.println("<h3>"+idpreg[i]+"</h3>"); //id
                 out.println("<h3>"+valuesPregs[0][i]+"</h3>"); //res
                 out.println("<h3>"+valuesPregs[1][i]+"</h3>");  //text
                 out.println("<h3>"+valuesPregs[2][i]+"</h3>");//tipo
                 out.println("<h3>"+valuesPregs[3][i]+"</h3>");//pond
-            }
-                    
+            }*/
+             out.println("<div class=\"contenedor_botones\"><a class='blanco' href='verSiguiente'>Comenzar</a></div>\n" +
+            "</div>");       
             out.println("<div class=\"contenedor_botones\"><a class='blanco' href='Maestro'>Regresar</a></div>\n" +
             "</div>");
 

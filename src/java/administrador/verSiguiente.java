@@ -36,7 +36,7 @@ public class verSiguiente extends HttpServlet {
         int calificacion=(int) session.getAttribute("calificacion");
         int cantPregs=numPregs(xmlExam,idExam);
         String[] ValoresHotS=new String[4];
-        ValoresHotS=getValuesPreguntaHotS(xmlPreg,idpregs[indicepreg]);
+        //ValoresHotS=getValuesPreguntaHotS(xmlPreg,idpregs[indicepreg]);
         String[][] valuesPregs=new String[4][cantPregs];    
         valuesPregs=getValuesDePreguntas(xmlPreg,idpregs);
         String tipo=valuesPregs[2][indicepreg];
@@ -94,6 +94,7 @@ out.println("<meta charset=\"utf-8\">\n" +
              }
              else if (tipo.equals("HotSpot")) {  //out.println("");
                  int nOps=numOpciones(xmlPreg,idpregs[indicepreg]);
+                 ValoresHotS=getValuesPreguntaHotS(xmlPreg,idpregs[indicepreg]);
                  String[][] ValoresOpciones=new String[4][nOps];
                  ValoresOpciones=ObtenerOpciones(xmlPreg,idpregs[indicepreg]);
                  out.println("<h1 class='blanco'>Pregunta: "+ValoresHotS[3]+"</h1>");
