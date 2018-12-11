@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -35,8 +36,10 @@ public class HotS extends HttpServlet {
         String pond="";
         String imagen="";
         String res="";
+        String nOpciones="";
+        int auxOpc=0;
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
-
+        
     if (isMultipart) {
         FileItemFactory factory = new DiskFileItemFactory();
         ServletFileUpload upload = new ServletFileUpload(factory);
@@ -64,6 +67,10 @@ public class HotS extends HttpServlet {
                      res=item.getString();
                     System.out.println(res);
                 }
+                else if(name.equals("nOpciones")){
+                     nOpciones=item.getString();
+                    System.out.println(nOpciones);
+                }
                 //String value = item.getString();
                 //System.out.println(value);
             }
@@ -90,6 +97,15 @@ public class HotS extends HttpServlet {
         
         
         String resultado=agregarHotS(xml,id,texto,res,pond,imagen);
+        HttpSession session=request.getSession();
+        session.setAttribute("id",id);
+        session.setAttribute("texto",texto);
+        session.setAttribute("pond",pond);
+        session.setAttribute("imagen",imagen);
+        session.setAttribute("resultado",resultado);
+        session.setAttribute("nOpciones",nOpciones);
+        auxOpc=Integer.parseInt(nOpciones);
+        //session.setAttribute("tipo",tipo);
         try (PrintWriter out = response.getWriter()) {
 ///////////////////////////////////////////////////////////////////////////////////////////
 // ------------  HEADER  ------------------------------------------------------------------
@@ -123,16 +139,34 @@ out.println("<meta charset=\"utf-8\">\n" +
                 out.println(
                 "<div class=\"contenedor bg_amarillo sombra\">\n"+
                     "<div class=\"contenedor_alertas\">\n"+
-                    "<legend>Holi </legend>");
-                            out.println("<h1>"+id+"</h1>");          //        out.println("");
-                            out.println("<h1>"+texto+"</h1>");
-                            out.println("<h1>"+pond+"</h1>");
-                            out.println("<h1>"+imagen+"</h1>");
-                            out.println("<h1>"+resultado+"</h1>");
-                            out.println("<div class=\"campo enviar\">\n" +
-                            "   <a class=\"btn-info btn_rosa\" href='Maestro'>Regresar</a>\n" +
-                            "</div>\n" +
-                    "</div>\n" +
+                    "<legend>Pregunta Creada; Añadir HotSpots </legend>");
+                        out.println("<h1>Id Pregunta"+id+"</h1>");          //        out.println("");
+                        //out.println("<h1>"+texto+"</h1>");
+                        //out.println("<h1>"+pond+"</h1>");
+                        out.println("<h1>Ruta de la imagen"+imagen+"</h1>");
+                        out.println("<h1>Numero de Opciones: "+nOpciones+"</h1>");
+                        out.println("<h1>"+resultado+"</h1>");
+                        out.println("<img src='"+imagen+"'>");
+                    out.println("<form name='Opciones' action='Mapear' method='get'>");
+                        
+                        for (int i=0;i<auxOpc ;i++ ) {
+                           out.println("<label>Opcion ID:</label>\n"+
+                              "<input type='text' name='idOpcion' required autocomplete=\"off\" placeholder=\"Escribe el ID\">");
+                            out.println("<label>Coordenada X:</label>\n"+
+                              "<input type='text' name='coordX' required autocomplete=\"off\" onkeypress=\"return numVal(event)\" placeholder=\"Coordena X\">");
+                            out.println("<label>Coordenada Y:</label>\n"+
+                              "<input type='text' name='coordY' required autocomplete=\"off\" onkeypress=\"return numVal(event)\" placeholder=\"Coordena Y\">");
+                            out.println("<label>Radio:</label>\n"+
+                              "<input type='text' name='radio' required autocomplete=\"off\" onkeypress=\"return numVal(event)\" placeholder=\"Radio\">"); 
+                            out.println("<br/>");
+                        }
+                            
+                        out.println("<input type=\"reset\">");
+                        out.println("<input type=\"submit\" value=\"Crear\">");
+                        out.println("<input type=\"button\" value=\"Cancelar\" onclick=\"document.location='Maestro'\">");
+                        
+                    out.println("</form>");
+                    out.println("</div>\n" +
                 "</div>");  
 
 

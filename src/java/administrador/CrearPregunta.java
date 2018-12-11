@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -159,8 +160,9 @@ out.println("<div class='contenedor_alertas'>");
 
                         "<div class=\"campo_usuario\">\n"+
                 
-                        "<label>Opciones:</label>\n"+
-                      "</div>\n"+
+                        "<label>Numero de Opciones:</label>\n"+
+                        "<input type='text' name='nOpciones' onkeypress=\"return numVal(event)\" required placeholder=\"Cuantas opciones deseas?\">\n"+
+                        "</div>\n"+
                         "</div>");
   
                     

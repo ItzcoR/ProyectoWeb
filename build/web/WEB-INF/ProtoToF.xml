@@ -21,4 +21,17 @@
     <HS id="op2c4" />
   </HotSpot>
   <HotSpot id="hots03" res="opc02" pond="12" src="uploads/DocWl7mU0AArB0u.jpg">Selecciona a Chun Li</HotSpot>
+  <HotSpot id="yolo" res="12yolo" pond="12" src="uploads/34683781_2150457781649566_1548979658949656576_n.jpg">yolo</HotSpot>
+  <HotSpot id="safo" res="opc1" pond="12" src="uploads/Dmqwp09W4AAaCuG.jpg">sbgfiwbg24</HotSpot>
+  <HotSpot id="nopciones" res="opc01" pond="15" src="uploads/">PruebaOpciones</HotSpot>
+  <HotSpot id="wasdd" res="opc1" pond="12" src="uploads/DrFKokIU4AI0ZE1.png">
+    dngn
+    <HS id="opc1" coordX="123" coordY="121" radio="120" />
+    <HS id="opc2" coordX="78" coordY="45" radio="74" />
+    <HS id="opc3" coordX="787" coordY="464" radio="44" />
+    <HS id="opc1" coordX="123" coordY="121" radio="120" />
+    <HS id="opc2" coordX="78" coordY="45" radio="74" />
+    <HS id="opc3" coordX="787" coordY="464" radio="44" />
+  </HotSpot>
 </Preguntas>
+
