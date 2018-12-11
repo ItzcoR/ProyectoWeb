@@ -363,4 +363,31 @@ out.println("</html>");
         }
         return opcionesValues;
     }
+    public String[][] getExamenes(String direc)
+    {
+        int aux=tamano(direc);
+        String[][] nombU=new String[2][aux];    //Se crea un arreglo bidimensional que contendra los elementos de cada pregunta
+        
+        try{
+            /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
+            SAXBuilder builder=new SAXBuilder();
+            //Forma de abriri el archivo
+            File xmlFile = new File(direc);
+            /*Almacenamos el xml cargado en builder en un documento*/
+            Document bd_xml=builder.build(xmlFile);
+            //Elemento raiz
+            Element raiz=bd_xml.getRootElement();
+            //Se almacenan los hijos en una lista
+            List hijos=raiz.getChildren();  //EL tag pregunta esta conformado por<Pregunta id="identificador" res="V/F">Texto que apaarecera en la pregunta</Pregunta>
+            for(int i=0;i<hijos.size();i++)        
+            {
+                Element hijo=(Element)hijos.get(i);
+                nombU[0][i]=hijo.getAttributeValue("id");   //En la pos 0 tendremos el id de cada pregunta  
+                nombU[1][i]=hijo.getAttributeValue("nombre");  //En la Posicion 1 estara  la respuesta 
+            }
+        } catch (JDOMException | IOException ex) {
+            Logger.getLogger(Maestro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return nombU;
+    }
 }

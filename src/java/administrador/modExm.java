@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -24,12 +26,13 @@ public class modExm extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String xml=request.getRealPath("WEB-INF\\ProtoExam.xml");
+        
         HttpSession session=request.getSession();
         String[] idpregs=request.getParameterValues("QuitarExamen");
         int npregs=idpregs.length;
         String nodo=request.getParameter("idViejo");
-        String response=Quitar(xml,nodo,idpregs);
-        try (PrintWriter out = response.getWriter()) {
+        String respuesta=Quitar(xml,nodo,idpregs);
+        try (PrintWriter out=response.getWriter()) {
 ///////////////////////////////////////////////////////////////////////////////////////////
 // ------------  HEADER  ------------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -62,7 +65,7 @@ out.println("<meta charset=\"utf-8\">\n" +
                 out.println(
                 "<div class=\"contenedor bg_amarillo sombra\">\n"+
                     "<div class=\"contenedor_alertas\">\n"+
-                    "<legend>"+id+"  Quitar preguntas de examen?"+response+" </legend>\n"+
+                    "<legend>"+nodo+"  Quitar preguntas de examen?"+respuesta+" </legend>\n"+
                     "</div>\n"+
                 "</div>"
                 );
@@ -264,10 +267,10 @@ out.println("<meta charset=\"utf-8\">\n" +
                 {
                     List preguntas = hijo.getChildren();
                     for(int j=0;j<numeropregs;j++){
-                        Element preg=(Element)hijo.get(j); 
+                        Element preg=(Element)preguntas.get(j); 
                         String idpreg=hijo.getAttributeValue("id"); 
                         if(idpreg.equals(idpregs[j])){
-                            pregs.remove(j);
+                            preguntas.remove(j);
                         }
                     }  
                 }

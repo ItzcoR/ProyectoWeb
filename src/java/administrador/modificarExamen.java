@@ -127,7 +127,8 @@ out.println("<meta charset=\"utf-8\">\n" +
 
 
                     out.println( "</tbody>");
-                    out.println("</table>");	
+                    out.println("</table>");
+                    out.println("<input type=\"submit\" value=\"Quitar\">");	
                     out.println("</form>");
                     out.println("</div>");
                     out.println("</div>");
