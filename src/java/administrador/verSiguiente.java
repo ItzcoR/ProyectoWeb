@@ -114,6 +114,13 @@ out.println("<meta charset=\"utf-8\">\n" +
         out.println("</body>");
         out.println("</html>");  
         }
+             indicepreg++;
+             
+             session.setAttribute("idExam",idExam);
+        session.setAttribute("nombre",nombre);
+        session.setAttribute("indicepreg",indicepreg);
+        session.setAttribute("idpregs",idpregs);
+        session.setAttribute("calificacion",calificacion);
         }
     }
     public int tamano(String direc)//Esta funcion regresa el numero de hijos del elemento raiz
