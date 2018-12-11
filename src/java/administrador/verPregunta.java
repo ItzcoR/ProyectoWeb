@@ -94,7 +94,7 @@ out.println("<meta charset=\"utf-8\">\n" +
                  out.println("<map name=\"mapa\">");
                  
                  for(int i=0; i<nOps;i++ ){
-                   out.println("<area shape=\"circle\" coords='"+ValoresOpciones[1][i]+","+ValoresOpciones[2][i]+","+ValoresOpciones[3][i]+"'  href='evaluar?id="+id+"&res="+ValoresHotS[0]+"&pond="+ValoresHotS[1]+"$ev="+ValoresOpciones[0][i]+"'>");
+                   out.println("<area shape=\"circle\" coords='"+ValoresOpciones[1][i]+","+ValoresOpciones[2][i]+","+ValoresOpciones[3][i]+"'  href='evaluar?ev="+ValoresOpciones[0][i]+"&id="+id+"&res="+ValoresHotS[0]+"&pond="+ValoresHotS[1]+"'>");
                     
                 }
                  out.println("</map>");

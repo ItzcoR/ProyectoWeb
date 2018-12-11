@@ -30,6 +30,9 @@ public class evaluar extends HttpServlet {
         String[] Preset=new String[3];
         String resultado="";
         String opcion=request.getParameter("opcion");
+        String ev=request.getParameter("ev");
+        String resHotS=request.getParameter("ev");
+        String pondHotS=request.getParameter("ev");
         HttpSession session=request.getSession();
         String id=(String)session.getAttribute("id");
         String tipo=(String)session.getAttribute("tipo");
@@ -51,15 +54,21 @@ public class evaluar extends HttpServlet {
             out.println("</head>");
             out.println("<body class='colorful'>");
             out.println("<h1 class='blanco'>Evaluando Pregunta ID: "+id+" Tipo : "+tipo+"</h1>");
-            
-             if (tipo.equals("ToF")) {
+            out.println("<h1 class='blanco'>Ocion elegida: "+opcion+"</h1>");
+            out.println("<h1 class='blanco'>ID del HotSpot: "+ev+"</h1>");
+            out.println("<h1 class='blanco'>Respuesta correcta: "+resHotS+"</h1>");
+            out.println("<h1 class='blanco'>Valor de la Pregunta "+pondHotS+"</h1>");
+            if (tipo.equals("ToF")) {
                  resultado=evaluarTOF(xml,id,opcion);
                  out.println("<h1>"+resultado+"</h1>");
                  
              }
              else if (tipo.equals("HotSpot")) {  //out.println("");
-                 resultado=evaluarHotS(xml,id,opcion);
-                 out.println("<h1>"+resultado+"</h1>");
+                 if(resHotS.equals(ev)){
+                     resultado="Respuesta correcta";
+                     out.println("<h1>"+resultado+"</h1>");
+                       
+                   }
              }
              out.println("<div class=\"row\">\n" +
             "  <div class=\"col-sm-8\"></div>\n" +
