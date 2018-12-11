@@ -17,6 +17,7 @@ function letraVal(e) {
 
 
 
+
 var pos = 0, examen, examen_status, pregunta, opcion, opciones, opA, opB, opC, correcto = 0;
 var preguntas = [
     [ "Cuanto es 10 + 4?", "12", "14", "16", "B" ],
@@ -61,3 +62,24 @@ function checkAnswer(){
 	renderPregunta();
 }
 window.addEventListener("load", renderPregunta, false);
+
+
+
+var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            myFunction(this);
+        }
+    };
+    xhttp.open("GET", "../WEB-INF/ProtoToF.xml", true);
+    xhttp.send();
+    
+    function myFunction(xml) {
+        var xmlDoc = xml.responseXML;
+        var x = xmlDoc.getElementsByTagName('ToF').length;
+        console.log(x);
+        var y = x.childNodes[0];
+        document.getElementById("demo").innerHTML = y.nodeValue; 
+    }
+
+
