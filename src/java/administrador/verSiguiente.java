@@ -96,6 +96,8 @@ out.println("<meta charset=\"utf-8\">\n" +
                 //out.println("<h1 class='blanco'>Ver Pregunta ID: "+idpregs[indicepreg]+" Tipo con values: "+valuesPregs[2][indicepreg]+"</h1>");
                 if(indicepreg>idpregs.length){
                     out.println("<h1>Examen Finalizado</h1>");
+                    out.println("<div class=\"contenedor_botones\"><a class='blanco' href='index.html'>Regresar</a></div>\n" +
+            "</div>");
                 }   
                 else{
 
