@@ -79,14 +79,14 @@ out.println("<meta charset=\"utf-8\">\n" +
                     "</div>\n"+
                 "</div>"
                 );
-                for (int k=0;k<nIDs ;k++ ) {
+                /*for (int k=0;k<nIDs ;k++ ) {
                 out.println("<h2 class='blanco'> IDOpciones: "+idOpciones[k]+"</h1>");
                 out.println("<h2 class='blanco'> CoordenadasX: "+coordenadasX[k]+"</h1>");
                 out.println("<h2 class='blanco'> CoordenadasY: "+coordenadasY[k]+"</h1>");
                 out.println("<h2 class='blanco'> Radios: "+radios[k]+"</h1>");
                 
                                         
-                }  
+                } */ 
                 out.println("<div class=\"row\">\n" +
             "  <div class=\"col-sm-8\"></div>\n" +
             "  <div class=\"col-sm-4\"><a class='blanco' href='Maestro'>Regresar</a></div>\n" +

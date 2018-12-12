@@ -28,22 +28,22 @@ public class verPregunta extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String xml=request.getRealPath("WEB-INF\\ProtoToF.xml");
-        String id=request.getParameter("id");
+        String idPreg=request.getParameter("idPreg");
         String tipo=request.getParameter("tipo");
         String[] Preset=new String[3];
         //Preset=getValuesPreguntaTOF(xml,id);
         HttpSession session=request.getSession();
-        session.setAttribute("id",id);
+        session.setAttribute("idPreg",idPreg);
         session.setAttribute("tipo",tipo);
         session.setAttribute("res",Preset[0]);
         session.setAttribute("pond",Preset[1]);
         String[] ValoresHotS=new String[4];
-        ValoresHotS=getValuesPreguntaHotS(xml,id);
+        ValoresHotS=getValuesPreguntaHotS(xml,idPreg);
         if (tipo.equals("ToF")) { 
-            Preset=getValuesPreguntaTOF(xml,id);
+            Preset=getValuesPreguntaTOF(xml,idPreg);
         }
         else if (tipo.equals("HotSpot")) {
-            ValoresHotS=getValuesPreguntaHotS(xml,id);
+            ValoresHotS=getValuesPreguntaHotS(xml,idPreg);
         }
         try (PrintWriter out = response.getWriter()) {
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -75,7 +75,7 @@ out.println("<meta charset=\"utf-8\">\n" +
 ///////////////////////////////////////////////////////////////////////////////////////////
 // ------------  CONTENIDO  ---------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////////////////
-            out.println("<h1 class='blanco'>Ver Pregunta ID: "+id+" Tipo : "+tipo+"</h1>");
+            out.println("<h1 class='blanco'>Ver Pregunta ID: "+idPreg+" Tipo : "+tipo+"</h1>");
             
              if (tipo.equals("ToF")) {
                  out.println("<h1>"+Preset[2]+"");
@@ -86,15 +86,15 @@ out.println("<meta charset=\"utf-8\">\n" +
 "</form>");
              }
              else if (tipo.equals("HotSpot")) {  //out.println("");
-                 int nOps=numOpciones(xml,id);
+                 int nOps=numOpciones(xml,idPreg);
                  String[][] ValoresOpciones=new String[4][nOps];
-                 ValoresOpciones=ObtenerOpciones(xml,id);
+                 ValoresOpciones=ObtenerOpciones(xml,idPreg);
                  out.println("<h1 class='blanco'>Pregunta: "+ValoresHotS[3]+"</h1>");
                  out.println("<img src='"+ValoresHotS[2]+"' usemap='#mapa'>");
                  out.println("<map name=\"mapa\">");
                  
                  for(int i=0; i<nOps;i++ ){
-                   out.println("<area shape=\"circle\" coords='"+ValoresOpciones[1][i]+","+ValoresOpciones[2][i]+","+ValoresOpciones[3][i]+"'  href='evaluar?ev="+ValoresOpciones[0][i]+"&id="+id+"&res="+ValoresHotS[0]+"&pond="+ValoresHotS[1]+"'>");
+                   out.println("<area shape=\"circle\" coords='"+ValoresOpciones[1][i]+","+ValoresOpciones[2][i]+","+ValoresOpciones[3][i]+"'  href='evaluar?ev="+ValoresOpciones[0][i]+"&idPreg="+idPreg+"&res="+ValoresHotS[0]+"&pond="+ValoresHotS[1]+"'>");
                     
                 }
                  out.println("</map>");

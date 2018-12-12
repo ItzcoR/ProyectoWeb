@@ -34,11 +34,11 @@ public class evaluar extends HttpServlet {
         String resHotS=request.getParameter("ev");
         String pondHotS=request.getParameter("ev");
         HttpSession session=request.getSession();
-        String id=(String)session.getAttribute("id");
+        String idPreg=(String)session.getAttribute("idPreg");
         String tipo=(String)session.getAttribute("tipo");
         String res=(String)session.getAttribute("res");
         String pond=(String)session.getAttribute("pond");
-        Preset=getValuesPreguntaTOF(xml,id);
+        Preset=getValuesPreguntaTOF(xml,idPreg);
         //resultado=evaluarTOF(xml,id,opcion);
         try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
@@ -53,13 +53,13 @@ public class evaluar extends HttpServlet {
             "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>");
             out.println("</head>");
             out.println("<body class='colorful'>");
-            out.println("<h1 class='blanco'>Evaluando Pregunta ID: "+id+" Tipo : "+tipo+"</h1>");
-            out.println("<h1 class='blanco'>Ocion elegida: "+opcion+"</h1>");
+            out.println("<h1 class='blanco'>Evaluando Pregunta ID: "+idPreg+" Tipo : "+tipo+"</h1>");
+            out.println("<h1 class='blanco'>Opcion elegida: "+opcion+"</h1>");
             out.println("<h1 class='blanco'>ID del HotSpot: "+ev+"</h1>");
             out.println("<h1 class='blanco'>Respuesta correcta: "+resHotS+"</h1>");
             out.println("<h1 class='blanco'>Valor de la Pregunta "+pondHotS+"</h1>");
             if (tipo.equals("ToF")) {
-                 resultado=evaluarTOF(xml,id,opcion);
+                 resultado=evaluarTOF(xml,idPreg,opcion);
                  out.println("<h1>"+resultado+"</h1>");
                  
              }

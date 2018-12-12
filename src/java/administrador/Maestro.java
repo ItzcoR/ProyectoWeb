@@ -35,7 +35,7 @@ public class Maestro extends HttpServlet {
         String[][] examenes=new String[2][aux2];
         examenes=getExamenes(xmlExamen);
         HttpSession session=request.getSession();
-        String id=(String) session.getAttribute("id");
+        String id=(String) session.getAttribute("id");//ID Usuario
         String tipo=(String) session.getAttribute("tipo");
         String nombre=(String) session.getAttribute("nombre");
         if(id!=null)
@@ -120,7 +120,7 @@ out.println("<meta charset=\"utf-8\">\n" +
                             out.println(pregs[3][i]);        // Tipo  out.println("<>");   out.println("");  out.println(''); 
                             out.println("</td>");
                             out.println("<td>");
-                            out.println("<a class=\"btn_ver btn\" href='verPregunta?id="+pregs[0][i]+"&tipo="+pregs[3][i]+"'><i class=\"far fa-eye\"></i></a>");
+                            out.println("<a class=\"btn_ver btn\" href='verPregunta?idPreg="+pregs[0][i]+"&tipo="+pregs[3][i]+"'><i class=\"far fa-eye\"></i></a>");
                             out.println("<a class=\"btn_borrar btn\" href='eliminard?id="+pregs[0][i]+"&tipo="+pregs[3][i]+"'><i class=\"fas fa-trash-alt\"></i></a>");
                             out.println("<a class=\"btn_editar btn\" href='modificarPregunta?id="+pregs[0][i]+"&tipo="+pregs[3][i]+"'><i class=\"fas fa-pen-square\"></i></i></a>");
                             out.println("</td>");
