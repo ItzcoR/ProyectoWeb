@@ -78,7 +78,7 @@ out.println("<meta charset=\"utf-8\">\n" +
               +          "<legend>"+resultado+"<span>"
               +      "ID: "+idPregunta+"</span></legend>"
               + "<div class=\"campo enviar\">"
-              +"   <a class=\"btn-info btn_rosa\" href='Administrador'>Regresar</a>"
+              +"   <a class=\"btn-info btn_rosa\" href='Maestro'>Regresar</a>"
               +"</div>"
               +      "</div>"
 

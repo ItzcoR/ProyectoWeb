@@ -64,14 +64,17 @@ out.println("<meta charset=\"utf-8\">\n" +
 ///////////////////////////////////////////////////////////////////////////////////////////
 // ------------  CONTENIDO  ---------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////////////////
-            out.println("<h1 class='blanco'>Pregunta ID: "+idPregunta+"del tipo"+tipo+"Modificada</h1>");
-            out.println("<h1 class='blanco'>"+resultado+"</h1>");
-            out.println("<div class=\"row\">\n" +
-            "  <div class=\"col-sm-8\"></div>\n" +
-            "  <div class=\"col-sm-4\"><a class='blanco' href='Maestro'>Regresar</a></div>\n" +
-            "</div>");
-            out.println("</body>");
-            out.println("</html>");
+out.println(
+    "<div class=\"contenedor bg_blanco sombra\">"
+  +      "<div class=\"contenedor_alertas\">"
+  +          "<legend>"+resultado+"<span>"
+  +      "ID: "+idPregunta+"</span></legend>"
+  + "<div class=\"campo enviar\">"
+  +"   <a class=\"btn-info btn_rosa\" href='Maestro'>Regresar</a>"
+  +"</div>"
+  +      "</div>"
+
++"</div>");
         }
     }
     public String modiPreguntaTOF(String direc,String id,String texto,String res, String pondera)    
