@@ -67,7 +67,9 @@ public class modificacion2 extends HttpServlet {
                     "<h1>Sistema evaluador</h1>\n" +
                     " </div>");
 
-
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                // Contenido
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////
             out.println("<div class=\"bg_blanco contenedor sombra\">\n"+
             "<div class =\"contenedor_alertas\">\n"+
             "<legend>\n"+
