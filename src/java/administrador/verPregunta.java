@@ -31,8 +31,10 @@ public class verPregunta extends HttpServlet {
         String idPreg=request.getParameter("idPreg");
         String tipo=request.getParameter("tipo");
         String[] Preset=new String[3];
-        //Preset=getValuesPreguntaTOF(xml,id);
+        Preset=getValuesPreguntaTOF(xml,idPreg);
         HttpSession session=request.getSession();
+        String idExam=(String) session.getAttribute("idExam");
+        session.setAttribute("idExam",idExam);
         session.setAttribute("idPreg",idPreg);
         session.setAttribute("tipo",tipo);
         session.setAttribute("res",Preset[0]);
@@ -191,7 +193,7 @@ out.println("<meta charset=\"utf-8\">\n" +
     public String[][] ObtenerOpciones(String ruta,String id)
     {
         
-        int n=0;
+       // int n=0;
         int aux=numOpciones(ruta,id);
         String[][] opcionesValues=new String[4][aux];
         try{
@@ -215,15 +217,20 @@ out.println("<meta charset=\"utf-8\">\n" +
                 Element hijo=(Element)hijos.get(i);
                 String identificador=hijo.getAttributeValue("id");
                 if(identificador.equals(id))
-                {
+                {   
+                    System.out.println("ObtenerOpciones encontro el id:  "+id+" bien");
                     List opciones=hijo.getChildren();
                     for (int j=0;j<opciones.size() ;j++ ) {
                         Element opcion=(Element)opciones.get(j);
-                        opcionesValues[0][n]=opcion.getAttributeValue("id");
-                        opcionesValues[1][n]=opcion.getAttributeValue("coordX");
-                        opcionesValues[2][n]=opcion.getAttributeValue("coordY");
-                        opcionesValues[3][n]=opcion.getAttributeValue("radio");
-                        n++;
+                        opcionesValues[0][j]=opcion.getAttributeValue("id");
+                        opcionesValues[1][j]=opcion.getAttributeValue("coordX");
+                        opcionesValues[2][j]=opcion.getAttributeValue("coordY");
+                        opcionesValues[3][j]=opcion.getAttributeValue("radio");
+                       // n++;
+                        System.out.println("ObtenerOpciones coordX:  "+ opcionesValues[1][j]+" bien");
+                        System.out.println("ObtenerOpciones radio:  "+ opcionesValues[3][j]+" bien");
+                        //System.out.println("ObtenerOpciones n :  "+n+" bien");
+                        
                     }
                         
                  }

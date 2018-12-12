@@ -32,15 +32,16 @@ public class verExamen extends HttpServlet {
         int cantPregs=numPregs(xmlExam,idExam);
         int indicepreg=0;
         int calificacion=0;
-        String[] idpreg=getIDPreguntasDeExamen(xmlExam,idExam);
+        String[] idpregs=getIDPreguntasDeExamen(xmlExam,idExam);
         String[][] valuesPregs=new String[4][cantPregs];
-        valuesPregs=getValuesDePreguntas(xmlPreg,idpreg);
+        valuesPregs=getValuesDePreguntas(xmlPreg,idpregs);
         HttpSession session=request.getSession();
         session.setAttribute("idExam",idExam);
         session.setAttribute("nombre",nombreExamen);
         session.setAttribute("indicepreg",indicepreg);
-        session.setAttribute("idpregs",idpreg);
+        session.setAttribute("idpregs",idpregs);
         session.setAttribute("calificacion",calificacion);
+        session.setAttribute("cantPregs",cantPregs);
         try (PrintWriter out = response.getWriter()) {
 ///////////////////////////////////////////////////////////////////////////////////////////
 // ------------  HEADER  ------------------------------------------------------------------
@@ -75,14 +76,15 @@ out.println("<meta charset=\"utf-8\">\n" +
             out.println("<h1 class='blanco'>numero de Preguntas: "+cantPregs+"</h1>");
             out.println("<div class=\"row\">\n" +
             "  <div class=\"col-sm-8\"></div>\n" );
-            /*for(int i=0;i<cantPregs;i++){
-                out.println("<h3>"+idpreg[i]+"</h3>"); //id
+            for(int i=0;i<cantPregs;i++){
+                out.println("<h3>"+idpregs[i]+"</h3>"); //id
                 out.println("<h3>"+valuesPregs[0][i]+"</h3>"); //res
                 out.println("<h3>"+valuesPregs[1][i]+"</h3>");  //text
                 out.println("<h3>"+valuesPregs[2][i]+"</h3>");//tipo
                 out.println("<h3>"+valuesPregs[3][i]+"</h3>");//pond
-            }*/
-             out.println("<div class=\"contenedor_botones\"><a class='blanco' href='verSiguiente'>Comenzar</a></div>\n" +
+            }
+            String tipo=valuesPregs[2][0];
+             out.println("<div class=\"contenedor_botones\"><a class='blanco' href='verSiguiente?idPreg="+idpregs[0]+"&tipo="+tipo+"'>Comenzar</a></div>\n" +
             "</div>");       
             out.println("<div class=\"contenedor_botones\"><a class='blanco' href='Maestro'>Regresar</a></div>\n" +
             "</div>");
