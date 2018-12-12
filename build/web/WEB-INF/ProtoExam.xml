@@ -41,5 +41,14 @@
     <Preg id="88" />
     <Preg id="1212" />
   </Exa>
+  <Exa id="MixedTest" nombre="PruebaRevuelta">
+    <Preg id="ptof4" />
+    <Preg id="ptof5" />
+    <Preg id="ptof6" />
+    <Preg id="phs1" />
+    <Preg id="wasdd" />
+    <Preg id="88" />
+    <Preg id="1212" />
+  </Exa>
 </Examenes>
 
