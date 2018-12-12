@@ -71,7 +71,7 @@ out.println("<div class=\"bg_blanco contenedor sombra\">\n"+
 "</legend>\n"+
 
 "<div class=\"campo enviar\">\n" +
-            "   <a class=\"btn-info btn_rosa\" href='Administrador'>Regresar</a>\n" +
+            "   <a class=\"btn-info btn_rosa\" href='Maestro'>Regresar</a>\n" +
             "</div>\n" +
             "</div>\n" +
 "</div>");
