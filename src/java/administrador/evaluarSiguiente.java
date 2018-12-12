@@ -32,14 +32,24 @@ public class evaluarSiguiente extends HttpServlet {
         String resultado="";
         String opcion=request.getParameter("opcion");
         String ev=request.getParameter("ev");
-        
+        String idpreHotS=request.getParameter("id");
         String resHotS=request.getParameter("ev");
         String pondHotS="";
+        String tipo="";
+        String idPreg="";
         HttpSession session=request.getSession();
-        String idPreg=(String)session.getAttribute("idPreg");
-        String idExam=(String)session.getAttribute("idExam");
-        String tipo=getTipo(xmlPreg,idPreg);
+        if(getTipo(xmlPreg,idpreHotS).equals("HotSpot")){
+            pondHotS=request.getParameter("pond");
+            tipo=getTipo(xmlPreg,idpreHotS);
+            idPreg=idpreHotS;
+        }
+        //String resHotS=request.getParameter("ev");
+        //String pondHotS="";
+        else{
+         idPreg=(String)session.getAttribute("idPreg");
+         tipo=getTipo(xmlPreg,idPreg);}
         //session.setAttribute("tipo",tipo);
+        String idExam=(String)session.getAttribute("idExam");
         int cantPregs=numPregs(xmlExam,idExam);
         //String tipo=(String)session.getAttribute("tipo");
         String res=(String)session.getAttribute("res");
