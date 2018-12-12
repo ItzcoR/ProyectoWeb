@@ -150,20 +150,46 @@ out.println("<meta charset=\"utf-8\">\n" +
                     out.println("<form name='Opciones' action='Mapear' method='get'>");
                         
                         for (int i=0;i<auxOpc ;i++ ) {
-                           out.println("<label>Opcion ID:</label>\n"+
-                              "<input type='text' name='idOpcion' required autocomplete=\"off\" placeholder=\"Escribe el ID\">");
-                            out.println("<label>Coordenada X:</label>\n"+
-                              "<input type='text' name='coordX' required autocomplete=\"off\" onkeypress=\"return numVal(event)\" placeholder=\"Coordena X\">");
-                            out.println("<label>Coordenada Y:</label>\n"+
-                              "<input type='text' name='coordY' required autocomplete=\"off\" onkeypress=\"return numVal(event)\" placeholder=\"Coordena Y\">");
-                            out.println("<label>Radio:</label>\n"+
-                              "<input type='text' name='radio' required autocomplete=\"off\" onkeypress=\"return numVal(event)\" placeholder=\"Radio\">"); 
-                            out.println("<br/>");
+                        
+                            out.println(
+                                "<div class=\"campos_usuario\">\n"+
+        
+                                "<div class=\"campo_usuario\">\n"+
+                                "<label for=\"nombre\">Opcion Id:</label>\n"+
+                                "<input type='text' name='idOpcion' required autocomplete=\"off\" placeholder=\"Escribe el ID\" autocomplete=\"off\" >\n"+
+                                "</div>\n"+
+
+                                "<div class=\"campo_usuario\">\n"+
+                                "<label for=\"nombre\">Cordenada X:</label>\n"+
+                                "<input type='number' name='coordX' required autocomplete=\"off\" onkeypress=\"return numVal(event)\" placeholder=\"Coordena X\" autocomplete=\"off\" >\n"+
+                                "</div>\n"+
+
+
+                                "<div class=\"campo_usuario\">\n"+
+                                "<label for=\"nombre\">Cordenada Y:</label>\n"+
+                                "<input type='number' name='coordY' required autocomplete=\"off\" onkeypress=\"return numVal(event)\" placeholder=\"Coordena Y\" autocomplete=\"off\" >\n"+
+                                "</div>\n"+
+
+
+                                "<div class=\"campo_usuario\">\n"+
+                                "<label for=\"nombre\">Radio:</label>\n"+
+                                "<input type='number' name='radio' required autocomplete=\"off\" onkeypress=\"return numVal(event)\" placeholder=\"Radio\" autocomplete=\"off\" >\n"+
+                                "</div>\n"+
+                                "</div>\n"+
+                                "<hr>");
+
+                            
+                      
                         }
                             
-                        out.println("<input type=\"reset\">");
-                        out.println("<input type=\"submit\" value=\"Crear\">");
-                        out.println("<input type=\"button\" value=\"Cancelar\" onclick=\"document.location='Maestro'\">");
+                        out.println(
+                        "<div class=\"contenedor_botones\">\n"+
+                        "<div class=\"campo_usuario enviar\">\n"+
+                        "<input type=\"hidden\" id=\"accion\" value=\"crear\">\n"+
+                        "<input type=\"submit\" class=\"btn-info\" value=\"Modificar\">\n"+
+                        "<input  type=\"button\" class=\"btn-info\" value=\"Cancelar\" onclick=\"document.location='Maestro'\">\n"+
+                        "</div>\n"+
+                        "</div>");
                         
                     out.println("</form>");
                     out.println("</div>\n" +

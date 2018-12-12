@@ -63,8 +63,9 @@ out.println("<meta charset=\"utf-8\">\n" +
 "</head>\n" +
 "<body>\n" +
 "<div class=\"contenedor_barra\">\n"+
-"<h1>Sistema evaluador Modificar HotSpot</h1>\n"+
+"<h1>Sistema evaluador</h1>\n"+
 "</div>");
+
 
 
 
@@ -72,25 +73,16 @@ out.println("<meta charset=\"utf-8\">\n" +
 // ------------  CONTENIDO  ---------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////////////////
                 out.println(
-                "<div class=\"contenedor bg_amarillo sombra\">\n"+
-                    "<div class=\"contenedor_alertas\">\n"+
-                        "<legend>"+idPregunta+"</legend>\n"+
-                    "<legend>"+resultado+"</legend>\n"+
-                    "</div>\n"+
-                "</div>"
-                );
-                /*for (int k=0;k<nIDs ;k++ ) {
-                out.println("<h2 class='blanco'> IDOpciones: "+idOpciones[k]+"</h1>");
-                out.println("<h2 class='blanco'> CoordenadasX: "+coordenadasX[k]+"</h1>");
-                out.println("<h2 class='blanco'> CoordenadasY: "+coordenadasY[k]+"</h1>");
-                out.println("<h2 class='blanco'> Radios: "+radios[k]+"</h1>");
-                
-                                        
-                } */ 
-                out.println("<div class=\"row\">\n" +
-            "  <div class=\"col-sm-8\"></div>\n" +
-            "  <div class=\"col-sm-4\"><a class='blanco' href='Maestro'>Regresar</a></div>\n" +
-            "</div>");
+                "<div class=\"contenedor bg_blanco sombra\">"
+              +      "<div class=\"contenedor_alertas\">"
+              +          "<legend>"+resultado+"<span>"
+              +      "ID: "+idPregunta+"</span></legend>"
+              + "<div class=\"campo enviar\">"
+              +"   <a class=\"btn-info btn_rosa\" href='Maestro'>Regresar</a>"
+              +"</div>"
+              +      "</div>"
+
+            +"</div>");
 
 
         ////////////////////////////////////////////////////////////////////////////////////////////

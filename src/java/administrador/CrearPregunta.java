@@ -59,7 +59,6 @@ out.println("<div class='contenedor_alertas'>");
             out.println("<div id='app'>");
             out.println("<div class='contenedor_selector'>");     
                 out.println("<select class=\"selector rounded\" name=\"tipoPreg\" v-model=\"selected\" options='opciones' required>\n" +
-                "<option value=\"\" selected></option>\n" +
                 "<option value=\"ToF\">Verdadero o Falso</option>\n" +
                 "<option value=\"HotS\">HotSpot</option>\n" +
                 "</select>");
@@ -91,7 +90,7 @@ out.println("<div class='contenedor_alertas'>");
                         "<div class=\"campo_usuario\">\n"+
                 
                           "<label>Valor:</label>\n"+
-                          "<input type='text' name='pond' onkeypress=\"return numVal(event)\" required placeholder=\"Cuanto vale tu pregunta?\">\n"+
+                          "<input type='number' name='pond' onkeypress=\"return numVal(event)\" required placeholder=\"Cuanto vale tu pregunta?\" autocomplete=\"off\">\n"+
                 
                         "</div>\n"+
 
@@ -146,7 +145,7 @@ out.println("<div class='contenedor_alertas'>");
                          "<div class=\"campo_usuario\">\n"+
                 
                           "<label>Respuesta:</label>\n"+
-                          "<input type='text' name='res' onkeypress=\"return letranumVal(event)\" required placeholder=\"ID de la Opcion correcta\">\n"+
+                          "<input type='text' name='res' onkeypress=\"return letranumVal(event)\" required placeholder=\"ID de la Opcion correcta\"  autocomplete=\"off\">\n"+
                 
                         "</div>\n"+
                 
@@ -154,14 +153,14 @@ out.println("<div class='contenedor_alertas'>");
                         "<div class=\"campo_usuario\">\n"+
                 
                           "<label>Valor:</label>\n"+
-                          "<input type='text' name='pond' onkeypress=\"return numVal(event)\" required placeholder=\"Cuanto vale tu pregunta?\">\n"+
+                          "<input type='number' name='pond' onkeypress=\"return numVal(event)\" required placeholder=\"Cuanto vale tu pregunta?\"  autocomplete=\"off\">\n"+
                 
                         "</div>\n"+
 
                         "<div class=\"campo_usuario\">\n"+
                 
                         "<label>Numero de Opciones:</label>\n"+
-                        "<input type='text' name='nOpciones' onkeypress=\"return numVal(event)\" required placeholder=\"Cuantas opciones deseas?\">\n"+
+                        "<input type='text' name='nOpciones' onkeypress=\"return numVal(event)\" required placeholder=\"Cuantas opciones deseas?\" autocomplete=\"off\">\n"+
                         "</div>\n"+
                         "</div>");
   

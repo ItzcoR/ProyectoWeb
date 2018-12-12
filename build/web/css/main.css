@@ -41,12 +41,10 @@
  */
 
 hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
+    color: black;
+    background-color: black;
+    height: 5px;
+    border: 1px solid black;
 }
 
 /*
@@ -217,6 +215,15 @@ box-shadow: 0px 7px 4px -2px rgba(0,0,0,0.61);
 
 }
 
+hr { 
+    display: block!important;
+    margin: 0.5em auto!important;
+
+    border-style: inset;
+    border-width: 1px;
+  } 
+
+
 h1,h2{
     font-family: var(--fuenteSecundaria);
     text-align: center;
@@ -294,7 +301,9 @@ legend span{
 }
 
 .campo input[type="password"],
-.campo input[type="text"]{
+.campo input[type="text"],
+.campo input[type="number"]
+{
     width: 100%;
     border: none;
     padding: .5rem;
@@ -358,7 +367,7 @@ legend span{
 }
 
 .contenedor_contactos{
-    max-width: 800px;
+    max-width:1000px;
     margin: 4rem auto 0 auto;
     
 }
@@ -505,6 +514,8 @@ legend span{
 
 .campo_usuario input[type="password"],
 .campo_usuario input[type="text"],
+.campo_usuario input[type="number"],
+
 select{
     width: 100%;
     border: none;
