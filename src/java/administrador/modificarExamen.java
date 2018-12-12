@@ -40,7 +40,7 @@ public class modificarExamen extends HttpServlet{
         String[][] valuesPregs=new String[4][cantPregs];
         valuesPregs=getValuesDePreguntas(xmlPreg,idpreg);
         //String[] resultado=getPreguntas(xmlExam,idExam,idpreg);
-        int valorExamen=getValorExamen(xmlPreg,idpreg);
+        //int valorExamen=getValorExamen(xmlPreg,idpreg);
         try (PrintWriter out = response.getWriter()) {
 ///////////////////////////////////////////////////////////////////////////////////////////
 // ------------  HEADER  ------------------------------------------------------------------
@@ -72,8 +72,8 @@ out.println("<meta charset=\"utf-8\">\n" +
 // ------------  CONTENIDO  ---------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////////////////
             out.println("<div class=\"contenedor bg_blanco sombra contactos\">");
-                    out.println("<legend >Modificando Examen: "+nombreExam+"<span>Numero de preguntas: "+cantPregs+"<br>Total de puntos: "+valorExamen+"</span></legend>");
-                    out.println("<form name='EditarPreguntas' action='modExm' method='get'>");
+                    out.println("<legend >Modificando Examen: "+idExam+"<span>Numero de preguntas: "+cantPregs+"</span></legend>");
+                    out.println("<form name='QuitarPreguntas' action='modExm' method='get'>");
 
                 out.println("<div class=\"contenedor_contactos\">");
                 out.println("<div class=\"contenedor_tabla\">");
@@ -88,7 +88,7 @@ out.println("<meta charset=\"utf-8\">\n" +
                                 "       <th>Respuesta</th>\n" +
                                 "       <th>Valor</th>\n" +
                                 "       <th>Acciones</th>\n" +
-                                "       <th>valor</th>\n" +
+                                "       <th>Quitar del Examen</th>\n" +
                                 "     </tr>\n" +
                                 "     </thead>\n" +
                                 "     <tbody>");
@@ -115,19 +115,20 @@ out.println("<meta charset=\"utf-8\">\n" +
                          out.println("<a class=\"btn_borrar btn\" href='eliminarDeExamen?id="+idpreg[i]+"&tipo="+valuesPregs[2][i]+"'><i class=\"fas fa-trash-alt\"></i></a>");
                          out.println("<a class=\"btn_editar btn\" href='modificarPregunta?id="+idpreg[i]+"&tipo="+valuesPregs[2][i]+"'><i class=\"fas fa-pen-square\"></i></i></a>");
                         out.println("</td>");
-                         /* out.println("<td class=\"checkbox\">");
+                         out.println("<td class=\"checkbox\">");
                         out.println(
                         "<label class=\"switch\">\n" +
-                        "<input type=\"checkbox\"name='agregarExamen' value="+idpreg[i]+">\n" +
+                        "<input type=\"checkbox\"name='QuitarExamen' value="+idpreg[i]+">\n" +
                         "<span class=\"slider round\"></span>\n" +
-                        "</label>"); */                          
+                        "</label>");                        
                         out.println("</td>");                           
                         out.println("</tr>");
                     }
 
 
                     out.println( "</tbody>");
-                    out.println("</table>");	
+                    out.println("</table>");
+                    out.println("<input type=\"submit\" value=\"Quitar\">");	
                     out.println("</form>");
                     out.println("</div>");
                     out.println("</div>");

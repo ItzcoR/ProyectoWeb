@@ -1,18 +1,18 @@
 package administrador;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -20,28 +20,19 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 
-
-public class ExamenApp extends HttpServlet{
-     @Override
+public class modExm extends HttpServlet {
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String xml=request.getRealPath("WEB-INF\\ProtoExam.xml");
         
-        String xmlExam=request.getRealPath("WEB-INF\\ProtoExam.xml");
-        String xmlPreg=request.getRealPath("WEB-INF\\ProtoToF.xml");
-        String idExam=request.getParameter("idExamen");
-        //String texto=request.getParameter("nombre");
-        String nombreExam=request.getParameter("nombreExamen");
-        int cantPregs=numPregs(xmlExam,idExam);
         HttpSession session=request.getSession();
-        session.setAttribute("idViejo",idExam);
-        session.setAttribute("nombre",nombreExam);
-        String[] idpreg=getIDPreguntasDeExamen(xmlExam,idExam);
-        String[][] valuesPregs=new String[4][cantPregs];
-        valuesPregs=getValuesDePreguntas(xmlPreg,idpreg);
-        //String[] resultado=getPreguntas(xmlExam,idExam,idpreg);
-        int valorExamen=getValorExamen(xmlPreg,idpreg);
-        try (PrintWriter out = response.getWriter()) {
+        String[] idpregs=request.getParameterValues("QuitarExamen");
+        int npregs=idpregs.length;
+        String nodo=(String) session.getValue("idViejo");
+        String respuesta=Quitar(xml,nodo,idpregs);
+        try (PrintWriter out=response.getWriter()) {
 ///////////////////////////////////////////////////////////////////////////////////////////
 // ------------  HEADER  ------------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -71,85 +62,28 @@ out.println("<meta charset=\"utf-8\">\n" +
 ///////////////////////////////////////////////////////////////////////////////////////////
 // ------------  CONTENIDO  ---------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////////////////
-out.println(
-       "<div class=\"contenedor bg_blanco sombra\">\n"+
-           "<div class=\"contenedor_alertas\">\n"+
-           " <h2 id=\"examen_status\"></h2>\n"+
-           "<div id=\"examen\"></div>\n"+
-           "</div>\n"+
-       "</div>"
-       );
-            out.println("<div class=\"contenedor bg_blanco sombra contactos\">");
-                    out.println("<legend >Modificando Examen: "+nombreExam+"<span>Numero de preguntas: "+cantPregs+"<br>Total de puntos: "+valorExamen+"</span></legend>");
-                    out.println("<form name='EditarPreguntas' action='modExm' method='get'>");
-
-                out.println("<div class=\"contenedor_contactos\">");
-                out.println("<div class=\"contenedor_tabla\">");
-
-                    
-                    out.println("<table id='listadoPregunatas' class=\"listado_contactos maestro\">");
-                    out.println("   <thead>\n" +
-                                "     <tr>\n" +
-                                "       <th>ID Pregunta</th>\n" +
-                                "       <th>Pregunta</th>\n" +
-                                "       <th>Tipo</th>\n" +
-                                "       <th>Respuesta</th>\n" +
-                                "       <th>Valor</th>\n" +
-                                "       <th>Acciones</th>\n" +
-                                "       <th>valor</th>\n" +
-                                "     </tr>\n" +
-                                "     </thead>\n" +
-                                "     <tbody>");
-                    for(int i=0;i<cantPregs;i++)
-                    {   
-                        out.println("<tr>");
-                        out.println("<td>");
-                        out.println(idpreg[i]);    //out.println("<>");   out.println("");  out.println(''); 
-                        out.println("</td>");
-                        out.println("<td>");
-                        out.println(valuesPregs[1][i]);//Texto Pregunta
-                        out.println("</td>");
-                        out.println("<td>");
-                        out.println(valuesPregs[2][i]);  //Tipo out.println("<>");   out.println("");  out.println(''); 
-                        out.println("</td>");
-                        out.println("<td>");
-                        out.println(valuesPregs[0][i]);    // Respuesta out.println("<>");   out.println("");  out.println(''); 
-                        out.println("</td>");
-                        out.println("<td>");
-                        out.println(valuesPregs[3][i]);    // Valor out.println("<>");   out.println("");  out.println(''); 
-                        out.println("</td>");
-                        out.println("<td>");
-                         out.println("<a class=\"btn_ver btn\" href='verPregunta?id="+idpreg[i]+"&tipo="+valuesPregs[2][i]+"'><i class=\"far fa-eye\"></i></a>");
-                         out.println("<a class=\"btn_borrar btn\" href='eliminarDeExamen?id="+idpreg[i]+"&tipo="+valuesPregs[2][i]+"'><i class=\"fas fa-trash-alt\"></i></a>");
-                         out.println("<a class=\"btn_editar btn\" href='modificarPregunta?id="+idpreg[i]+"&tipo="+valuesPregs[2][i]+"'><i class=\"fas fa-pen-square\"></i></i></a>");
-                        out.println("</td>");
-                         /* out.println("<td class=\"checkbox\">");
-                        out.println(
-                        "<label class=\"switch\">\n" +
-                        "<input type=\"checkbox\"name='agregarExamen' value="+idpreg[i]+">\n" +
-                        "<span class=\"slider round\"></span>\n" +
-                        "</label>"); */                          
-                        out.println("</td>");                           
-                        out.println("</tr>");
-                    }
+                out.println(
+                "<div class=\"contenedor bg_amarillo sombra\">\n"+
+                    "<div class=\"contenedor_alertas\">\n"+
+                    "<legend>"+nodo+"  Quitar preguntas de examen?"+respuesta+" </legend>\n"+
+                    "</div>\n"+
+                "</div>"
+                );
+                for(int k=0;k<npregs;k++){
+                    out.println("<h1>"+idpregs[k]+"</h1>");
+                }
+                
+                   out.println("<div class=\"contenedor_botones\"><a class='blanco' href='Maestro'>Regresar</a></div>\n" +
+            "</div>");
 
 
-                    out.println( "</tbody>");
-                    out.println("</table>");	
-                    out.println("</form>");
-                    out.println("</div>");
-                    out.println("</div>");
-                    out.println("</div>");
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////
-// ------------  FOOTER  -------------------------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////////////////               
-out.println("</body>");
-out.println("</html>");
+                
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        // ------------  FOOTER  -------------------------------------------------------------------
+        ///////////////////////////////////////////////////////////////////////////////////////////               
+        out.println("</body>");
+        out.println("</html>");  
         }
-
     }
     public int tamano(String direc)//Esta funcion regresa el numero de hijos del elemento raiz
         {
@@ -307,11 +241,11 @@ out.println("</html>");
         }
         return total;
     }
-    public String agregarOpciones(String ruta,String id,String[] idopc,String[] coordX,String[] coordY,String[] radios)
+    public String Quitar(String ruta,String idExam,String[] idpregs)
     {
         String resultado="";
-        int numeroOpciones=coordX.length;
-        int aux=0;
+        int numeropregs=idpregs.length;
+        int aux=0,n=0;
         try{
             /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
             SAXBuilder builder=new SAXBuilder();
@@ -330,21 +264,25 @@ out.println("</html>");
             for(int i=0;i<hijos.size();i++)
             {
                 Element hijo=(Element)hijos.get(i);
-                String identificador=hijo.getAttributeValue("id");
-                if(identificador.equals(id))
+                String id=hijo.getAttributeValue("id"); //Checamos si las ids 
+                if(id.equals(idExam))
                 {
-                    for (int j=0;j<numeroOpciones ;j++ ) {
-                        Element nuevo=new Element("HS");
-                        nuevo.setAttribute("id",idopc[j]);
-                        nuevo.setAttribute("coordX",coordX[j]);
-                        nuevo.setAttribute("coordY",coordY[j]);
-                        nuevo.setAttribute("radio",radios[j]);
-                        hijo.addContent(nuevo);
-                        resultado="Pregunta agregada exitosamente";
-                    }
-                        
-                 }
-                
+                    List preguntas = hijo.getChildren();
+                    resultado="id Examen Encontrado";
+                    for(int j=0;j<preguntas.size();j++){
+                        Element preg=(Element)preguntas.get(j); 
+                        String idpreg=preg.getAttributeValue("id");
+                        resultado=idpreg+" id pregunta en "+j+"numero de preguntas"+numeropregs; 
+                        for(int h=0;h<numeropregs;h++)  {  
+                            if(idpreg.equals(idpregs[h])){
+                                resultado="id Pregunta Encontado";
+                                preguntas.remove(j);
+                            //n++;
+                            }
+                        }
+                        //n++;
+                    }  
+                }
             }
       xmlOutput.output(bd_xml,new FileWriter(ruta));
        

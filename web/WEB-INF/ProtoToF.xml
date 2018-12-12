@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Preguntas>
-  <ToF id="ptof1" res="V" pond="1">Grifith no hizo nada malo</ToF>
-  <ToF id="ptof2" res="F" pond="1">Rei best girl</ToF>
-  <ToF id="ptof3" res="V" pond="3">Moth es goi</ToF>
-  <ToF id="ptof4" res="F" pond="4">BB es joto</ToF>
-  <ToF id="ptof5" res="V" pond="2">Misato besto wifi</ToF>
-  <ToF id="ptof6" res="F" pond="3">Rei best girl</ToF>
+  <ToF id="ptof1" res="V" pond="1">TOFejemplo1</ToF>
+  <ToF id="ptof2" res="F" pond="1">TOFejemplo2</ToF>
+  <ToF id="ptof3" res="V" pond="3">TOFejemplo3</ToF>
+  <ToF id="ptof4" res="F" pond="4">TOFejemplo4</ToF>
+  <ToF id="ptof5" res="V" pond="2">TOFejemplo5</ToF>
+  <ToF id="ptof6" res="F" pond="3">TOFejemplo6</ToF>
   <HotSpot id="phs1" res="op1c2" pond="1" src="uploads/3ca.jpg">
-    Identifica la best girl
+    HSejemplo1
     <HS id="op1c1" />
     <HS id="op1c2" />
     <HS id="op1c3" />
     <HS id="op1c4" />
   </HotSpot>
   <HotSpot id="phs2" res="op2c6" pond="1" src="uploads/momocrist.png">
-    Rei best girl
+    HSejemplo2
     <HS id="op2c1" coordX="123" coordY="121" radio="120"/>
     <HS id="op2c2" coordX="78" coordY="45" radio="74"/>
     <HS id="op2c3" coordX="787" coordY="464" radio="44"/>
     <HS id="op2c4" oordX="10" coordY="10" radio="10"/>
   </HotSpot>
-  <HotSpot id="hots03" res="opc02" pond="12" src="uploads/DocWl7mU0AArB0u.jpg">Selecciona a Chun Li
+  <HotSpot id="phs3" res="opc02" pond="12" src="uploads/DocWl7mU0AArB0u.jpg">HSejemplo3
   <HS id="op2c1" coordX="123" coordY="121" radio="120" />
     <HS id="op2c2" coordX="78" coordY="45" radio="74" />
     <HS id="op2c3" coordX="787" coordY="464" radio="44" />
     <HS id="op2c4" oordX="10" coordY="10" radio="10" />
   </HotSpot>
 
-  <HotSpot id="wasdd" res="opc1" pond="12" src="uploads/DrFKokIU4AI0ZE1.png">
-    dngn
+  <HotSpot id="phs4" res="opc1" pond="12" src="uploads/DrFKokIU4AI0ZE1.png">
+    HSejemplo4
     <HS id="opc1" coordX="123" coordY="121" radio="120" />
     <HS id="opc2" coordX="78" coordY="45" radio="74" />
     <HS id="opc3" coordX="787" coordY="464" radio="44" />
   </HotSpot>
   
-  <HotSpot id="88" res="12" pond="5" src="uploads/3ca.jpg">
-    88
+  <HotSpot id="phs5" res="12" pond="5" src="uploads/3ca.jpg">
+    HSejemplo5
     <HS id="2" coordX="25" coordY="25" radio="250" />
     <HS id="3" coordX="120" coordY="120" radio="820" />
   </HotSpot>
