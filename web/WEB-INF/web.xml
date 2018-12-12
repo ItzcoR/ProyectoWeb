@@ -57,6 +57,10 @@
         <servlet-class>administrador.evaluar</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>evaluarSiguiente</servlet-name>
+        <servlet-class>administrador.evaluarSiguiente</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>Maestro</servlet-name>
         <servlet-class>administrador.Maestro</servlet-class>
     </servlet>
@@ -299,6 +303,10 @@
      <servlet-mapping>
         <servlet-name>ExamenApp</servlet-name>
         <url-pattern>/ExamenApp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>evaluarSiguiente</servlet-name>
+        <url-pattern>/evaluarSiguiente</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
