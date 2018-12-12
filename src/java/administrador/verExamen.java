@@ -32,16 +32,18 @@ public class verExamen extends HttpServlet {
         int cantPregs=numPregs(xmlExam,idExam);
         int indicepreg=0;
         int calificacion=0;
+        int indice=0;
         String[] idpregs=getIDPreguntasDeExamen(xmlExam,idExam);
         String[][] valuesPregs=new String[4][cantPregs];
         valuesPregs=getValuesDePreguntas(xmlPreg,idpregs);
         HttpSession session=request.getSession();
         session.setAttribute("idExam",idExam);
-        session.setAttribute("nombre",nombreExamen);
+        session.setAttribute("nombreExa",nombreExamen);
         session.setAttribute("indicepreg",indicepreg);
         session.setAttribute("idpregs",idpregs);
         session.setAttribute("calificacion",calificacion);
-        session.setAttribute("cantPregs",cantPregs);
+        
+        //session.setAttribute("cantPregs",cantPregs);
         try (PrintWriter out = response.getWriter()) {
 ///////////////////////////////////////////////////////////////////////////////////////////
 // ------------  HEADER  ------------------------------------------------------------------
@@ -84,7 +86,8 @@ out.println("<meta charset=\"utf-8\">\n" +
                 out.println("<h3>"+valuesPregs[3][i]+"</h3>");//pond
             }
             String tipo=valuesPregs[2][0];
-             out.println("<div class=\"contenedor_botones\"><a class='blanco' href='verSiguiente?idPreg="+idpregs[0]+"&tipo="+tipo+"'>Comenzar</a></div>\n" +
+            session.setAttribute("tipo",tipo);
+             out.println("<div class=\"contenedor_botones\"><a class='blanco' href='verSiguiente?idPreg="+idpregs[indice]+"&tipo="+tipo+"&indice=\"0\"'>Comenzar</a></div>\n" +
             "</div>");       
             out.println("<div class=\"contenedor_botones\"><a class='blanco' href='Maestro'>Regresar</a></div>\n" +
             "</div>");

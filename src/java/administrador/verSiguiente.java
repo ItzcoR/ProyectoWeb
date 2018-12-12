@@ -27,31 +27,38 @@ public class verSiguiente extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String xmlExam=request.getRealPath("WEB-INF\\ProtoExam.xml");
         String xmlPreg=request.getRealPath("WEB-INF\\ProtoToF.xml");
-        //String nodo=request.getParameter("tipo");
+        String indice=request.getParameter("indice");
         String idPreg=request.getParameter("idPreg");
         String tipo=request.getParameter("tipo");
         HttpSession session=request.getSession();
         String idExam=(String) session.getAttribute("idExam");
-        String nombre=(String) session.getAttribute("nombre");
+        String nombreExa=(String) session.getAttribute("nombreExa");
         int indicepreg=(int) session.getAttribute("indicepreg");
         //int cantPregs=(int) session.getAttribute("cantPregs");
         String[] idpregs=(String []) session.getAttribute("idpregs");
         int calificacion=(int) session.getAttribute("calificacion");
         int cantPregs=numPregs(xmlExam,idExam);
-        String[] ValoresHotS=new String[4];
+        session.setAttribute("idExam",idExam);
+        session.setAttribute("nombre",nombreExa);
+        session.setAttribute("indicepreg",indicepreg);
+        session.setAttribute("idpregs",idpregs);
+        session.setAttribute("calificacion",calificacion);
+        String[] ValoresHotS=new String[4]; //Valores 
         //ValoresHotS=getValuesPreguntaHotS(xmlPreg,idpregs[indicepreg]);
         String[][] valuesPregs=new String[4][cantPregs];    
         int nOps=0;
-        ValoresHotS=getValuesPreguntaHotS(xmlPreg,idPreg);
+        ValoresHotS=getValuesPreguntaHotS(xmlPreg,idPreg);  //Mando el id de la Pregunta me regresa el res[0] pond[1] src[2] texto[3]
         valuesPregs=getValuesDePreguntas(xmlPreg,idpregs);  //Se le manda un arreglo de 
         //Ids de preguntas y regresa uno bidimensional con la respuesta[0], texto[1], el nombre del tag en el cual define el tipo [2] y la ponderacion [3] 
+        
+
         //String tipo=valuesPregs[2][indicepreg];
         //String pond=valuesPregs[3][indicepreg];
         //tipo=valuesPregs[2][indicepreg];
         //indicepreg++;
         session.setAttribute("idExam",idExam);
-        session.setAttribute("nombre",nombre);
-        session.setAttribute("tipo",tipo);
+        session.setAttribute("nombre",nombreExa);
+        //session.setAttribute("tipo",tipo);
         session.setAttribute("indicepreg",indicepreg);
         session.setAttribute("idpregs",idpregs);
         session.setAttribute("calificacion",calificacion);
@@ -93,7 +100,11 @@ out.println("<meta charset=\"utf-8\">\n" +
                 );
                 out.println("<h1 class='blanco'>Ver Pregunta ID get Parameter: "+idPreg+" Tipo getParameter: "+tipo+"</h1>");
                 out.println("<h1 class='blanco'>Indice de Preguntas en la posicion: "+indicepreg+"</h1>");
+                out.println("<h1 class='blanco'>Valor del indice: "+indice+"</h1>");
                 //out.println("<h1 class='blanco'>Ver Pregunta ID: "+idpregs[indicepreg]+" Tipo con values: "+valuesPregs[2][indicepreg]+"</h1>");
+                for(int i=0;i<cantPregs;i++){
+                out.println("<h3>"+idpregs[i]+"</h3>"); //id
+                }
                 if(indicepreg>idpregs.length){
                     out.println("<h1>Examen Finalizado</h1>");
                     out.println("<div class=\"contenedor_botones\"><a class='blanco' href='index.html'>Regresar</a></div>\n" +
@@ -103,8 +114,11 @@ out.println("<meta charset=\"utf-8\">\n" +
 
 
                      if (tipo.equals("ToF")) {
-                         out.println("<h1>Pregunta"+valuesPregs[1][indicepreg]+"</h1>");
-                         out.println("<h1>Valor"+valuesPregs[3][indicepreg]+"</h1>");
+                        String[] ToFValores= getValuesPreguntaTOF(xmlPreg,idPreg);//Valores[0]=res; Valores[1]=pond Valores[2]=getText();
+                        session.setAttribute("idpregs",idpregs);
+                        session.setAttribute("idPreg",idPreg);
+                         out.println("<h1>Pregunta"+ToFValores[2]+"</h1>");
+                         out.println("<h1>Valor"+ToFValores[1]+"</h1>");
                          out.println("<form action='evaluarSiguiente' method='get'>\n" +
                         "  <input type=\"radio\" name=\"opcion\" value=\"V\"> Verdadero<br>\n" +
                         "  <input type=\"radio\" name=\"opcion\" value=\"F\"> Falso<br>\n" +
@@ -113,7 +127,7 @@ out.println("<meta charset=\"utf-8\">\n" +
                      }
                      else if (tipo.equals("HotSpot")) {  //out.println("");
                          nOps=numOpciones(xmlPreg,idPreg);
-                         ValoresHotS=getValuesPreguntaHotS(xmlPreg,idPreg);
+                         ValoresHotS=getValuesPreguntaHotS(xmlPreg,idPreg); //Mando el id de la Pregunta me regresa el res[0] pond[1] src[2] texto[3]
                          String[][] ValoresOpciones=new String[4][nOps];
                          ValoresOpciones=ObtenerOpciones(xmlPreg,idPreg);
                          out.println("<h1 class='blanco'>Pregunta: "+ValoresHotS[3]+"</h1>");
@@ -121,7 +135,7 @@ out.println("<meta charset=\"utf-8\">\n" +
                          out.println("<map name=\"mapa\">");
                          
                         for(int i=0; i<nOps;i++ ){
-                           out.println("<area shape=\"circle\" coords='"+ValoresOpciones[1][i]+","+ValoresOpciones[2][i]+","+ValoresOpciones[3][i]+"'  href='evaluarSiguiente?ev="+ValoresOpciones[0][i]+"&id="+idpregs[indicepreg]+"&res="+ValoresHotS[0]+"&pond="+ValoresHotS[1]+"'>");
+                           out.println("<area shape=\"circle\" coords='"+ValoresOpciones[1][i]+","+ValoresOpciones[2][i]+","+ValoresOpciones[3][i]+"'  href='evaluarSiguiente?ev="+ValoresOpciones[0][i]+"&id="+idPreg+"&res="+ValoresHotS[0]+"&pond="+ValoresHotS[1]+"'>");
                             
                         }
                          out.println("</map>");
@@ -137,11 +151,46 @@ out.println("<meta charset=\"utf-8\">\n" +
              //indicepreg++;
              
              session.setAttribute("idExam",idExam);
-        session.setAttribute("nombre",nombre);
+        session.setAttribute("nombre",nombreExa);
         session.setAttribute("indicepreg",indicepreg);
         session.setAttribute("idpregs",idpregs);
         session.setAttribute("calificacion",calificacion);
         }
+    }
+    public String[] getValuesPreguntaTOF(String direc,String id)    
+    {
+        String[] Valores=new String[3];
+        try{
+            /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
+            SAXBuilder builder=new SAXBuilder();
+            //Forma de abriri el archivo
+            File xmlFile = new File(direc);
+            /*Almacenamos el xml cargado en builder en un documento*/
+            Document bd_xml=builder.build(xmlFile);
+            //Elemento raiz
+            Element raiz=bd_xml.getRootElement();
+            //Se almacenan los hijos en una lista
+            List hijos=raiz.getChildren();
+            XMLOutputter xmlOutput = new XMLOutputter();
+            //Formato en el que se va a escribir
+            xmlOutput.setFormat(Format.getPrettyFormat());
+            for(int i=0;i<hijos.size();i++)
+            {
+                Element hijo=(Element)hijos.get(i);
+                String iden=hijo.getAttributeValue("id");
+                if(iden.equals(id))
+                {
+                    Valores[0]=hijo.getAttributeValue("res");
+                    Valores[1]=hijo.getAttributeValue("pond");
+                    Valores[2]=hijo.getText();
+                }
+            }
+            //Se escribe el documento bd_xml en el archivo XML
+        //xmlOutput.output(bd_xml,new FileWriter(direc));
+        } catch (JDOMException | IOException ex) {
+            Logger.getLogger(eliminard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return Valores;
     }
     public int tamano(String direc)//Esta funcion regresa el numero de hijos del elemento raiz
         {
@@ -195,6 +244,38 @@ out.println("<meta charset=\"utf-8\">\n" +
             Logger.getLogger(Maestro.class.getName()).log(Level.SEVERE, null, ex);
         }
         return tam;
+    }
+    public String getTipo(String direc,String idPreg)
+    {
+        String name;    
+        name = "";
+        
+        try{
+            //SAXBuilder se encarga de cargar el archivo XML del disco o de un String 
+            SAXBuilder builder=new SAXBuilder();
+            //Forma de abriri el archivo
+            File xmlFile = new File(direc);
+            //Almacenamos el xml cargado en builder en un documento
+            Document bd_xml=builder.build(xmlFile);
+            //Elemento raiz
+            Element raiz=bd_xml.getRootElement();
+            //Se almacenan los hijos en una lista
+            List hijos=raiz.getChildren();  
+             for(int i=0;i<hijos.size();i++)
+            {
+                Element hijo=(Element)hijos.get(i);
+                String id=hijo.getAttributeValue("id"); //Buscamos la id que queremos
+                if(id.equals(idPreg))//Si la encuentra ponemos a tam a contar el numero de hijos de 
+                {  
+                    List preguntas=hijo.getChildren();
+                    name=hijo.getName();                   
+                }
+            }
+            
+        } catch (JDOMException | IOException ex) {
+            Logger.getLogger(Maestro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return name;
     }
     public String[] getIDPreguntasDeExamen(String direc,String idExamen)
     {
@@ -387,7 +468,7 @@ out.println("<meta charset=\"utf-8\">\n" +
         }
         return total;
     } 
-    public String[] getValuesPreguntaHotS(String direc,String id)    
+    public String[] getValuesPreguntaHotS(String direc,String id)    //Mando el id de la Pregunta me regresa el res[0] pond[1] src[2] texto[3]
     {
         String[] Valores=new String[4];
         try{
