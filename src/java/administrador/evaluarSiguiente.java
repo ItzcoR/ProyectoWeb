@@ -34,15 +34,18 @@ public class evaluarSiguiente extends HttpServlet {
         String ev=request.getParameter("ev");
         String resHotS=request.getParameter("ev");
         String pondHotS=request.getParameter("ev");
+        
         HttpSession session=request.getSession();
         String idPreg=(String)session.getAttribute("idPreg");
         String idExam=(String)session.getAttribute("idExam");
+        int cantPregs=numPregs(xmlExam,idExam);
         String tipo=(String)session.getAttribute("tipo");
         String res=(String)session.getAttribute("res");
         String[] idpregs=(String []) session.getAttribute("idpregs");
+        String[] ValoresHotS=new String[4];
         String pond=(String)session.getAttribute("pond");
         int calificacion=(int)session.getAttribute("calificacion");
-        int cantPregs=(int)session.getAttribute("cantPregs");
+        //int cantPregs=(int)session.getAttribute("cantPregs");
         int indicepreg=(int)session.getAttribute("indicepreg");
         Preset=getValuesPreguntaTOF(xmlPreg,idPreg);
         //resultado=evaluarTOF(xml,id,opcion);
@@ -66,6 +69,10 @@ public class evaluarSiguiente extends HttpServlet {
             out.println("<h1 class='blanco'>Valor de la Pregunta "+pondHotS+"</h1>");
             out.println("<h1 class='blanco'>Indice de Preguntas en la posicion: "+indicepreg+"</h1>");
             out.println("<h1 class='blanco'>Calificacion: "+calificacion+"</h1>");
+            out.println("<h1 class='blanco'>Lista de Preguntas del examen:</h1>");
+            for (int i=0;i<cantPregs;i++) {
+                out.println("<h3>"+idpregs[i]+"</h3>");
+            }
             if (indicepreg<cantPregs) {
                 
             
@@ -89,13 +96,21 @@ public class evaluarSiguiente extends HttpServlet {
                      
                  }
                  else if (tipo.equals("HotSpot")) {  //out.println("");
-                     if(resHotS.equals(ev)){
-                         resultado="Respuesta correcta";
-                         out.println("<h1>"+resultado+"</h1>");
-                         calificacion=calificacion+Integer.parseInt(pond);
+                     ValoresHotS=getValuesPreguntaHotS(xmlPreg,idPreg);
+                    pondHotS=ValoresHotS[1];
+                    out.println("<h1 class='blanco'>Valor de la Pregunta "+pondHotS+"</h1>");
+                    if(ValoresHotS[0].equals(ev)){
+                       resultado="Respuesta correcta";
+                       out.println("<h1>"+resultado+"</h1>");
+                        calificacion=calificacion+Integer.parseInt(pond);
                          session.setAttribute("calificacion",calificacion);
                        }
+                       else{
+                            resultado="Respuesta incorrecta";
+                       out.println("<h1>"+resultado+"</h1>");
+                       }
                  }
+                 out.println("<h1 class='blanco'>Calificacion: "+calificacion+"</h1>");
                 out.println("<div class=\"row\">\n" +
                 "  <div class=\"col-sm-8\"></div>\n" +
                 "  <div class=\"col-sm-4\"><a class='blanco' href='verSiguiente?idPreg="+idpregs[indicepreg=indicepreg+1]+"&tipo="+tipo+"'>Siguiente</a></div>");
@@ -115,9 +130,40 @@ public class evaluarSiguiente extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
         }
-        session.setAttribute("indicepreg",indicepreg+1);
-        session.setAttribute("idpregs",idpregs);
-        session.setAttribute("calificacion",calificacion);
+        //session.setAttribute("indicepreg",indicepreg+1);
+        //session.setAttribute("idpregs",idpregs);
+        //session.setAttribute("calificacion",calificacion);
+    }
+    public int numPregs(String direc,String idExamen)
+    {
+        int tam=0;    
+        
+        try{
+            //SAXBuilder se encarga de cargar el archivo XML del disco o de un String 
+            SAXBuilder builder=new SAXBuilder();
+            //Forma de abriri el archivo
+            File xmlFile = new File(direc);
+            //Almacenamos el xml cargado en builder en un documento
+            Document bd_xml=builder.build(xmlFile);
+            //Elemento raiz
+            Element raiz=bd_xml.getRootElement();
+            //Se almacenan los hijos en una lista
+            List hijos=raiz.getChildren();  
+             for(int i=0;i<hijos.size();i++)
+            {
+                Element hijo=(Element)hijos.get(i);
+                String id=hijo.getAttributeValue("id"); //Buscamos la id que queremos
+                if(id.equals(idExamen))//Si la encuentra ponemos a tam a contar el numero de hijos de 
+                {  
+                    List preguntas=hijo.getChildren();
+                    tam=preguntas.size();                    
+                }
+            }
+            
+        } catch (JDOMException | IOException ex) {
+            Logger.getLogger(Maestro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return tam;
     }
     public String[] getValuesPreguntaTOF(String direc,String id)    
     {
@@ -195,6 +241,42 @@ public class evaluarSiguiente extends HttpServlet {
         }
         return response;
     }
+    public String[] getValuesPreguntaHotS(String direc,String id)    
+    {
+        String[] Valores=new String[4];
+        try{
+            /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
+            SAXBuilder builder=new SAXBuilder();
+            //Forma de abriri el archivo
+            File xmlFile = new File(direc);
+            /*Almacenamos el xml cargado en builder en un documento*/
+            Document bd_xml=builder.build(xmlFile);
+            //Elemento raiz
+            Element raiz=bd_xml.getRootElement();
+            //Se almacenan los hijos en una lista
+            List hijos=raiz.getChildren();
+            XMLOutputter xmlOutput = new XMLOutputter();
+            //Formato en el que se va a escribir
+            xmlOutput.setFormat(Format.getPrettyFormat());
+            for(int i=0;i<hijos.size();i++)
+            {
+                Element hijo=(Element)hijos.get(i);
+                String iden=hijo.getAttributeValue("id");
+                if(iden.equals(id))
+                {
+                    Valores[0]=hijo.getAttributeValue("res");
+                    Valores[1]=hijo.getAttributeValue("pond");
+                    Valores[2]=hijo.getAttributeValue("src");
+                    Valores[3]=hijo.getText();
+                }
+            }
+            //Se escribe el documento bd_xml en el archivo XML
+        //xmlOutput.output(bd_xml,new FileWriter(direc));
+        } catch (JDOMException | IOException ex) {
+            Logger.getLogger(modificarPregunta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return Valores;
+    }
     public String evaluarHotS(String direc,String id,String opcion)    
     {
         String response="";
@@ -236,5 +318,100 @@ public class evaluarSiguiente extends HttpServlet {
             Logger.getLogger(eliminard.class.getName()).log(Level.SEVERE, null, ex);
         }
         return response;
+    }
+    public int numOpciones(String ruta,String id)
+    {
+        
+        //int numeroOpciones=coordX.length;
+        int aux=0;
+       // String[][] opciones=new String[4][aux];
+        try{
+            /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
+            SAXBuilder builder=new SAXBuilder();
+            //Forma de abriri el archivo
+            File xmlFile = new File(ruta);
+            /*Almacenamos el xml cargado en builder en un documento*/
+            Document bd_xml=builder.build(xmlFile);
+            //Elemento raiz
+            Element raiz=bd_xml.getRootElement();
+            //Se almacenan los hijos en una lista
+            List hijos=raiz.getChildren();
+            //Objeto que escribe en el archivo xml
+            XMLOutputter xmlOutput = new XMLOutputter();
+
+            //Formato en el que se va a escribir
+            xmlOutput.setFormat(Format.getPrettyFormat());
+            for(int i=0;i<hijos.size();i++)
+            {
+                Element hijo=(Element)hijos.get(i);
+                String identificador=hijo.getAttributeValue("id");
+                if(identificador.equals(id))
+                {
+                    List opciones=hijo.getChildren();
+                    aux=opciones.size();
+                    return aux;
+                        
+                 }
+                
+            }
+      //xmlOutput.output(bd_xml,new FileWriter(ruta));
+       
+        } catch (JDOMException | IOException ex) {
+            Logger.getLogger(Mapear.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return aux;
+    }
+    public String[][] ObtenerOpciones(String ruta,String id)
+    {
+        
+       // int n=0;
+        int aux=numOpciones(ruta,id);
+        String[][] opcionesValues=new String[4][aux];
+        try{
+            /*SAXBuilder se encarga de cargar el archivo XML del disco o de un String */
+            SAXBuilder builder=new SAXBuilder();
+            //Forma de abriri el archivo
+            File xmlFile = new File(ruta);
+            /*Almacenamos el xml cargado en builder en un documento*/
+            Document bd_xml=builder.build(xmlFile);
+            //Elemento raiz
+            Element raiz=bd_xml.getRootElement();
+            //Se almacenan los hijos en una lista
+            List hijos=raiz.getChildren();
+            //Objeto que escribe en el archivo xml
+            XMLOutputter xmlOutput = new XMLOutputter();
+
+            //Formato en el que se va a escribir
+            xmlOutput.setFormat(Format.getPrettyFormat());
+            for(int i=0;i<hijos.size();i++)
+            {
+                Element hijo=(Element)hijos.get(i);
+                String identificador=hijo.getAttributeValue("id");
+                if(identificador.equals(id))
+                {   
+                    System.out.println("ObtenerOpciones encontro el id:  "+id+" bien");
+                    List opciones=hijo.getChildren();
+                    for (int j=0;j<opciones.size() ;j++ ) {
+                        Element opcion=(Element)opciones.get(j);
+                        opcionesValues[0][j]=opcion.getAttributeValue("id");
+                        opcionesValues[1][j]=opcion.getAttributeValue("coordX");
+                        opcionesValues[2][j]=opcion.getAttributeValue("coordY");
+                        opcionesValues[3][j]=opcion.getAttributeValue("radio");
+                       // n++;
+                        System.out.println("ObtenerOpciones coordX:  "+ opcionesValues[1][j]+" bien");
+                        System.out.println("ObtenerOpciones radio:  "+ opcionesValues[3][j]+" bien");
+                        //System.out.println("ObtenerOpciones n :  "+n+" bien");
+                        
+                    }
+                        
+                 }
+                 
+            }
+      //xmlOutput.output(bd_xml,new FileWriter(ruta));
+       
+        } catch (JDOMException | IOException ex) {
+            Logger.getLogger(Mapear.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return opcionesValues;
     }
 }

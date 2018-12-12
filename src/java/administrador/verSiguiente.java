@@ -41,7 +41,7 @@ public class verSiguiente extends HttpServlet {
         String[] ValoresHotS=new String[4];
         //ValoresHotS=getValuesPreguntaHotS(xmlPreg,idpregs[indicepreg]);
         String[][] valuesPregs=new String[4][cantPregs];    
-        int nOps=numOpciones(xmlPreg,idpregs[indicepreg]);
+        int nOps=0;
         ValoresHotS=getValuesPreguntaHotS(xmlPreg,idPreg);
         valuesPregs=getValuesDePreguntas(xmlPreg,idpregs);  //Se le manda un arreglo de 
         //Ids de preguntas y regresa uno bidimensional con la respuesta[0], texto[1], el nombre del tag en el cual define el tipo [2] y la ponderacion [3] 
@@ -94,38 +94,45 @@ out.println("<meta charset=\"utf-8\">\n" +
                 out.println("<h1 class='blanco'>Ver Pregunta ID get Parameter: "+idPreg+" Tipo getParameter: "+tipo+"</h1>");
                 out.println("<h1 class='blanco'>Indice de Preguntas en la posicion: "+indicepreg+"</h1>");
                 //out.println("<h1 class='blanco'>Ver Pregunta ID: "+idpregs[indicepreg]+" Tipo con values: "+valuesPregs[2][indicepreg]+"</h1>");
-             if (tipo.equals("ToF")) {
-                 out.println("<h1>Pregunta"+valuesPregs[1][indicepreg]+"");
-                 out.println("<h1>Valor"+valuesPregs[3][indicepreg]+"");
-                 out.println("<form action='evaluarSiguiente' method='get'>\n" +
-"  <input type=\"radio\" name=\"opcion\" value=\"V\"> Verdadero<br>\n" +
-"  <input type=\"radio\" name=\"opcion\" value=\"F\"> Falso<br>\n" +
-"  <input type=\"submit\" value=\"Submit\">\n" +
-"</form>");
-             }
-             else if (tipo.equals("HotSpot")) {  //out.println("");
-                 nOps=numOpciones(xmlPreg,idPreg);
-                 ValoresHotS=getValuesPreguntaHotS(xmlPreg,idPreg);
-                 String[][] ValoresOpciones=new String[4][nOps];
-                 ValoresOpciones=ObtenerOpciones(xmlPreg,idPreg);
-                 out.println("<h1 class='blanco'>Pregunta: "+ValoresHotS[3]+"</h1>");
-                 out.println("<img src='"+ValoresHotS[2]+"' usemap='#mapa'>");
-                 out.println("<map name=\"mapa\">");
-                 
-                 for(int i=0; i<nOps;i++ ){
-                   out.println("<area shape=\"circle\" coords='"+ValoresOpciones[1][i]+","+ValoresOpciones[2][i]+","+ValoresOpciones[3][i]+"'  href='evaluarSiguiente?ev="+ValoresOpciones[0][i]+"&id="+idpregs[indicepreg]+"&res="+ValoresHotS[0]+"&pond="+ValoresHotS[1]+"'>");
-                    
-                }
-                 out.println("</map>");
+                if(indicepreg>idpregs.length){
+                    out.println("<h1>Examen Finalizado</h1>");
+                }   
+                else{
 
+
+                     if (tipo.equals("ToF")) {
+                         out.println("<h1>Pregunta"+valuesPregs[1][indicepreg]+"</h1>");
+                         out.println("<h1>Valor"+valuesPregs[3][indicepreg]+"</h1>");
+                         out.println("<form action='evaluarSiguiente' method='get'>\n" +
+                        "  <input type=\"radio\" name=\"opcion\" value=\"V\"> Verdadero<br>\n" +
+                        "  <input type=\"radio\" name=\"opcion\" value=\"F\"> Falso<br>\n" +
+                        "  <input type=\"submit\" value=\"Submit\">\n" +
+                        "</form>");
+                     }
+                     else if (tipo.equals("HotSpot")) {  //out.println("");
+                         nOps=numOpciones(xmlPreg,idPreg);
+                         ValoresHotS=getValuesPreguntaHotS(xmlPreg,idPreg);
+                         String[][] ValoresOpciones=new String[4][nOps];
+                         ValoresOpciones=ObtenerOpciones(xmlPreg,idPreg);
+                         out.println("<h1 class='blanco'>Pregunta: "+ValoresHotS[3]+"</h1>");
+                         out.println("<img src='"+ValoresHotS[2]+"' usemap='#mapa'>");
+                         out.println("<map name=\"mapa\">");
+                         
+                        for(int i=0; i<nOps;i++ ){
+                           out.println("<area shape=\"circle\" coords='"+ValoresOpciones[1][i]+","+ValoresOpciones[2][i]+","+ValoresOpciones[3][i]+"'  href='evaluarSiguiente?ev="+ValoresOpciones[0][i]+"&id="+idpregs[indicepreg]+"&res="+ValoresHotS[0]+"&pond="+ValoresHotS[1]+"'>");
+                            
+                        }
+                         out.println("</map>");
+                    }
+                }
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         // ------------  FOOTER  -------------------------------------------------------------------
         ///////////////////////////////////////////////////////////////////////////////////////////               
         out.println("</body>");
         out.println("</html>");  
-        }
-             indicepreg++;
+        
+             //indicepreg++;
              
              session.setAttribute("idExam",idExam);
         session.setAttribute("nombre",nombre);
