@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Examenes>
-  <Exa id="ex1" nombre="Examen01">
+  <Exa id="ex1222" nombre="Examen1222">
     <Preg id="ptof1" />
     <Preg id="ptof2" />
     <Preg id="ptof3" />
@@ -13,7 +13,7 @@
     <Preg id="phs2" />
     <Preg id="phs3" />
     <Preg id="phs4" />
-    <Preg id="phs5" /> 
+    <Preg id="phs5" />
   </Exa>
   <Exa id="ex3" nombre="Examen03">
     <Preg id="ptof4" />
@@ -36,3 +36,4 @@
     <Preg id="phs5" />
   </Exa>
 </Examenes>
+

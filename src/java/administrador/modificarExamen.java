@@ -128,7 +128,7 @@ out.println("<meta charset=\"utf-8\">\n" +
 
                     out.println( "</tbody>");
                     out.println("</table>");
-                    out.println("<input type=\"submit\" value=\"Quitar\">");	
+                    out.println("<input class=\"btn btn_admin btn-info\" type=\"submit\" value=\"Quitar\">");	
                     out.println("</form>");
                     out.println("</div>");
                     out.println("</div>");
@@ -141,16 +141,38 @@ out.println("<meta charset=\"utf-8\">\n" +
 
 
                     out.println("<form action='modiExamen' method='get'>");
-                    out.println("<legend >Nombre y Id para el examen.<span>El ID debe ser único</span></legend>");
-                    out.println("ID");
-                    out.println("<input type='text' name='idNuevo' onkeypress=\"return letraNumVal(event)\" value='"+idExam+"'required />");
-                    out.println("Nombre");
-                    out.println("<input type='text' name='nombre' onkeypress=\"return letraNumVal(event)\"value='"+nombreExam+"' required />");
+
                 
-                    out.println("<input type=\"reset\">");
-                    out.println("<input type=\"submit\" value=\"Crear\">");
-                    out.println("</form>");
-                    out.println(" <div ><a  href='Maestro'>Regresar</a></div>\n" +
+
+                    out.println("<legend >Nombre y Id para el examen.<span>El ID debe ser único</span></legend>");
+                    out.println("<div class=\"campos_usuario\">\n"+
+
+              
+                    "<div class=\"campo_usuario\">\n"+
+    
+              "<label for=\"nombre\">ID:</label>\n"+
+              "<input type='text' name='idNuevo' onkeypress=\"return letraNumVal(event)\" value='"+idExam+"'required autocomplete=\"off\" >\n"+
+    
+            "</div>\n"+
+
+
+            "<div class=\"campo_usuario\">\n"+
+    
+            "<label for=\"nombre\">Nombre:</label>\n"+
+            "<input type='text' name='nombre' onkeypress=\"return letraNumVal(event)\"value='"+nombreExam+"' required autocomplete=\"off\" >\n"+
+  
+          "</div>\n"+
+
+            "</div>");
+                
+            out.println(
+                "<div class=\"contenedor_botones\">\n"+
+                "<div class=\"campo_usuario enviar\">\n"+
+            "<input type=\"hidden\" id=\"accion\" value=\"crear\">\n"+
+            "<input type=\"submit\" class=\"btn-info\" value=\"Modificar\">\n"+
+            "<input  type=\"button\" class=\"btn-info\" value=\"Cancelar\" onclick=\"document.location='Maestro'\">\n"+
+            "</div>\n"+
+            "</div>");
                             "</div>");
                     
             out.println("</div>");
