@@ -301,7 +301,9 @@ legend span{
 }
 
 .campo input[type="password"],
-.campo input[type="text"]{
+.campo input[type="text"],
+.campo input[type="number"]
+{
     width: 100%;
     border: none;
     padding: .5rem;
@@ -365,7 +367,7 @@ legend span{
 }
 
 .contenedor_contactos{
-    max-width: 800px;
+    max-width:1000px;
     margin: 4rem auto 0 auto;
     
 }
@@ -512,6 +514,8 @@ legend span{
 
 .campo_usuario input[type="password"],
 .campo_usuario input[type="text"],
+.campo_usuario input[type="number"],
+
 select{
     width: 100%;
     border: none;

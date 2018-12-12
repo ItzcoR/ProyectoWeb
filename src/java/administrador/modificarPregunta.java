@@ -102,7 +102,7 @@ out.println("<meta charset=\"utf-8\">\n" +
                 "<div class=\"campo_usuario\">\n"+
         
                   "<label for=\"empresa\">Valor:</label>\n"+
-                  "<input type='text' name='pond' value='"+Preset[1]+"' required autocomplete=\"off\" placeholder=\"Id usuario\">\n"+
+                  "<input type='number' name='pond' value='"+Preset[1]+"' required autocomplete=\"off\" placeholder=\"Id usuario\">\n"+
         
                 "</div>\n"+
         
@@ -151,7 +151,7 @@ out.println("<meta charset=\"utf-8\">\n" +
                         "<div class=\"campo_usuario\">\n"+
                 
                           "<label for=\"nombre\">Valor de la pregunta:</label>\n"+
-                          "<input type='text' name='pond' value='"+ValoresHotS[1]+"' required autocomplete=\"off\" >\n"+
+                          "<input type='number' name='pond' value='"+ValoresHotS[1]+"' required autocomplete=\"off\" >\n"+
                 
                         "</div>\n"+
                         "<div class=\"campo_usuario\">\n"+
@@ -176,19 +176,19 @@ out.println("<meta charset=\"utf-8\">\n" +
 
                                 "<div class=\"campo_usuario\">\n"+
                                 "<label for=\"nombre\">Cordenada X:</label>\n"+
-                                "<input type='text' name='coordX' value="+ValoresOpciones[1][l]+" required autocomplete=\"off\" >\n"+
+                                "<input type='number' name='coordX' value="+ValoresOpciones[1][l]+" required autocomplete=\"off\" >\n"+
                                 "</div>\n"+
 
 
                                 "<div class=\"campo_usuario\">\n"+
                                 "<label for=\"nombre\">Cordenada Y:</label>\n"+
-                                "<input type='text' name='coordY' value="+ValoresOpciones[2][l]+" required autocomplete=\"off\" >\n"+
+                                "<input type='number' name='coordY' value="+ValoresOpciones[2][l]+" required autocomplete=\"off\" >\n"+
                                 "</div>\n"+
 
 
                                 "<div class=\"campo_usuario\">\n"+
                                 "<label for=\"nombre\">Radio:</label>\n"+
-                                "<input type='text' name='radio' value="+ValoresOpciones[3][l]+" required autocomplete=\"off\" >\n"+
+                                "<input type='number' name='radio' value="+ValoresOpciones[3][l]+" required autocomplete=\"off\" >\n"+
                                 "</div>\n"+
                                 "</div>\n"+
                                 "<hr>");
