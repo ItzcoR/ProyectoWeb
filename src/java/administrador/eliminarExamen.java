@@ -63,10 +63,20 @@ out.println("<meta charset=\"utf-8\">\n" +
 ///////////////////////////////////////////////////////////////////////////////////////////
 // ------------  CONTENIDO  ---------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////////////////
-            out.println("<h1 >Eliminado: "+idExam+"</h1>");
-           // out.println("<h1 >"+resultado+"</h1>");
-            out.println(" <div ><a  href='Maestro'>Regresar</a></div>\n" +
-            "</div>");
+
+out.println("<div class=\"bg_blanco contenedor sombra\">\n"+
+"<div class =\"contenedor_alertas\">\n"+
+"<legend>\n"+
+ " Examen \""+idExam+"\" eliminado correctacmente\n"+
+"</legend>\n"+
+
+"<div class=\"campo enviar\">\n" +
+            "   <a class=\"btn-info btn_rosa\" href='Administrador'>Regresar</a>\n" +
+            "</div>\n" +
+            "</div>\n" +
+"</div>");
+
+          
 
 
 

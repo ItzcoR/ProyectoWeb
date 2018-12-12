@@ -173,7 +173,6 @@ out.println("<meta charset=\"utf-8\">\n" +
             "<input  type=\"button\" class=\"btn-info\" value=\"Cancelar\" onclick=\"document.location='Maestro'\">\n"+
             "</div>\n"+
             "</div>");
-                            "</div>");
                     
             out.println("</div>");
 
